@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATHENA Blog Generator with WordPress Integration</title>
+    <title>ATHENA Blog Generator - Revolution Trading Pros</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
@@ -386,10 +386,12 @@
                 <div class="instructions">
                     <h3>📋 How to Use This Tool:</h3>
                     <ol>
-                        <li>Connect to your WordPress site (right sidebar)</li>
-                        <li>Enter your blog topic - it will check for duplicates automatically</li>
+                        <li>Connect to your WordPress site (right sidebar) - Optional</li>
+                        <li>Enter your blog topic</li>
                         <li>Enter your primary keyword for SEO</li>
-                        <li>Generate the ATHENA prompt and use with Claude.ai</li>
+                        <li>Generate the ATHENA prompt</li>
+                        <li>Copy and paste into Claude.ai</li>
+                        <li>Get your complete blog post!</li>
                     </ol>
                 </div>
                 
@@ -443,7 +445,7 @@
             
             <div class="sidebar">
                 <div class="wp-settings">
-                    <h3>🔗 WordPress Connection</h3>
+                    <h3>🔗 WordPress Connection (Optional)</h3>
                     
                     <div class="form-group">
                         <label>Site URL</label>
@@ -572,7 +574,6 @@
                 localStorage.setItem('wp_auth_method', authMethod);
                 if (authMethod === 'app_password') {
                     localStorage.setItem('wp_username', document.getElementById('wpUsername').value);
-                    // Note: For security, we don't save the password
                 }
                 
                 showStatus('wpStatus', 'success', `Connected! Found ${posts.length} posts`);
@@ -677,38 +678,165 @@
             
             const prompt = `You are ATHENA (Automated Topical & Heuristic Engagement Nexus for Authority), the content engine of Revolution Trading Pros.
 
-Your task: Create a COMPLETE, ready-to-publish blog post about "${topic}" optimized for the keyword "${keyword}".
+Your job is to create long-form, expert, SEO-optimized blogs that mirror the exact structure, flow, and authority of "The Ultimate Guide to Options Greeks."
+
+TOPIC: ${topic}
+PRIMARY KEYWORD: ${keyword}
 ${existingPostsContext}
-REQUIREMENTS:
-• Length: 2000-3500 words
-• Voice: Billy Ribeiro - contrarian, professional, authoritative
-• Format: Complete HTML ready for WordPress
-• Include ALL 19 sections listed below
+HARD RULES
+• Target Length: 2000-3500 words. Prioritize depth, clarity, and actionable value over pure word count.
+• Follow the numbered sequence below exactly - do not skip or merge sections.
+• Every designated section must include an image recommendation (title, filename, alt text).
+• Tone: authoritative, professional, contrarian to retail thinking.
+• Voice: Billy Ribeiro, Globally Recognized Trader & Market Strategist.
+• Audience: traders, struggling traders, trading enthusiasts, beginners, professionals.
+• External links: include 2–3 authoritative sources (SEC.gov, Options Industry Council, Investopedia, CME Group, academic research). Use descriptive anchor text only.
 
-GENERATE THE FOLLOWING 19 SECTIONS WITH EXACT FORMATTING:
+OUTPUT SEQUENCE (must always follow this order)
 
-1. SERP + KEYWORD ANALYSIS (as HTML comments)
-<!-- 
-Primary keyword: ${keyword}
-Secondary keywords: [5-7 related keywords]
-Long-tail keywords: [5-10 question-based keywords]
-Meta description: [150-160 characters including primary keyword]
--->
+1. SERP + Keyword Analysis
+• Primary keyword (focus keyword for RankMath): ${keyword}
+• 5–7 secondary/semantic keywords for RankMath
+• 5–10 long-tail keywords/questions
+• Meta Description (150-160 characters, include primary keyword)
+• Keyword difficulty estimates
 
-2. FEATURED IMAGE RECOMMENDATION (as HTML comment)
-<!--
-Image Title: [SEO-optimized title]
-Filename: ${keyword.toLowerCase().replace(/\s+/g, '-')}-guide.webp
-Alt Text: [Descriptive alt text with keyword]
--->
+2. Featured Image Recommendation (MANDATORY)
+• Title: [SEO-optimized title]
+• Filename: ${keyword.toLowerCase().replace(/\s+/g, '-')}-guide.webp
+• Alt text: [1–2 sentences, keyword optimized]
 
-3. AUTHOR BLOCK (use exact HTML)
+3. Author Block
 <div style="display: flex; align-items: center; margin-top: 25px; margin-bottom: 25px;">
 <img style="width: 80px; height: 80px; border-radius: 50%; margin-right: 15px;" src="https://revolutiontradingpros.com/wp-content/uploads/2025/05/Billy-no-grey-768x768.png.webp" alt="Photo of Billy Ribeiro" />
 <em><strong>By Billy Ribeiro | Globally Recognized Trader & Market Strategist</strong></em>
 </div>
 
-[Continue with all 19 sections as before...]`;
+Billy Ribeiro is a globally recognized trader renowned for his mastery of price action analysis and innovative trading strategies. He was personally mentored by Mark McGoldrick, famously known as "Goldfinger," Goldman Sachs's most successful investor in history. McGoldrick described Billy Ribeiro as "The Future of Trading," a testament to his extraordinary talent. His groundbreaking system, "The Move Prior to The Move," enables him to anticipate market trends with unmatched accuracy, establishing him as a true pioneer in the trading world.
+
+<div style="display: flex; align-items: center; gap: 15px; margin-top: 0px; margin-bottom: 0px;">
+<span style="display: inline-flex; align-items: center; font-weight: bold;">Connect with Billy:</span>
+<!-- LinkedIn --> <a style="display: inline-flex; align-items: center; text-decoration: none; color: #0077b5; font-size: 24px;" href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+<!-- X --> <a style="display: inline-flex; align-items: center; text-decoration: none; color: #000000; font-size: 24px;" href="https://x.com/RevTradingPros" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+<!-- YouTube --> <a style="display: inline-flex; align-items: center; text-decoration: none; color: #ff0000; font-size: 24px;" href="https://bit.ly/3YmfilF" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+<!-- Facebook --> <a style="display: inline-flex; align-items: center; text-decoration: none; color: #1877f2; font-size: 24px;" href="https://bit.ly/3OJ9z6g" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+<!-- Instagram --> <a style="display: inline-flex; align-items: center; text-decoration: none; color: #e4405f; font-size: 24px;" href="https://bit.ly/3KW0zsb" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+</div>
+
+4. Introduction / Hook
+• Image Recommendation
+• Written content that establishes the problem and Billy's authority
+
+5. Billy's Key Takeaways
+• Image Recommendation
+• Generate 5-6 topic-specific bullet points using this EXACT format:
+
+<div style="background-color: #f7faff; border: 1px solid #cce0ff; padding: 20px 25px; margin: 30px 0; border-radius: 12px;">
+<h3 style="margin-top: 0;">Billy's Key Takeaways</h3>
+<p style="font-style: italic; margin-bottom: 15px;">"After 15+ years of trading and mentoring thousands of traders, here's what I wish every ${topic} trader understood from day one:"</p>
+<ul>
+<li><strong>[Contrarian statement].</strong> [1-2 sentence explanation in Billy's voice]</li>
+<li><strong>[Contrarian statement].</strong> [1-2 sentence explanation in Billy's voice]</li>
+<li><strong>[Contrarian statement].</strong> [1-2 sentence explanation in Billy's voice]</li>
+<li><strong>[Contrarian statement].</strong> [1-2 sentence explanation in Billy's voice]</li>
+<li><strong>[Contrarian statement].</strong> [1-2 sentence explanation in Billy's voice]</li>
+<li><strong>[Contrarian statement].</strong> [1-2 sentence explanation in Billy's voice]</li>
+</ul>
+</div>
+
+6. Foundations / Definitions
+• Image Recommendation
+• Core explanation using Billy's teaching style
+• Include "Why Most Traders Fail Without Understanding ${topic}" subsection
+
+7. Deep Dive Sections (3-5 main sections)
+• Each section gets H2 heading
+• Image Recommendation for each
+• Real-world examples with specific numbers/tickers
+• Include Billy's personal trading experiences
+
+8. Common Mistakes & Warnings
+• Image Recommendation
+• Use warning box format:
+
+<div style="background-color: #fffbe6; border-left: 4px solid #c0392b; padding: 15px; margin: 20px 0; font-style: italic; border-radius: 8px;">
+<p style="color: #c0392b; font-weight: bold; margin: 0;">⚠️ [Warning Title]: [Detailed warning explanation]</p>
+</div>
+
+9. Real-World Examples & Case Studies
+• Image Recommendation
+• Include specific scenarios with numbers
+• Use "Scenario 1:", "Scenario 2:" format
+• Show calculations and outcomes
+
+10. Billy's Take (FLEX SECTION)
+• Image Recommendation
+• Personal commentary in this format:
+
+<div style="background-color: #f7f7f7; border-left: 4px solid #3366ff; padding: 15px; margin: 20px 0; font-style: italic; border-radius: 8px;">
+<strong>Billy's Take:</strong>
+"[Personal insight in Billy's contrarian voice with specific examples from his experience]"
+</div>
+
+11. Building Your ${topic} System
+• Image Recommendation
+• Phase-based learning approach with colored boxes:
+
+<div style="background: linear-gradient(135deg, #e3f2fd 0%, #f0f8ff 100%); border-left: 5px solid #2196f3; padding: 25px; margin: 25px 0; border-radius: 15px;">
+<h3 style="margin-top: 0; color: #1976d2;">Phase 1: Foundation (Months 1-3)</h3>
+<ul><li>[Actionable steps]</li></ul>
+</div>
+
+<div style="background: linear-gradient(135deg, #fce4ec 0%, #fff0f5 100%); border-left: 5px solid #e91e63; padding: 25px; margin: 25px 0; border-radius: 15px;">
+<h3 style="margin-top: 0; color: #c2185b;">Phase 2: Development (Months 3-6)</h3>
+<ul><li>[Actionable steps]</li></ul>
+</div>
+
+<div style="background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%); border-left: 5px solid #4caf50; padding: 25px; margin: 25px 0; border-radius: 15px;">
+<h3 style="margin-top: 0; color: #388e3c;">Phase 3: Mastery (Ongoing)</h3>
+<ul><li>[Actionable steps]</li></ul>
+</div>
+
+12. Continue Your Learning
+• Image Recommendation
+• 3 related topic cards with placeholder images
+
+13. Recommended External Resources Table
+• Styled table with 3 authoritative external links
+
+14. FAQ Section (Schema-Ready)
+• Image Recommendation (Optional)
+• 10-15 comprehensive Q&As
+• Start each answer with bolded key point
+
+15. Newsletter Capture Block
+<h3 style="text-align: center;">Get Our ${topic} Cheat Sheet Direct to Your Inbox</h3>
+[elementor-template id="44911"]
+
+16. Social Sharing Buttons
+• Include share section with proper styling
+
+17. CTA Cards Section
+• Trading Rooms & Services with exact styling from sample
+
+18. Risk Disclaimer
+<div style="border: 1px solid #ccc; padding: 15px; margin-top: 40px; background-color: #fafafa; border-radius: 8px;">
+<p style="font-size: 0.9em; color: #555; text-align: center; margin: 0;"><strong>CRITICAL:</strong> Trading involves substantial risk of loss and is not suitable for all investors. The content of this article is for educational purposes only and is not a recommendation to buy or sell any security. All trading strategies are used at your own risk.</p>
+</div>
+
+19. Revolution Trading Pros Logo
+• Footer logo placement
+
+IMAGE RULES (MANDATORY)
+For each designated section, recommend:
+• Title: Descriptive, keyword-rich
+• Filename: topic-keyword-section.webp (lowercase, hyphens)
+• Alt text: 1-2 sentences, keyword optimized
+
+Display format:
+<img src="FILENAME.webp" alt="ALT_TEXT" title="TITLE_TEXT" style="width:100%;">
+
+Make this blog article 2000-3500 words with Billy's contrarian, authoritative voice throughout. Write complete, ready-to-publish content for each section.`;
             
             document.getElementById('promptOutput').value = prompt;
             document.getElementById('outputSection').style.display = 'block';
