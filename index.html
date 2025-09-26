@@ -323,27 +323,6 @@
             float: right;
         }
         
-        .loading {
-            text-align: center;
-            color: #999;
-            padding: 20px;
-        }
-        
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 10px auto;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
         @media (max-width: 1024px) {
             .main-layout {
                 grid-template-columns: 1fr;
@@ -378,7 +357,7 @@
     <div class="container">
         <div class="header">
             <h1>⚡ ATHENA Blog Generator</h1>
-            <p>Create SEO-Optimized Trading Blog Posts with WordPress Integration</p>
+            <p>Create SEO-Optimized Trading Blog Posts with Perfect Formatting</p>
         </div>
         
         <div class="main-layout">
@@ -386,12 +365,12 @@
                 <div class="instructions">
                     <h3>📋 How to Use This Tool:</h3>
                     <ol>
-                        <li>Connect to your WordPress site (right sidebar) - Optional</li>
+                        <li>Connect to your WordPress site (optional - for duplicate checking)</li>
                         <li>Enter your blog topic</li>
                         <li>Enter your primary keyword for SEO</li>
-                        <li>Generate the ATHENA prompt</li>
-                        <li>Copy and paste into Claude.ai</li>
-                        <li>Get your complete blog post!</li>
+                        <li>Click "Generate ATHENA Prompt"</li>
+                        <li>Copy the prompt and paste into Claude.ai</li>
+                        <li>Get a complete, formatted blog post!</li>
                     </ol>
                 </div>
                 
@@ -401,7 +380,7 @@
                         <input 
                             type="text" 
                             id="topic" 
-                            placeholder="e.g., Day Trading Strategies for Beginners"
+                            placeholder="e.g., 3 Best Scalping Strategies for Beginners 2025"
                             oninput="checkForDuplicates()"
                         >
                     </div>
@@ -416,7 +395,7 @@
                         <input 
                             type="text" 
                             id="keyword" 
-                            placeholder="e.g., day trading strategies"
+                            placeholder="e.g., scalping strategies beginners"
                         >
                     </div>
                     
@@ -659,7 +638,7 @@
             }
         }
         
-        // Generate ATHENA prompt
+        // Generate ATHENA prompt - UPDATED TO MATCH EXACT FORMAT
         function generatePrompt() {
             const topic = document.getElementById('topic').value.trim();
             const keyword = document.getElementById('keyword').value.trim();
@@ -669,174 +648,347 @@
                 return;
             }
             
-            // Add context about existing posts if connected
-            let existingPostsContext = '';
-            if (wpConnected && allPosts.length > 0) {
-                const recentTitles = allPosts.slice(0, 10).map(p => p.title.rendered);
-                existingPostsContext = `\n\nNOTE: Avoid duplicating these existing blog titles:\n${recentTitles.map(t => `• ${t}`).join('\n')}\n`;
-            }
-            
-            const prompt = `You are ATHENA (Automated Topical & Heuristic Engagement Nexus for Authority), the content engine of Revolution Trading Pros.
-
-Your job is to create long-form, expert, SEO-optimized blogs that mirror the exact structure, flow, and authority of "The Ultimate Guide to Options Greeks."
+            const prompt = `Create a complete HTML blog post in the EXACT format shown below. This is for Revolution Trading Pros and must follow Billy Ribeiro's voice and style precisely.
 
 TOPIC: ${topic}
 PRIMARY KEYWORD: ${keyword}
-${existingPostsContext}
-HARD RULES
-• Target Length: 2000-3500 words. Prioritize depth, clarity, and actionable value over pure word count.
-• Follow the numbered sequence below exactly - do not skip or merge sections.
-• Every designated section must include an image recommendation (title, filename, alt text).
-• Tone: authoritative, professional, contrarian to retail thinking.
-• Voice: Billy Ribeiro, Globally Recognized Trader & Market Strategist.
-• Audience: traders, struggling traders, trading enthusiasts, beginners, professionals.
-• External links: include 2–3 authoritative sources (SEC.gov, Options Industry Council, Investopedia, CME Group, academic research). Use descriptive anchor text only.
 
-OUTPUT SEQUENCE (must always follow this order)
+CRITICAL REQUIREMENTS:
+- Create a COMPLETE HTML document starting with <!DOCTYPE html>
+- Include meta tags for SEO
+- Use Billy Ribeiro's contrarian, authoritative voice
+- Include specific numbers, real examples, and actionable strategies
+- Length should be comprehensive (2000+ words) but focus on QUALITY and E-E-A-T over word count
+- Every section must include an image tag with descriptive alt text
 
-1. SERP + Keyword Analysis
-• Primary keyword (focus keyword for RankMath): ${keyword}
-• 5–7 secondary/semantic keywords for RankMath
-• 5–10 long-tail keywords/questions
-• Meta Description (150-160 characters, include primary keyword)
-• Keyword difficulty estimates
+EXACT FORMAT TO FOLLOW:
 
-2. Featured Image Recommendation (MANDATORY)
-• Title: [SEO-optimized title]
-• Filename: ${keyword.toLowerCase().replace(/\s+/g, '-')}-guide.webp
-• Alt text: [1–2 sentences, keyword optimized]
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${topic}</title>
+<meta name="description" content="[150-160 character meta description with primary keyword]">
+<meta name="keywords" content="${keyword}, [7-10 related keywords]">
+</head>
+<body>
 
-3. Author Block
+<article>
+
+<!-- Featured Image -->
+<img src="${keyword.replace(/\s+/g, '-')}-guide.webp" alt="[Detailed description of featured image related to ${topic}]" title="${topic} Complete Guide" style="width:100%; height:auto; margin-bottom:30px;">
+
+<!-- Author Block -->
 <div style="display: flex; align-items: center; margin-top: 25px; margin-bottom: 25px;">
 <img style="width: 80px; height: 80px; border-radius: 50%; margin-right: 15px;" src="https://revolutiontradingpros.com/wp-content/uploads/2025/05/Billy-no-grey-768x768.png.webp" alt="Photo of Billy Ribeiro" />
 <em><strong>By Billy Ribeiro | Globally Recognized Trader & Market Strategist</strong></em>
 </div>
 
-Billy Ribeiro is a globally recognized trader renowned for his mastery of price action analysis and innovative trading strategies. He was personally mentored by Mark McGoldrick, famously known as "Goldfinger," Goldman Sachs's most successful investor in history. McGoldrick described Billy Ribeiro as "The Future of Trading," a testament to his extraordinary talent. His groundbreaking system, "The Move Prior to The Move," enables him to anticipate market trends with unmatched accuracy, establishing him as a true pioneer in the trading world.
+<p>Billy Ribeiro is a globally recognized trader renowned for his mastery of price action analysis and innovative trading strategies. He was personally mentored by Mark McGoldrick, famously known as "Goldfinger," Goldman Sachs's most successful investor in history. McGoldrick described Billy Ribeiro as "The Future of Trading," a testament to his extraordinary talent. His groundbreaking system, "The Move Prior to The Move," enables him to anticipate market trends with unmatched accuracy, establishing him as a true pioneer in the trading world.</p>
 
 <div style="display: flex; align-items: center; gap: 15px; margin-top: 0px; margin-bottom: 0px;">
 <span style="display: inline-flex; align-items: center; font-weight: bold;">Connect with Billy:</span>
-<!-- LinkedIn --> <a style="display: inline-flex; align-items: center; text-decoration: none; color: #0077b5; font-size: 24px;" href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-<!-- X --> <a style="display: inline-flex; align-items: center; text-decoration: none; color: #000000; font-size: 24px;" href="https://x.com/RevTradingPros" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x-twitter"></i></a>
-<!-- YouTube --> <a style="display: inline-flex; align-items: center; text-decoration: none; color: #ff0000; font-size: 24px;" href="https://bit.ly/3YmfilF" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-<!-- Facebook --> <a style="display: inline-flex; align-items: center; text-decoration: none; color: #1877f2; font-size: 24px;" href="https://bit.ly/3OJ9z6g" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-<!-- Instagram --> <a style="display: inline-flex; align-items: center; text-decoration: none; color: #e4405f; font-size: 24px;" href="https://bit.ly/3KW0zsb" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+<a style="display: inline-flex; align-items: center; text-decoration: none; color: #0077b5; font-size: 24px;" href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+<a style="display: inline-flex; align-items: center; text-decoration: none; color: #000000; font-size: 24px;" href="https://x.com/RevTradingPros" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+<a style="display: inline-flex; align-items: center; text-decoration: none; color: #ff0000; font-size: 24px;" href="https://bit.ly/3YmfilF" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+<a style="display: inline-flex; align-items: center; text-decoration: none; color: #1877f2; font-size: 24px;" href="https://bit.ly/3OJ9z6g" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+<a style="display: inline-flex; align-items: center; text-decoration: none; color: #e4405f; font-size: 24px;" href="https://bit.ly/3KW0zsb" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
 </div>
 
-4. Introduction / Hook
-• Image Recommendation
-• Written content that establishes the problem and Billy's authority
+<!-- Introduction -->
+<h2>Introduction</h2>
 
-5. Billy's Key Takeaways
-• Image Recommendation
-• Generate 5-6 topic-specific bullet points using this EXACT format:
+<img src="[descriptive-filename].webp" alt="[Description]" title="[Title]" style="width:100%; height:auto; margin:20px 0;">
+
+[Write a compelling introduction that:
+- Opens with a contrarian statement or shocking statistic
+- Establishes Billy's authority and experience
+- Identifies the problem most traders face
+- Previews what will be covered
+- Uses specific numbers and examples
+- Maintains Billy's direct, no-nonsense voice]
+
+<!-- Billy's Key Takeaways -->
+<img src="billy-key-takeaways-${keyword.replace(/\s+/g, '-')}.webp" alt="[Description]" title="Billy's Key Takeaways" style="width:100%; height:auto; margin:20px 0;">
 
 <div style="background-color: #f7faff; border: 1px solid #cce0ff; padding: 20px 25px; margin: 30px 0; border-radius: 12px;">
 <h3 style="margin-top: 0;">Billy's Key Takeaways</h3>
 <p style="font-style: italic; margin-bottom: 15px;">"After 15+ years of trading and mentoring thousands of traders, here's what I wish every ${topic} trader understood from day one:"</p>
 <ul>
-<li><strong>[Contrarian statement].</strong> [1-2 sentence explanation in Billy's voice]</li>
-<li><strong>[Contrarian statement].</strong> [1-2 sentence explanation in Billy's voice]</li>
-<li><strong>[Contrarian statement].</strong> [1-2 sentence explanation in Billy's voice]</li>
-<li><strong>[Contrarian statement].</strong> [1-2 sentence explanation in Billy's voice]</li>
-<li><strong>[Contrarian statement].</strong> [1-2 sentence explanation in Billy's voice]</li>
-<li><strong>[Contrarian statement].</strong> [1-2 sentence explanation in Billy's voice]</li>
+<li><strong>[Contrarian statement].</strong> [Explanation with specific example]</li>
+<li><strong>[Contrarian statement].</strong> [Explanation with specific example]</li>
+<li><strong>[Contrarian statement].</strong> [Explanation with specific example]</li>
+<li><strong>[Contrarian statement].</strong> [Explanation with specific example]</li>
+<li><strong>[Contrarian statement].</strong> [Explanation with specific example]</li>
+<li><strong>[Contrarian statement].</strong> [Explanation with specific example]</li>
 </ul>
 </div>
 
-6. Foundations / Definitions
-• Image Recommendation
-• Core explanation using Billy's teaching style
-• Include "Why Most Traders Fail Without Understanding ${topic}" subsection
+<!-- Core Concepts/Foundations -->
+<h2>[Main Foundation Heading Related to Topic]</h2>
 
-7. Deep Dive Sections (3-5 main sections)
-• Each section gets H2 heading
-• Image Recommendation for each
-• Real-world examples with specific numbers/tickers
-• Include Billy's personal trading experiences
+<img src="[descriptive-filename].webp" alt="[Description]" title="[Title]" style="width:100%; height:auto; margin:20px 0;">
 
-8. Common Mistakes & Warnings
-• Image Recommendation
-• Use warning box format:
+[Comprehensive explanation of core concepts]
+
+<h3>Why Most Traders Fail Without Understanding [Topic]</h3>
+
+[Detailed explanation with numbered points or bullet list]
+
+<!-- Main Strategy/Method Sections (3-5 sections) -->
+<h2>[Strategy/Method #1 Name]</h2>
+
+<img src="[descriptive-filename].webp" alt="[Description]" title="[Title]" style="width:100%; height:auto; margin:20px 0;">
+
+[Detailed explanation with:
+- The concept
+- The setup
+- Entry criteria (numbered list)
+- Real example with specific numbers
+- Results/outcomes]
+
+<h2>[Strategy/Method #2 Name]</h2>
+
+<img src="[descriptive-filename].webp" alt="[Description]" title="[Title]" style="width:100%; height:auto; margin:20px 0;">
+
+[Similar detailed structure as above]
+
+<h2>[Strategy/Method #3 Name]</h2>
+
+<img src="[descriptive-filename].webp" alt="[Description]" title="[Title]" style="width:100%; height:auto; margin:20px 0;">
+
+[Similar detailed structure as above]
+
+<!-- Common Mistakes -->
+<h2>Common Mistakes & Warnings</h2>
+
+<img src="[descriptive-filename].webp" alt="[Description]" title="[Title]" style="width:100%; height:auto; margin:20px 0;">
 
 <div style="background-color: #fffbe6; border-left: 4px solid #c0392b; padding: 15px; margin: 20px 0; font-style: italic; border-radius: 8px;">
-<p style="color: #c0392b; font-weight: bold; margin: 0;">⚠️ [Warning Title]: [Detailed warning explanation]</p>
+<p style="color: #c0392b; font-weight: bold; margin: 0;">⚠️ [Warning Title]: [Detailed warning explanation with specific consequences]</p>
 </div>
 
-9. Real-World Examples & Case Studies
-• Image Recommendation
-• Include specific scenarios with numbers
-• Use "Scenario 1:", "Scenario 2:" format
-• Show calculations and outcomes
+<div style="background-color: #fffbe6; border-left: 4px solid #c0392b; padding: 15px; margin: 20px 0; font-style: italic; border-radius: 8px;">
+<p style="color: #c0392b; font-weight: bold; margin: 0;">⚠️ [Warning Title]: [Detailed warning explanation with specific consequences]</p>
+</div>
 
-10. Billy's Take (FLEX SECTION)
-• Image Recommendation
-• Personal commentary in this format:
+<div style="background-color: #fffbe6; border-left: 4px solid #c0392b; padding: 15px; margin: 20px 0; font-style: italic; border-radius: 8px;">
+<p style="color: #c0392b; font-weight: bold; margin: 0;">⚠️ [Warning Title]: [Detailed warning explanation with specific consequences]</p>
+</div>
+
+<!-- Real Examples -->
+<h2>Real-World Examples & Case Studies</h2>
+
+<img src="[descriptive-filename].webp" alt="[Description]" title="[Title]" style="width:100%; height:auto; margin:20px 0;">
+
+<h3>Scenario 1: [Specific Example Title]</h3>
+
+<p><strong>Date:</strong> [Specific date]<br>
+<strong>Setup:</strong> [Market conditions and setup]</p>
+
+[Detailed walkthrough with:]
+<p><strong>Entry:</strong> [Specific price and reasoning]<br>
+<strong>Stop:</strong> [Specific price and risk]<br>
+<strong>Target:</strong> [Specific price and rationale]<br>
+<strong>Result:</strong> [Actual outcome with numbers]<br>
+<strong>Position size:</strong> [Shares/contracts and profit/loss]</p>
+
+<h3>Scenario 2: [Specific Example Title]</h3>
+
+[Similar structure as Scenario 1]
+
+<h3>Scenario 3: [Specific Example Title]</h3>
+
+[Similar structure as Scenario 1]
+
+<!-- Billy's Take -->
+<img src="billy-ribeiro-insights-${keyword.replace(/\s+/g, '-')}.webp" alt="[Description]" title="Billy's Professional Insights" style="width:100%; height:auto; margin:20px 0;">
 
 <div style="background-color: #f7f7f7; border-left: 4px solid #3366ff; padding: 15px; margin: 20px 0; font-style: italic; border-radius: 8px;">
 <strong>Billy's Take:</strong>
-"[Personal insight in Billy's contrarian voice with specific examples from his experience]"
+"[Personal insight that goes against conventional wisdom, includes specific story or example from Billy's experience, mentions specific numbers/results, and reinforces the main teaching point. Should be 3-5 sentences and feel conversational but authoritative.]"
 </div>
 
-11. Building Your ${topic} System
-• Image Recommendation
-• Phase-based learning approach with colored boxes:
+<!-- Building Your System -->
+<h2>Building Your ${topic} System</h2>
+
+<img src="[descriptive-filename].webp" alt="[Description]" title="[Title]" style="width:100%; height:auto; margin:20px 0;">
 
 <div style="background: linear-gradient(135deg, #e3f2fd 0%, #f0f8ff 100%); border-left: 5px solid #2196f3; padding: 25px; margin: 25px 0; border-radius: 15px;">
 <h3 style="margin-top: 0; color: #1976d2;">Phase 1: Foundation (Months 1-3)</h3>
-<ul><li>[Actionable steps]</li></ul>
+<ul>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific goal or milestone to achieve]</li>
+</ul>
 </div>
 
 <div style="background: linear-gradient(135deg, #fce4ec 0%, #fff0f5 100%); border-left: 5px solid #e91e63; padding: 25px; margin: 25px 0; border-radius: 15px;">
 <h3 style="margin-top: 0; color: #c2185b;">Phase 2: Development (Months 3-6)</h3>
-<ul><li>[Actionable steps]</li></ul>
+<ul>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific goal or milestone to achieve]</li>
+</ul>
 </div>
 
 <div style="background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%); border-left: 5px solid #4caf50; padding: 25px; margin: 25px 0; border-radius: 15px;">
 <h3 style="margin-top: 0; color: #388e3c;">Phase 3: Mastery (Ongoing)</h3>
-<ul><li>[Actionable steps]</li></ul>
+<ul>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific actionable step with measurable outcome]</li>
+<li>[Specific goal or milestone to achieve]</li>
+</ul>
 </div>
 
-12. Continue Your Learning
-• Image Recommendation
-• 3 related topic cards with placeholder images
+<!-- Continue Learning -->
+<h2>Continue Your Learning</h2>
 
-13. Recommended External Resources Table
-• Styled table with 3 authoritative external links
+<img src="[descriptive-filename].webp" alt="[Description]" title="[Title]" style="width:100%; height:auto; margin:20px 0;">
 
-14. FAQ Section (Schema-Ready)
-• Image Recommendation (Optional)
-• 10-15 comprehensive Q&As
-• Start each answer with bolded key point
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
 
-15. Newsletter Capture Block
+<div style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; background: #f9f9f9;">
+<img src="[related-topic-1].webp" alt="[Description]" style="width:100%; border-radius: 4px;">
+<h3>[Related Topic 1 Title]</h3>
+<p>[Brief description of what they'll learn]</p>
+</div>
+
+<div style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; background: #f9f9f9;">
+<img src="[related-topic-2].webp" alt="[Description]" style="width:100%; border-radius: 4px;">
+<h3>[Related Topic 2 Title]</h3>
+<p>[Brief description of what they'll learn]</p>
+</div>
+
+<div style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; background: #f9f9f9;">
+<img src="[related-topic-3].webp" alt="[Description]" style="width:100%; border-radius: 4px;">
+<h3>[Related Topic 3 Title]</h3>
+<p>[Brief description of what they'll learn]</p>
+</div>
+
+</div>
+
+<!-- External Resources -->
+<h2>Recommended External Resources</h2>
+
+<table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+<thead>
+<tr style="background-color: #f2f2f2;">
+<th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Resource</th>
+<th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Type</th>
+<th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding: 12px; border: 1px solid #ddd;"><a href="https://www.sec.gov/education" target="_blank" rel="noopener noreferrer">SEC Investor Education</a></td>
+<td style="padding: 12px; border: 1px solid #ddd;">Regulatory Guidance</td>
+<td style="padding: 12px; border: 1px solid #ddd;">[Specific use case]</td>
+</tr>
+<tr>
+<td style="padding: 12px; border: 1px solid #ddd;"><a href="https://www.cmegroup.com/education.html" target="_blank" rel="noopener noreferrer">CME Group Education</a></td>
+<td style="padding: 12px; border: 1px solid #ddd;">Market Structure</td>
+<td style="padding: 12px; border: 1px solid #ddd;">[Specific use case]</td>
+</tr>
+<tr>
+<td style="padding: 12px; border: 1px solid #ddd;"><a href="[Relevant authoritative source]" target="_blank" rel="noopener noreferrer">[Resource Name]</a></td>
+<td style="padding: 12px; border: 1px solid #ddd;">[Type]</td>
+<td style="padding: 12px; border: 1px solid #ddd;">[Specific use case]</td>
+</tr>
+</tbody>
+</table>
+
+<!-- FAQ Section -->
+<h2>Frequently Asked Questions</h2>
+
+<img src="faq-${keyword.replace(/\s+/g, '-')}.webp" alt="[Description]" title="Frequently Asked Questions" style="width:100%; height:auto; margin:20px 0;">
+
+[Create 10-15 Q&As in this format:]
+
+<h3>[Question about ${topic}]?</h3>
+<p><strong>[Bold key point answer]</strong>, [detailed explanation with specific examples, numbers, or actionable advice. Should be 2-3 sentences minimum.]</p>
+
+[Repeat for each FAQ]
+
+<!-- Newsletter Capture -->
 <h3 style="text-align: center;">Get Our ${topic} Cheat Sheet Direct to Your Inbox</h3>
 [elementor-template id="44911"]
 
-16. Social Sharing Buttons
-• Include share section with proper styling
+<!-- Social Sharing -->
+<div style="text-align: center; margin: 30px 0;">
+<p style="font-weight: bold; margin-bottom: 15px;">Found this guide helpful? Share it with fellow traders:</p>
+<div style="display: flex; justify-content: center; gap: 10px;">
+<a href="#" style="padding: 10px 20px; background: #1877f2; color: white; text-decoration: none; border-radius: 5px;">Share on Facebook</a>
+<a href="#" style="padding: 10px 20px; background: #000; color: white; text-decoration: none; border-radius: 5px;">Share on X</a>
+<a href="#" style="padding: 10px 20px; background: #0077b5; color: white; text-decoration: none; border-radius: 5px;">Share on LinkedIn</a>
+</div>
+</div>
 
-17. CTA Cards Section
-• Trading Rooms & Services with exact styling from sample
+<!-- CTA Cards -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0;">
 
-18. Risk Disclaimer
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 10px; color: white; text-align: center;">
+<h3>Join Our Live Trading Room</h3>
+<p>Trade alongside Billy and professional traders in real-time. Get live callouts, analysis, and mentorship.</p>
+<a href="#" style="display: inline-block; margin-top: 15px; padding: 12px 30px; background: white; color: #667eea; text-decoration: none; border-radius: 5px; font-weight: bold;">Start Free Trial</a>
+</div>
+
+<div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 30px; border-radius: 10px; color: white; text-align: center;">
+<h3>[Course/Product Name]</h3>
+<p>[Brief description of value proposition]</p>
+<a href="#" style="display: inline-block; margin-top: 15px; padding: 12px 30px; background: white; color: #f5576c; text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More</a>
+</div>
+
+<div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); padding: 30px; border-radius: 10px; color: white; text-align: center;">
+<h3>1-on-1 Mentorship</h3>
+<p>Personal coaching with Billy to accelerate your success and avoid costly mistakes.</p>
+<a href="#" style="display: inline-block; margin-top: 15px; padding: 12px 30px; background: white; color: #fa709a; text-decoration: none; border-radius: 5px; font-weight: bold;">Apply Now</a>
+</div>
+
+</div>
+
+<!-- Risk Disclaimer -->
 <div style="border: 1px solid #ccc; padding: 15px; margin-top: 40px; background-color: #fafafa; border-radius: 8px;">
 <p style="font-size: 0.9em; color: #555; text-align: center; margin: 0;"><strong>CRITICAL:</strong> Trading involves substantial risk of loss and is not suitable for all investors. The content of this article is for educational purposes only and is not a recommendation to buy or sell any security. All trading strategies are used at your own risk.</p>
 </div>
 
-19. Revolution Trading Pros Logo
-• Footer logo placement
+<!-- Logo Footer -->
+<div style="text-align: center; margin-top: 40px; padding: 20px;">
+<img src="revolution-trading-pros-logo.webp" alt="Revolution Trading Pros Logo" style="max-width: 300px;">
+</div>
 
-IMAGE RULES (MANDATORY)
-For each designated section, recommend:
-• Title: Descriptive, keyword-rich
-• Filename: topic-keyword-section.webp (lowercase, hyphens)
-• Alt text: 1-2 sentences, keyword optimized
+</article>
 
-Display format:
-<img src="FILENAME.webp" alt="ALT_TEXT" title="TITLE_TEXT" style="width:100%;">
+</body>
+</html>
 
-Make this blog article 2000-3500 words with Billy's contrarian, authoritative voice throughout. Write complete, ready-to-publish content for each section.`;
+IMPORTANT CONTENT GUIDELINES:
+1. Write in Billy's voice - direct, contrarian, specific
+2. Include real numbers, prices, percentages throughout
+3. Each strategy/method should have actionable steps
+4. Use current year (2025) references
+5. Reference specific stocks/tickers when relevant (TSLA, NVDA, SPY, etc.)
+6. Include time-specific details (9:30 AM EST, first 90 minutes, etc.)
+7. Make warnings about real consequences traders face
+8. FAQ answers should be substantial, not generic
+9. Every example should feel real and specific
+
+Focus on E-E-A-T:
+- Expertise: Show deep knowledge with specific techniques
+- Experience: Include personal trading examples and results
+- Authoritativeness: Reference Billy's background and achievements
+- Trustworthiness: Include disclaimers, realistic expectations, and genuine advice
+
+Create the complete blog post now with all sections filled in with high-quality, specific content.`;
             
             document.getElementById('promptOutput').value = prompt;
             document.getElementById('outputSection').style.display = 'block';
