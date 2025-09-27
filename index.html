@@ -968,7 +968,7 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
             showStatus('phase1Status', 'success', 'Phase 1 prompt generated! Copy and paste into Claude.');
         }
         
-        // Parse tagged content
+        // Parse tagged content - FIXED VERSION
         function parseTaggedContent(content) {
             const tags = {};
             const regex = /\{\{([^}]+)\}\}:\s*([^{]*(?:\{[^}]*\}[^{]*)*?)(?=\{\{|$)/gs;
@@ -993,13 +993,12 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
                 .trim();
         }
         
-        // Process content to add H3 and H4 headings
+        // Process content to add H3 and H4 headings - FIXED VERSION
         function processContentWithHeadings(content) {
             if (!content) return '';
             
             const lines = content.split('\n');
             let processedContent = '';
-            let inList = false;
             
             for (let line of lines) {
                 // Check for H3 patterns (main subsections)
@@ -1038,7 +1037,7 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
             return processedContent;
         }
         
-        // Generate HTML from tagged content - IMPECCABLE SEO VERSION
+        // Generate HTML from tagged content - COMPLETE FIXED VERSION
         function generateHTML() {
             const taggedContent = document.getElementById('taggedContent').value.trim();
             
@@ -1069,7 +1068,63 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
             const keywords = tags.KEYWORDS || tags.TITLE.toLowerCase();
             const currentDate = new Date().toISOString();
             
-            // Build the IMPECCABLE SEO HTML with H1-H4 hierarchy
+            // Create takeaways HTML
+            let takeawaysHTML = '';
+            for (let i = 1; i <= 6; i++) {
+                const takeaway = tags['TAKEAWAY_' + i];
+                if (takeaway) {
+                    const parts = takeaway.split(' | ');
+                    const statement = parts[0] || '';
+                    const explanation = parts[1] || '';
+                    takeawaysHTML += `<li style="margin-bottom: 12px;"><span style="color: #333333; font-family: Montserrat;"><strong>${statement}</strong> ${explanation}</span></li>\n        `;
+                }
+            }
+            
+            // Create main content sections HTML
+            let contentSectionsHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                const h2 = tags['SECTION_' + i + '_H2'];
+                const content = tags['SECTION_' + i + '_CONTENT'];
+                if (h2 && content) {
+                    const processedContent = processContentWithHeadings(content);
+                    contentSectionsHTML += `
+<section style="margin-top: 40px;">
+    <h2 style="margin-bottom: 20px;"><span style="color: #333333; font-family: Montserrat;">${h2}</span></h2>
+    <p><span style="color: #333333; font-family: Montserrat;">${processedContent}</span></p>
+</section>`;
+                }
+            }
+            
+            // Create Billy's Takes HTML
+            let billyTakesHTML = '';
+            for (let i = 1; i <= 3; i++) {
+                const take = tags['BILLY_TAKE_' + i];
+                if (take) {
+                    const parts = take.split(' | ');
+                    const insight = parts[0] || '';
+                    billyTakesHTML += `
+<aside style="background-color: #f7f7f7; border-left: 4px solid #3366ff; padding: 15px; margin: 30px 0; font-style: italic; border-radius: 8px;">
+    <strong style="color: #333333; font-family: Montserrat;">Billy's Take:</strong>
+    <span style="color: #333333; font-family: Montserrat;">"${insight}"</span>
+</aside>`;
+                }
+            }
+            
+            // Create FAQ HTML
+            let faqHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                const q = tags['FAQ_Q' + i];
+                const a = tags['FAQ_A' + i];
+                if (q && a) {
+                    faqHTML += `
+    <div style="margin-bottom: 25px;">
+        <h3 style="margin-top: 20px; margin-bottom: 10px;"><span style="color: #333333; font-family: Montserrat;">${q}</span></h3>
+        <p><span style="color: #333333; font-family: Montserrat;">${a}</span></p>
+    </div>`;
+                }
+            }
+            
+            // Build the complete HTML
             const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1178,8 +1233,7 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
     </div>
 </section>
 
-<!-- INTRODUCTION SECTION -->
-${tags.INTRODUCTION ? `
+${tags.INTRODUCTION ? `<!-- INTRODUCTION SECTION -->
 <section>
     <h2 style="margin-top: 40px; margin-bottom: 20px;"><span style="color: #333333; font-family: Montserrat;">Introduction</span></h2>
     <p><span style="color: #333333; font-family: Montserrat;">${tags.INTRODUCTION.replace(/\n/g, '<br>')}</span></p>
@@ -1190,57 +1244,27 @@ ${tags.INTRODUCTION ? `
     <h2 style="margin-top: 0; margin-bottom: 15px;"><span style="color: #333333; font-family: Montserrat;">Billy's Key Takeaways</span></h2>
     <p style="font-style: italic; margin-bottom: 15px;"><span style="color: #333333; font-family: Montserrat;">"After 15+ years of trading and mentoring thousands of traders, here's what I wish every trader understood from day one:"</span></p>
     <ul style="list-style-type: disc; margin-left: 20px;">
-        ${[1,2,3,4,5,6].map(i => {
-            const takeaway = tags[`TAKEAWAY_${i}`];
-            if (takeaway) {
-                const [statement, explanation] = takeaway.split(' | ');
-                return `<li style="margin-bottom: 12px;"><span style="color: #333333; font-family: Montserrat;"><strong>${statement}</strong> ${explanation || ''}</span></li>`;
-            }
-            return '';
-        }).filter(Boolean).join('\n        ')}
+        ${takeawaysHTML}
     </ul>
 </section>
 
 <!-- MAIN CONTENT SECTIONS with H3/H4 hierarchy -->
-${[1,2,3,4,5].map(i => {
-    const h2 = tags[`SECTION_${i}_H2`];
-    const content = tags[`SECTION_${i}_CONTENT`];
-    if (h2 && content) {
-        const processedContent = processContentWithHeadings(content);
-        return `
-<section style="margin-top: 40px;">
-    <h2 style="margin-bottom: 20px;"><span style="color: #333333; font-family: Montserrat;">${h2}</span></h2>
-    <p><span style="color: #333333; font-family: Montserrat;">${processedContent}</span></p>
-</section>`;
-    }
-    return '';
-}).filter(Boolean).join('\n')}
+${contentSectionsHTML}
 
 <!-- BILLY'S TAKES (Strategic Placement) -->
-${[1,2,3].map(i => {
-    const take = tags[`BILLY_TAKE_${i}`];
-    if (take) {
-        const [insight, placement] = take.split(' | ');
-        return `
-<aside style="background-color: #f7f7f7; border-left: 4px solid #3366ff; padding: 15px; margin: 30px 0; font-style: italic; border-radius: 8px;">
-    <strong style="color: #333333; font-family: Montserrat;">Billy's Take:</strong>
-    <span style="color: #333333; font-family: Montserrat;">"${insight}"</span>
-</aside>`;
-    }
-    return '';
-}).filter(Boolean).join('\n')}
+${billyTakesHTML}
 
-${tags.BILLY_DEEP_DIVE ? `
-<!-- BILLY'S DEEP DIVE Section -->
+${tags.BILLY_DEEP_DIVE ? `<!-- BILLY'S DEEP DIVE Section -->
 <section style="background-color: #f7faff; border: 1px solid #cce0ff; border-left: 4px solid #3366ff; padding: 20px 25px; margin: 30px 0; border-radius: 15px;">
     <h2 style="margin-top: 0; margin-bottom: 15px;"><span style="color: #333333; font-family: Montserrat;">Billy's Deep Dive</span></h2>
     <p><span style="color: #333333; font-family: Montserrat;">${tags.BILLY_DEEP_DIVE}</span></p>
 </section>` : ''}
 
 ${tags.CRITICAL_WARNING ? (() => {
-    const [title, message] = tags.CRITICAL_WARNING.split(' | ');
-    return `
-<!-- CRITICAL WARNING Section -->
+    const parts = tags.CRITICAL_WARNING.split(' | ');
+    const title = parts[0] || '';
+    const message = parts[1] || '';
+    return `<!-- CRITICAL WARNING Section -->
 <aside style="background-color: #fffbe6; border-left: 4px solid #c0392b; padding: 15px; margin: 30px 0; font-style: italic; border-radius: 8px;">
     <p style="color: #c0392b; font-weight: bold; margin: 0;">
         <span style="font-family: Montserrat;">⚠️ ${title}: ${message}</span>
@@ -1248,8 +1272,7 @@ ${tags.CRITICAL_WARNING ? (() => {
 </aside>`;
 })() : ''}
 
-${tags.PERSONAL_EVOLUTION ? `
-<!-- PERSONAL EVOLUTION Section -->
+${tags.PERSONAL_EVOLUTION ? `<!-- PERSONAL EVOLUTION Section -->
 <section style="background-color: #f7faff; border: 1px solid #cce0ff; border-left: 4px solid #3366ff; padding: 20px 25px; margin: 30px 0; border-radius: 15px;">
     <h2 style="margin-top: 0; margin-bottom: 15px;"><span style="color: #333333; font-family: Montserrat;">My Personal Evolution</span></h2>
     <p><span style="color: #333333; font-family: Montserrat;">${tags.PERSONAL_EVOLUTION}</span></p>
@@ -1289,18 +1312,7 @@ ${tags.PERSONAL_EVOLUTION ? `
 <!-- FAQ SECTION with H3 for each question -->
 <section style="margin-top: 40px;">
     <h2 style="margin-bottom: 20px;"><span style="color: #333333; font-family: Montserrat;">Frequently Asked Questions</span></h2>
-    ${[1,2,3,4,5,6,7,8,9,10].map(i => {
-        const q = tags[`FAQ_Q${i}`];
-        const a = tags[`FAQ_A${i}`];
-        if (q && a) {
-            return `
-    <div style="margin-bottom: 25px;">
-        <h3 style="margin-top: 20px; margin-bottom: 10px;"><span style="color: #333333; font-family: Montserrat;">${q}</span></h3>
-        <p><span style="color: #333333; font-family: Montserrat;">${a}</span></p>
-    </div>`;
-        }
-        return '';
-    }).filter(Boolean).join('\n    ')}
+    ${faqHTML}
 </section>
 
 <!-- CONTINUE YOUR LEARNING Section -->
@@ -1537,7 +1549,7 @@ ${tags.PERSONAL_EVOLUTION ? `
         // Show status messages
         function showStatus(elementId, type, message) {
             const statusEl = document.getElementById(elementId);
-            statusEl.className = `status show ${type}`;
+            statusEl.className = 'status show ' + type;
             statusEl.textContent = message;
             
             setTimeout(() => {
