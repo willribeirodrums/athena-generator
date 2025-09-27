@@ -653,7 +653,7 @@
             }
         }
         
-        // Generate Phase 1 Prompt
+        // Generate Phase 1 Prompt - CORRECTED VERSION
         function generatePrompt() {
             const topic = document.getElementById('topic').value.trim();
             const keyword = document.getElementById('keyword').value.trim();
@@ -698,7 +698,7 @@ You are Athena writing as Billy Ribeiro, a globally recognized trader and market
 
 ## Required Content Structure
 
-Output the following sections using the exact {{TAGS}}:
+You must output the following sections using the exact {{TAGS}} format. Each tag should be on its own line, followed by a colon and the content.
 
 ### 1. METADATA
 {{TITLE}}: [Create an engaging, SEO-optimized title that includes the year "2025"]
@@ -744,7 +744,7 @@ Output the following sections using the exact {{TAGS}}:
 
 {{VIDEO_CONCEPT}}: [Propose a 90-second video concept for Billy. Include the title and a brief description of what he would show or explain to enhance the article's content]
 
-### 6. PERSONAL EVOLUTION (Optional but Recommended)
+### 6. PERSONAL EVOLUTION
 {{PERSONAL_EVOLUTION}}: [Share your journey with this topic - failures, breakthroughs, and what Mark McGoldrick taught you about it]
 
 ### 7. FAQ SECTION (Minimum 10)
@@ -769,11 +769,11 @@ Output the following sections using the exact {{TAGS}}:
 {{FAQ_Q10}}: [Question 10]
 {{FAQ_A10}}: [Comprehensive answer in Billy's voice]
 
-### 8. IMAGE SPECIFICATIONS (Minimum 5 Images)
+### 8. IMAGE SPECIFICATIONS (Minimum 5)
 {{IMAGE_1_DESC}}: [Detailed description of the image's content and style]
 {{IMAGE_1_TITLE}}: [SEO-optimized title for the image file]
 {{IMAGE_1_ALT}}: [Descriptive alt text for accessibility and SEO]
-{{IMAGE_1_CONTEXT}}: [Describe the concept the image should visually explain. The image must be placed directly after this concept is introduced in the main content]
+{{IMAGE_1_CONTEXT}}: [Describe the concept the image should visually explain]
 
 {{IMAGE_2_DESC}}: [Description]
 {{IMAGE_2_TITLE}}: [Title]
@@ -795,13 +795,22 @@ Output the following sections using the exact {{TAGS}}:
 {{IMAGE_5_ALT}}: [Alt Text]
 {{IMAGE_5_CONTEXT}}: [Context]
 
-Create comprehensive, E-E-A-T optimized content that provides genuine value while maintaining Billy's contrarian, experienced voice. Make sure every section is filled with specific, actionable content that demonstrates real trading expertise.`;
+## Important Instructions:
+- Output ONLY the tagged content, no additional commentary
+- Make every section comprehensive and specific
+- Use real examples with numbers, tickers, and timestamps
+- Maintain Billy's contrarian, experienced voice throughout
+- Each FAQ answer should be substantial (2-3 sentences minimum)
+- Include specific trade examples with entry/exit prices
+- Reference current year (2025) naturally in content
+
+Create comprehensive, E-E-A-T optimized content that provides genuine value while maintaining Billy's contrarian, experienced voice.`;
             
             document.getElementById('promptOutput').value = prompt;
             document.getElementById('outputSection').style.display = 'block';
             document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
             
-            showStatus('mainStatus', 'success', 'Phase 1 prompt generated! Copy and paste into Claude.');
+            showStatus('mainStatus', 'success', 'Phase 1 prompt generated! Copy and paste into Claude to get tagged content.');
         }
         
         // Copy prompt to clipboard
