@@ -361,6 +361,18 @@
             color: #666;
             margin-top: 8px;
         }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .warning-box strong {
+            color: #856404;
+        }
     </style>
 </head>
 <body>
@@ -392,6 +404,10 @@
                         <li>Claude will generate {{TAGGED}} content</li>
                         <li>Come back and switch to Phase 2</li>
                     </ol>
+                </div>
+                
+                <div class="warning-box">
+                    <strong>⚠️ IMPORTANT:</strong> Do NOT use em dashes (—) in your content. Use regular hyphens (-) or commas instead. Em dashes can cause formatting issues in WordPress.
                 </div>
                 
                 <div class="form-group">
@@ -514,6 +530,10 @@
                     </ol>
                 </div>
                 
+                <div class="warning-box">
+                    <strong>⚠️ REMINDER:</strong> Make sure there are NO em dashes (—) in your content. Replace them with regular hyphens (-) or commas before generating HTML.
+                </div>
+                
                 <div class="form-group">
                     <label for="taggedContent">📝 Paste Tagged Content from Claude</label>
                     <textarea 
@@ -544,18 +564,23 @@
                     </div>
                 </div>
 
-                <!-- AUDIO SECTION -->
-                <div class="audio-section">
-                    <h4>🎧 Audio Version (Optional)</h4>
+                <!-- AUDIO SECTION - MORE PROMINENT -->
+                <div class="audio-section" style="background: linear-gradient(135deg, #f7faff 0%, #e8f4fd 100%); border: 2px solid #3366ff;">
+                    <h4 style="font-size: 1.2em; color: #1976d2;">🎧 Audio Version (Optional but Recommended)</h4>
                     <div class="form-group">
-                        <label for="audioUrl">Audio File URL</label>
+                        <label for="audioUrl" style="font-weight: bold;">Audio File URL</label>
                         <input 
                             type="url" 
                             id="audioUrl" 
                             placeholder="https://revolutiontradingpros.com/wp-content/uploads/2025/01/blog-audio.mp3"
                         >
-                        <p class="audio-tip">
-                            💡 Workflow: Copy blog text → Generate audio in ElevenLabs → Upload MP3 to WordPress Media Library → Paste URL here
+                        <p class="audio-tip" style="margin-top: 10px;">
+                            <strong>💡 WORKFLOW FOR AUDIO:</strong><br>
+                            1. Copy all blog text content<br>
+                            2. Generate audio in ElevenLabs (use Billy's voice profile)<br>
+                            3. Upload MP3 to WordPress Media Library<br>
+                            4. Copy the file URL and paste it here<br>
+                            <span style="color: #d73502;">⚠️ The audio player will be added right after the social links section</span>
                         </p>
                     </div>
                 </div>
@@ -703,6 +728,9 @@
             
             const prompt = `# Phase 1: Billy Ribeiro Content Framework v2.0 (Google 2025 Optimized)
 
+## CRITICAL FORMATTING RULE
+**NEVER use em dashes (—) in your content. Use regular hyphens (-) or commas instead. This is essential for WordPress compatibility.**
+
 ## Core Identity & Guiding Principles
 
 ### Core Identity
@@ -728,6 +756,7 @@ You are Athena writing as Billy Ribeiro, a globally recognized trader and market
 - Include personal anecdotes, specific percentages, and real (or realistic) trade examples
 - Create comprehensive, definitive content (2,500+ words minimum)
 - Bold key terms and important, contrarian statements
+- NEVER use em dashes (—), only regular hyphens (-) or commas
 
 ## TOPIC: ${topic}
 ## PRIMARY KEYWORD: ${keyword}
@@ -851,6 +880,7 @@ Common existing posts to consider:
 
 ## Important Instructions:
 - Output ONLY the tagged content, no additional commentary
+- NEVER use em dashes (—) anywhere in the content
 - Make every section comprehensive and specific
 - Use real examples with numbers, tickers, and timestamps
 - Maintain Billy's contrarian, experienced voice throughout
@@ -990,10 +1020,15 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
             // Get audio URL
             const audioUrl = document.getElementById('audioUrl').value.trim();
             
-            // Generate audio player HTML if URL is provided
+            // Generate audio player HTML if URL is provided - PROMINENT PLACEMENT
             const audioPlayerHTML = audioUrl ? `
-<!-- AUDIO PLAYER -->
-[billy_audio mp3="${audioUrl}"]
+
+<!-- AUDIO PLAYER SECTION -->
+<div style="background: linear-gradient(135deg, #f7faff 0%, #e8f4fd 100%); border: 2px solid #3366ff; padding: 20px; margin: 30px 0; border-radius: 12px; text-align: center;">
+    <h3 style="color: #1976d2; margin-bottom: 15px;">🎧 Listen to This Article</h3>
+    [billy_audio mp3="${audioUrl}"]
+    <p style="color: #666; font-style: italic; margin-top: 10px;">Prefer to listen? Play the audio version while you trade!</p>
+</div>
 ` : '';
 
             // Process related posts with styled boxes matching Continue Your Learning
@@ -1027,7 +1062,7 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
                 return html;
             };
             
-            // Build the COMPLETE HTML with all image placeholders
+            // Build the COMPLETE HTML with all image placeholders and audio section
             const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1333,8 +1368,8 @@ ${relatedPostsHTML()}
             document.getElementById('phase2Output').scrollIntoView({ behavior: 'smooth' });
             
             const statusMsg = audioUrl ? 
-                'Complete HTML generated with all image placeholders and audio player!' : 
-                'Complete HTML generated with all image placeholders! (No audio URL provided)';
+                'Complete HTML generated with prominent audio player and all image placeholders!' : 
+                'Complete HTML generated with all image placeholders! (No audio URL provided - consider adding one for better user experience)';
             
             showStatus('phase2Status', 'success', statusMsg);
         }
