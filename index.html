@@ -342,6 +342,25 @@
             font-size: 0.85em;
             color: #666;
         }
+
+        .audio-section {
+            background: #f7faff;
+            border: 1px solid #cce0ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .audio-section h4 {
+            color: #1976d2;
+            margin-bottom: 15px;
+        }
+
+        .audio-tip {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body>
@@ -489,6 +508,7 @@
                     <ol>
                         <li>Paste the {{TAGGED}} content from Claude</li>
                         <li>Add meta description and slug (optional)</li>
+                        <li>Add audio URL from ElevenLabs (optional)</li>
                         <li>Click "Generate Complete HTML"</li>
                         <li>Copy HTML and paste into WordPress</li>
                     </ol>
@@ -521,6 +541,22 @@
                             id="slug" 
                             placeholder="auto-generated-from-title"
                         >
+                    </div>
+                </div>
+
+                <!-- AUDIO SECTION -->
+                <div class="audio-section">
+                    <h4>🎧 Audio Version (Optional)</h4>
+                    <div class="form-group">
+                        <label for="audioUrl">Audio File URL</label>
+                        <input 
+                            type="url" 
+                            id="audioUrl" 
+                            placeholder="https://revolutiontradingpros.com/wp-content/uploads/2025/01/blog-audio.mp3"
+                        >
+                        <p class="audio-tip">
+                            💡 Workflow: Copy blog text → Generate audio in ElevenLabs → Upload MP3 to WordPress Media Library → Paste URL here
+                        </p>
                     </div>
                 </div>
                 
@@ -654,7 +690,7 @@
             `).join('');
         }
         
-        // Generate Phase 1 Prompt - UPDATED WITH RELATED POSTS SECTION
+        // Generate Phase 1 Prompt
         function generatePhase1Prompt() {
             const topic = document.getElementById('topic').value.trim();
             const keyword = document.getElementById('keyword').value.trim();
@@ -847,29 +883,38 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
         }
         
         // Process content with H3 and H4 headings for SEO
-        function processContentWithHeadings(content) {
-            let processed = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        function processSection(content) {
+            if (!content) return '';
             
-            const lines = processed.split('\n');
-            const processedLines = [];
+            // Split content into paragraphs
+            const paragraphs = content.split(/\n\n+/);
+            let processedContent = '';
             
-            for (let line of lines) {
-                line = line.trim();
-                if (line.match(/^###\s+(.+)$/)) {
-                    // H3 heading
-                    processedLines.push(`<h3>${line.replace(/^###\s+/, '')}</h3>`);
-                } else if (line.match(/^####\s+(.+)$/)) {
-                    // H4 heading
-                    processedLines.push(`<h4>${line.replace(/^####\s+/, '')}</h4>`);
-                } else if (line.match(/^[A-Z][^.!?]*:$/)) {
-                    // Subheading pattern
-                    processedLines.push(`<h4>${line}</h4>`);
-                } else if (line) {
-                    processedLines.push(`<p>${line}</p>`);
+            for (let para of paragraphs) {
+                para = para.trim();
+                
+                // Check for H3 headings (### pattern)
+                if (para.startsWith('###')) {
+                    const heading = para.replace(/^###\s*/, '');
+                    processedContent += `\n<h3 style="margin-top: 30px;"><span style="color: #333333; font-family: Montserrat;">${heading}</span></h3>\n`;
+                }
+                // Check for H4 headings (#### pattern or "Title:" pattern)
+                else if (para.startsWith('####')) {
+                    const heading = para.replace(/^####\s*/, '');
+                    processedContent += `\n<h4 style="margin-top: 25px;"><span style="color: #333333; font-family: Montserrat;">${heading}</span></h4>\n`;
+                }
+                else if (para.match(/^[A-Z][^.!?]*:$/)) {
+                    processedContent += `\n<h4 style="margin-top: 25px;"><span style="color: #333333; font-family: Montserrat;">${para}</span></h4>\n`;
+                }
+                // Regular paragraph
+                else if (para) {
+                    // Process bold text
+                    para = para.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    processedContent += `<p><span style="color: #333333; font-family: Montserrat;">${para.replace(/\n/g, '<br>')}</span></p>\n`;
                 }
             }
             
-            return processedLines.join('\n');
+            return processedContent;
         }
         
         // Generate slug
@@ -882,7 +927,7 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
                 .trim();
         }
         
-        // Generate HTML from tagged content with proper H3 and H4 hierarchy
+        // Generate HTML from tagged content with audio player
         function generateHTML() {
             const taggedContent = document.getElementById('taggedContent').value.trim();
             
@@ -912,40 +957,14 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
             
             const keywords = tags.KEYWORDS || tags.TITLE.toLowerCase();
             
-            // Process content sections with proper heading hierarchy
-            const processSection = (content) => {
-                if (!content) return '';
-                
-                // Split content into paragraphs
-                const paragraphs = content.split(/\n\n+/);
-                let processedContent = '';
-                
-                for (let para of paragraphs) {
-                    para = para.trim();
-                    
-                    // Check for H3 headings (### pattern)
-                    if (para.startsWith('###')) {
-                        const heading = para.replace(/^###\s*/, '');
-                        processedContent += `\n<h3 style="margin-top: 30px;"><span style="color: #333333; font-family: Montserrat;">${heading}</span></h3>\n`;
-                    }
-                    // Check for H4 headings (#### pattern or "Title:" pattern)
-                    else if (para.startsWith('####')) {
-                        const heading = para.replace(/^####\s*/, '');
-                        processedContent += `\n<h4 style="margin-top: 25px;"><span style="color: #333333; font-family: Montserrat;">${heading}</span></h4>\n`;
-                    }
-                    else if (para.match(/^[A-Z][^.!?]*:$/)) {
-                        processedContent += `\n<h4 style="margin-top: 25px;"><span style="color: #333333; font-family: Montserrat;">${para}</span></h4>\n`;
-                    }
-                    // Regular paragraph
-                    else if (para) {
-                        // Process bold text
-                        para = para.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                        processedContent += `<p><span style="color: #333333; font-family: Montserrat;">${para.replace(/\n/g, '<br>')}</span></p>\n`;
-                    }
-                }
-                
-                return processedContent;
-            };
+            // Get audio URL
+            const audioUrl = document.getElementById('audioUrl').value.trim();
+            
+            // Generate audio player HTML if URL is provided
+            const audioPlayerHTML = audioUrl ? `
+<!-- AUDIO PLAYER -->
+[billy_audio mp3="${audioUrl}"]
+` : '';
 
             // Process related posts
             const relatedPostsHTML = () => {
@@ -970,7 +989,7 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
                 return html;
             };
             
-            // Build the COMPLETE HTML with proper heading hierarchy and related posts
+            // Build the COMPLETE HTML with audio player
             const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1013,7 +1032,7 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
     <a style="display: inline-flex; align-items: center; text-decoration: none; color: #1877f2; font-size: 24px;" href="https://bit.ly/3OJ9z6g" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
     <a style="display: inline-flex; align-items: center; text-decoration: none; color: #e4405f; font-size: 24px;" href="https://bit.ly/3KW0zsb" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
 </div>
-
+${audioPlayerHTML}
 <!-- BILLY'S KEY TAKEAWAYS -->
 <div style="background-color: #f7faff; border: 1px solid #cce0ff; padding: 20px 25px; margin: 30px 0; border-radius: 12px;">
     <h3 style="margin-top: 0;"><span style="color: #333333; font-family: Montserrat;">Billy's Key Takeaways</span></h3>
@@ -1251,7 +1270,11 @@ ${relatedPostsHTML()}
             document.getElementById('phase2Output').classList.add('show');
             document.getElementById('phase2Output').scrollIntoView({ behavior: 'smooth' });
             
-            showStatus('phase2Status', 'success', 'Complete HTML generated with clean CTA cards!');
+            const statusMsg = audioUrl ? 
+                'Complete HTML generated with audio player! The [billy_audio] shortcode has been added.' : 
+                'Complete HTML generated! (No audio URL provided - player not included)';
+            
+            showStatus('phase2Status', 'success', statusMsg);
         }
         
         // Copy content
