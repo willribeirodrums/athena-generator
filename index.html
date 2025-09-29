@@ -580,7 +580,7 @@
                             2. Generate audio in ElevenLabs (use Billy's voice profile)<br>
                             3. Upload MP3 to WordPress Media Library<br>
                             4. Copy the file URL and paste it here<br>
-                            <span style="color: #d73502;">⚠️ The audio player will be added right after the social links section</span>
+                            <span style="color: #d73502;">⚠️ The audio player will be added right after the "Connect with Billy" social links</span>
                         </p>
                     </div>
                 </div>
@@ -1020,10 +1020,10 @@ Create comprehensive, E-E-A-T optimized content that provides genuine value whil
             // Get audio URL
             const audioUrl = document.getElementById('audioUrl').value.trim();
             
-            // Generate audio player HTML if URL is provided - PROMINENT PLACEMENT
+            // Generate audio player HTML if URL is provided - RIGHT AFTER CONNECT WITH BILLY
             const audioPlayerHTML = audioUrl ? `
 
-<!-- AUDIO PLAYER SECTION -->
+<!-- AUDIO PLAYER SECTION - RIGHT AFTER CONNECT WITH BILLY -->
 <div style="background: linear-gradient(135deg, #f7faff 0%, #e8f4fd 100%); border: 2px solid #3366ff; padding: 20px; margin: 30px 0; border-radius: 12px; text-align: center;">
     <h3 style="color: #1976d2; margin-bottom: 15px;">🎧 Listen to This Article</h3>
     [billy_audio mp3="${audioUrl}"]
@@ -1269,81 +1269,76 @@ ${relatedPostsHTML()}
 <h3 style="text-align: center;"><span style="color: #333333; font-family: Montserrat; font-size: 24px;">Get Our Trading Cheat Sheet Direct to Your Inbox</span></h3>
 <span style="color: #333333;">[elementor-template id="44911"]</span>
 
-<!-- SOCIAL SHARING - FIXED WITHOUT HOVER HANDLERS -->
+<!-- SOCIAL SHARING - WITH HOVER EFFECTS ON ALL BUTTONS -->
 <div style="margin: 40px auto; max-width: 800px; padding: 30px; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); border-radius: 15px; border: 1px solid #e0e0e0; text-align: center;">
     <h3 style="margin: 0 0 10px 0; color: #333333; font-family: Montserrat; font-size: 1.3em;">Found this helpful? Share it with fellow traders!</h3>
     <p style="margin: 0 0 25px 0; color: #666; font-family: Montserrat; font-size: 0.9em;">Help others improve their trading</p>
     
     <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center;">
         <!-- X (Twitter) -->
-        <a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #000000; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 150px; height: 44px; box-sizing: border-box;" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(tags.TITLE)}&amp;url=https://revolutiontradingpros.com/${slug}/" target="_blank" rel="noopener noreferrer">
+        <a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #000000; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 150px; height: 44px; box-sizing: border-box;" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(tags.TITLE)}&amp;url=https://revolutiontradingpros.com/${slug}/" target="_blank" rel="noopener noreferrer" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
             <span style="font-size: 16px; line-height: 1;">𝕏</span> Share on X
         </a>
         
         <!-- LinkedIn -->
-        <a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #0077b5; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="https://www.linkedin.com/sharing/share-offsite/?url=https://revolutiontradingpros.com/${slug}/" target="_blank" rel="noopener noreferrer">
+        <a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #0077b5; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="https://www.linkedin.com/sharing/share-offsite/?url=https://revolutiontradingpros.com/${slug}/" target="_blank" rel="noopener noreferrer" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 16px rgba(0,119,181,0.3)'; this.style.backgroundColor='#005885'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.backgroundColor='#0077b5'">
             <span style="font-size: 16px; font-weight: bold; line-height: 1;">in</span> Share on LinkedIn
         </a>
         
         <!-- Facebook -->
-        <a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #1877f2; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="https://www.facebook.com/sharer/sharer.php?u=https://revolutiontradingpros.com/${slug}/" target="_blank" rel="noopener noreferrer">
+        <a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #1877f2; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="https://www.facebook.com/sharer/sharer.php?u=https://revolutiontradingpros.com/${slug}/" target="_blank" rel="noopener noreferrer" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 16px rgba(24,119,242,0.3)'; this.style.backgroundColor='#1264d1'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.backgroundColor='#1877f2'">
             <span style="font-size: 16px; font-weight: bold; line-height: 1;">f</span> Share on Facebook
         </a>
         
         <!-- Email -->
-        <a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #6c757d; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 160px; height: 44px; box-sizing: border-box;" href="mailto:?subject=${encodeURIComponent(tags.TITLE)}&amp;body=Check out this article: https://revolutiontradingpros.com/${slug}/">
+        <a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #6c757d; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 160px; height: 44px; box-sizing: border-box;" href="mailto:?subject=${encodeURIComponent(tags.TITLE)}&amp;body=Check out this article: https://revolutiontradingpros.com/${slug}/" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 16px rgba(108,117,125,0.3)'; this.style.backgroundColor='#5a6268'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.backgroundColor='#6c757d'">
             <span style="font-size: 16px;">✉️</span> Email to a Friend
         </a>
         
-        <!-- Copy Link -->
-        <button style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #5865f2; color: #ffffff; border: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; min-width: 140px; height: 44px; box-sizing: border-box;" onclick="navigator.clipboard.writeText('https://revolutiontradingpros.com/${slug}/').then(() => { this.innerHTML = '✓ Copied!'; setTimeout(() => { this.innerHTML = '🔗 Copy Link'; }, 2000); });">
+        <!-- Copy Link WITH HOVER -->
+        <button style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #5865f2; color: #ffffff; border: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; min-width: 140px; height: 44px; box-sizing: border-box;" onclick="navigator.clipboard.writeText('https://revolutiontradingpros.com/${slug}/').then(() => { this.innerHTML = '✓ Copied!'; setTimeout(() => { this.innerHTML = '🔗 Copy Link'; }, 2000); });" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 16px rgba(88,101,242,0.3)'; this.style.backgroundColor='#4752c4'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.backgroundColor='#5865f2'">
             🔗 Copy Link
         </button>
     </div>
 </div>
 
-<!-- CTA SECTION - WITH HOVER EFFECTS RESTORED -->
+<!-- CTA Section with light gray background - EXACT COPY FROM PROVIDED -->
 <div style="margin-top: 40px; padding: 30px 20px; background-color: #f8f9fa; border-radius: 20px;">
-    <h2 style="text-align: center;"><span style="color: #333333;">Start Trading Like a Professional</span></h2>
-    <p style="text-align: center; color: #333333; max-width: 800px; margin: 0 auto 10px;">Ready to start trading like a professional? Join our community for in-depth analysis, expert strategy and live trading. Sign up today to start trading with a real edge!</p>
-    
-    <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 20px; font-family: 'Montserrat', sans-serif;">
-        
-        <div style="border: 1px solid #e0e0e0; background-color: #ffffff; border-radius: 10px; padding: 18px; text-align: center; width: 38%; min-width: 240px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
-            <div style="font-size: 34px; color: #3366ff; margin-bottom: 8px;">📈</div>
-            <h3 style="margin: 6px 0; font-size: 1.1em; font-weight: 600; color: #333333;">Day Trading Room</h3>
-            <p style="font-size: 0.85em; color: #666; min-height: 48px;">For active traders seeking real-time setups and live market analysis.</p>
-            <a style="text-decoration: none; color: #ffffff; background-color: #3366ff; padding: 10px 20px; border-radius: 5px; font-weight: 600; display: inline-block; line-height: 1.2; text-align: center; font-size: 0.9em; min-width: 120px; transition: 0.3s; box-shadow: rgba(51, 102, 255, 0.2) 0px 2px 4px;" href="https://revolutiontradingpros.com/day-trading/" onmouseover="this.style.backgroundColor='#2952cc'" onmouseout="this.style.backgroundColor='#3366ff'">Learn More</a>
-        </div>
-        
-        <div style="border: 1px solid #e0e0e0; background-color: #ffffff; border-radius: 10px; padding: 18px; text-align: center; width: 38%; min-width: 240px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
-            <div style="font-size: 34px; color: #3366ff; margin-bottom: 8px;">📊</div>
-            <h3 style="margin: 6px 0; font-size: 1.1em; font-weight: 600; color: #333333;">Swing Trading Room</h3>
-            <p style="font-size: 0.85em; color: #666; min-height: 48px;">For part-time traders focused on short-term moves over days or weeks.</p>
-            <a style="text-decoration: none; color: #ffffff; background-color: #3366ff; padding: 10px 20px; border-radius: 5px; font-weight: 600; display: inline-block; line-height: 1.2; text-align: center; font-size: 0.9em; min-width: 120px; transition: 0.3s; box-shadow: rgba(51, 102, 255, 0.2) 0px 2px 4px;" href="https://revolutiontradingpros.com/swing-trading/" onmouseover="this.style.backgroundColor='#2952cc'" onmouseout="this.style.backgroundColor='#3366ff'">Learn More</a>
-        </div>
-        
-        <div style="border: 1px solid #e0e0e0; background-color: #ffffff; border-radius: 10px; padding: 18px; text-align: center; width: 38%; min-width: 240px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
-            <div style="font-size: 34px; color: #3366ff; margin-bottom: 8px;">🎯</div>
-            <h3 style="margin: 6px 0; font-size: 1.1em; font-weight: 600; color: #333333;">Small Account Mentorship</h3>
-            <p style="font-size: 0.85em; color: #666; min-height: 48px;">1-on-1 coaching to build the discipline and strategy to grow a small account.</p>
-            <a style="text-decoration: none; color: #ffffff; background-color: #3366ff; padding: 10px 20px; border-radius: 5px; font-weight: 600; display: inline-block; line-height: 1.2; text-align: center; font-size: 0.9em; min-width: 120px; transition: 0.3s; box-shadow: rgba(51, 102, 255, 0.2) 0px 2px 4px;" href="https://revolutiontradingpros.com/small-account/" onmouseover="this.style.backgroundColor='#2952cc'" onmouseout="this.style.backgroundColor='#3366ff'">Learn More</a>
-        </div>
-        
-        <div style="border: 1px solid #e0e0e0; background-color: #ffffff; border-radius: 10px; padding: 18px; text-align: center; width: 38%; min-width: 240px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
-            <div style="font-size: 34px; color: #3366ff; margin-bottom: 8px;">⚡</div>
-            <h3 style="margin: 6px 0; font-size: 1.1em; font-weight: 600; color: #333333;">SPX Profit Pulse Alerts</h3>
-            <p style="font-size: 0.85em; color: #666; min-height: 48px;">Get our highest-conviction trade ideas for 0DTE SPX options.</p>
-            <a style="text-decoration: none; color: #ffffff; background-color: #3366ff; padding: 10px 20px; border-radius: 5px; font-weight: 600; display: inline-block; line-height: 1.2; text-align: center; font-size: 0.9em; min-width: 120px; transition: 0.3s; box-shadow: rgba(51, 102, 255, 0.2) 0px 2px 4px;" href="https://revolutiontradingpros.com/spx-profit-pulse/" onmouseover="this.style.backgroundColor='#2952cc'" onmouseout="this.style.backgroundColor='#3366ff'">Explore Alerts</a>
-        </div>
-        
-        <div style="border: 1px solid #e0e0e0; background-color: #ffffff; border-radius: 10px; padding: 18px; text-align: center; width: 38%; min-width: 240px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
-            <div style="font-size: 34px; color: #3366ff; margin-bottom: 8px;">💡</div>
-            <h3 style="margin: 6px 0; font-size: 1.1em; font-weight: 600; color: #333333;">Explosive Swing Alerts</h3>
-            <p style="font-size: 0.85em; color: #666; min-height: 48px;">Actionable, alerts-only service for our flagship explosive swing trade setups.</p>
-            <a style="text-decoration: none; color: #ffffff; background-color: #3366ff; padding: 10px 20px; border-radius: 5px; font-weight: 600; display: inline-block; line-height: 1.2; text-align: center; font-size: 0.9em; min-width: 120px; transition: 0.3s; box-shadow: rgba(51, 102, 255, 0.2) 0px 2px 4px;" href="https://revolutiontradingpros.com/explosive-swing/" onmouseover="this.style.backgroundColor='#2952cc'" onmouseout="this.style.backgroundColor='#3366ff'">Explore Alerts</a>
-        </div>
-    </div>
+<h2 style="text-align: center;"><span style="color: #333333;">Start Trading Like a Professional</span></h2>
+<p style="text-align: center; color: #333333; max-width: 800px; margin: 0 auto 10px;">Ready to start trading like a professional? Join our community for in-depth analysis, expert strategy and live trading. Sign up today to start trading with a real edge!</p>
+<!-- Trading Room Cards - ORIGINAL SIZE -->
+<div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 20px; font-family: 'Montserrat', sans-serif;">
+<div style="border: 1px solid #e0e0e0; background-color: #ffffff; border-radius: 10px; padding: 18px; text-align: center; width: 38%; min-width: 240px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
+<div style="font-size: 34px; color: #3366ff; margin-bottom: 8px;">📈</div>
+<h3 style="margin: 6px 0; font-size: 1.1em; font-weight: 600; color: #333333;">Day Trading Room</h3>
+<p style="font-size: 0.85em; color: #666; min-height: 48px;">For active traders seeking real-time setups and live market analysis.</p>
+<a style="text-decoration: none; color: #ffffff; background-color: #3366ff; padding: 10px 20px; border-radius: 5px; font-weight: 600; display: inline-block; line-height: 1.2; text-align: center; font-size: 0.9em; min-width: 120px; transition: 0.3s; box-shadow: rgba(51, 102, 255, 0.2) 0px 2px 4px;" href="https://revolutiontradingpros.com/day-trading/" onmouseover="this.style.backgroundColor='#2952cc'" onmouseout="this.style.backgroundColor='#3366ff'">Learn More</a>
+</div>
+<div style="border: 1px solid #e0e0e0; background-color: #ffffff; border-radius: 10px; padding: 18px; text-align: center; width: 38%; min-width: 240px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
+<div style="font-size: 34px; color: #3366ff; margin-bottom: 8px;">📊</div>
+<h3 style="margin: 6px 0; font-size: 1.1em; font-weight: 600; color: #333333;">Swing Trading Room</h3>
+<p style="font-size: 0.85em; color: #666; min-height: 48px;">For part-time traders focused on short-term moves over days or weeks.</p>
+<a style="text-decoration: none; color: #ffffff; background-color: #3366ff; padding: 10px 20px; border-radius: 5px; font-weight: 600; display: inline-block; line-height: 1.2; text-align: center; font-size: 0.9em; min-width: 120px; transition: 0.3s; box-shadow: rgba(51, 102, 255, 0.2) 0px 2px 4px;" href="https://revolutiontradingpros.com/swing-trading/" onmouseover="this.style.backgroundColor='#2952cc'" onmouseout="this.style.backgroundColor='#3366ff'">Learn More</a>
+</div>
+<div style="border: 1px solid #e0e0e0; background-color: #ffffff; border-radius: 10px; padding: 18px; text-align: center; width: 38%; min-width: 240px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
+<div style="font-size: 34px; color: #3366ff; margin-bottom: 8px;">🎯</div>
+<h3 style="margin: 6px 0; font-size: 1.1em; font-weight: 600; color: #333333;">Small Account Mentorship</h3>
+<p style="font-size: 0.85em; color: #666; min-height: 48px;">1-on-1 coaching to build the discipline and strategy to grow a small account.</p>
+<a style="text-decoration: none; color: #ffffff; background-color: #3366ff; padding: 10px 20px; border-radius: 5px; font-weight: 600; display: inline-block; line-height: 1.2; text-align: center; font-size: 0.9em; min-width: 120px; transition: 0.3s; box-shadow: rgba(51, 102, 255, 0.2) 0px 2px 4px;" href="https://revolutiontradingpros.com/small-account/" onmouseover="this.style.backgroundColor='#2952cc'" onmouseout="this.style.backgroundColor='#3366ff'">Learn More</a>
+</div>
+<div style="border: 1px solid #e0e0e0; background-color: #ffffff; border-radius: 10px; padding: 18px; text-align: center; width: 38%; min-width: 240px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
+<div style="font-size: 34px; color: #3366ff; margin-bottom: 8px;">⚡</div>
+<h3 style="margin: 6px 0; font-size: 1.1em; font-weight: 600; color: #333333;">SPX Profit Pulse Alerts</h3>
+<p style="font-size: 0.85em; color: #666; min-height: 48px;">Get our highest-conviction trade ideas for 0DTE SPX options.</p>
+<a style="text-decoration: none; color: #ffffff; background-color: #3366ff; padding: 10px 20px; border-radius: 5px; font-weight: 600; display: inline-block; line-height: 1.2; text-align: center; font-size: 0.9em; min-width: 120px; transition: 0.3s; box-shadow: rgba(51, 102, 255, 0.2) 0px 2px 4px;" href="https://revolutiontradingpros.com/spx-profit-pulse/" onmouseover="this.style.backgroundColor='#2952cc'" onmouseout="this.style.backgroundColor='#3366ff'">Explore Alerts</a>
+</div>
+<div style="border: 1px solid #e0e0e0; background-color: #ffffff; border-radius: 10px; padding: 18px; text-align: center; width: 38%; min-width: 240px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
+<div style="font-size: 34px; color: #3366ff; margin-bottom: 8px;">💡</div>
+<h3 style="margin: 6px 0; font-size: 1.1em; font-weight: 600; color: #333333;">Explosive Swing Alerts</h3>
+<p style="font-size: 0.85em; color: #666; min-height: 48px;">Actionable, alerts-only service for our flagship explosive swing trade setups.</p>
+<a style="text-decoration: none; color: #ffffff; background-color: #3366ff; padding: 10px 20px; border-radius: 5px; font-weight: 600; display: inline-block; line-height: 1.2; text-align: center; font-size: 0.9em; min-width: 120px; transition: 0.3s; box-shadow: rgba(51, 102, 255, 0.2) 0px 2px 4px;" href="https://revolutiontradingpros.com/explosive-swing/" onmouseover="this.style.backgroundColor='#2952cc'" onmouseout="this.style.backgroundColor='#3366ff'">Explore Alerts</a>
+</div>
+</div>
 </div>
 
 <!-- FOOTER -->
@@ -1368,8 +1363,8 @@ ${relatedPostsHTML()}
             document.getElementById('phase2Output').scrollIntoView({ behavior: 'smooth' });
             
             const statusMsg = audioUrl ? 
-                'Complete HTML generated with prominent audio player and all image placeholders!' : 
-                'Complete HTML generated with all image placeholders! (No audio URL provided - consider adding one for better user experience)';
+                'Complete HTML generated with audio player right after Connect with Billy!' : 
+                'Complete HTML generated! (No audio URL provided - consider adding one for better user experience)';
             
             showStatus('phase2Status', 'success', statusMsg);
         }
