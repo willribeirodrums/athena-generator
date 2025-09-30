@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATHENA Pro Generator v3.0 - Revolution Trading Pros</title>
     <style>
-        /* KEEP ALL EXISTING STYLES - NO CHANGES */
         * { 
             box-sizing: border-box; 
             margin: 0; 
@@ -1326,8 +1325,8 @@
         <span class="tooltiptext">Quick Save Draft</span>
     </div>
     
-    <script>
-        // Constants - KEEP EXISTING TRADING ROOM CARDS
+    <script type="text/javascript">
+        // Constants - Trading Room Cards HTML (exact copy from v2)
         const TRADING_ROOM_CARDS = `<div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 20px; font-family: 'Montserrat', sans-serif;">
 <div style="border: 1px solid #e0e0e0; background-color: #ffffff; border-radius: 10px; padding: 18px; text-align: center; width: 38%; min-width: 240px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
 <div style="font-size: 34px; color: #3366ff; margin-bottom: 8px;">📈</div>
@@ -1362,7 +1361,7 @@
 </div>`;
 
         // Initialize on load
-        window.addEventListener('load', () => {
+        window.addEventListener('load', function() {
             loadAutoSave();
             updateDraftsList();
             setTodayDate();
@@ -1375,18 +1374,18 @@
         }
 
         // Auto-save every 30 seconds
-        setInterval(() => {
+        setInterval(function() {
             autoSave();
         }, 30000);
 
         // Phase switching
         function switchPhase(phase, event) {
-            document.querySelectorAll('.phase-tab').forEach(tab => {
+            document.querySelectorAll('.phase-tab').forEach(function(tab) {
                 tab.classList.remove('active');
             });
             event.target.classList.add('active');
             
-            document.querySelectorAll('.phase-content').forEach(content => {
+            document.querySelectorAll('.phase-content').forEach(function(content) {
                 content.classList.remove('active');
             });
             document.getElementById(phase).classList.add('active');
@@ -1459,12 +1458,12 @@
             }
             
             const ideas = [
-                `${topic}: Complete Guide for 2025`,
-                `How to Master ${topic} (My Blueprint After 15+ Years)`,
-                `${topic}: What Actually Works in 2025`,
-                `The Truth About ${topic} Nobody Tells You`,
-                `${topic}: Professional Strategies Revealed`,
-                `My ${topic} System (How I Scaled to $X Monthly)`
+                topic + ': Complete Guide for 2025',
+                'How to Master ' + topic + ' (My Blueprint After 15+ Years)',
+                topic + ': What Actually Works in 2025',
+                'The Truth About ' + topic + ' Nobody Tells You',
+                topic + ': Professional Strategies Revealed',
+                'My ' + topic + ' System (How I Scaled to $X Monthly)'
             ];
             
             const ideasText = ideas.join('\n');
@@ -1478,7 +1477,7 @@
                 return;
             }
             
-            showStatus('phase1Status', 'info', `Analyzing "${keyword}"... For E-E-A-T optimization, consider adding personal experience modifiers like "my system", "how I", "blueprint", etc.`);
+            showStatus('phase1Status', 'info', 'Analyzing "' + keyword + '"... For E-E-A-T optimization, consider adding personal experience modifiers like "my system", "how I", "blueprint", etc.');
         }
 
         function generateOutline() {
@@ -1488,28 +1487,25 @@
                 return;
             }
             
-            const outline = `
-E-E-A-T Optimized Outline for: ${topic}
-
-1. Executive Summary/TLDR (Above the fold)
-2. Disclaimer & Author Bio (Build trust immediately)
-3. Myth-Busting Introduction (Challenge assumptions)
-4. Strategy #1 with Billy's Rules
-   - Who this is for/not for
-   - Specific example with math
-   - Risk management protocol
-5. Strategy #2 with Billy's Rules
-   - Trade example with calculations
-   - Common mistakes to avoid
-6. Strategy #3 (Advanced)
-   - Professional insights
-   - Scaling considerations
-7. Billy's Deep Contrarian Analysis
-8. Critical Warnings & Risk Management
-9. My Personal Evolution (Story/Journey)
-10. FAQ Section (10+ questions)
-11. Resources & Next Steps
-            `;
+            const outline = '\nE-E-A-T Optimized Outline for: ' + topic + '\n\n' +
+                '1. Executive Summary/TLDR (Above the fold)\n' +
+                '2. Disclaimer & Author Bio (Build trust immediately)\n' +
+                '3. Myth-Busting Introduction (Challenge assumptions)\n' +
+                '4. Strategy #1 with Billy\'s Rules\n' +
+                '   - Who this is for/not for\n' +
+                '   - Specific example with math\n' +
+                '   - Risk management protocol\n' +
+                '5. Strategy #2 with Billy\'s Rules\n' +
+                '   - Trade example with calculations\n' +
+                '   - Common mistakes to avoid\n' +
+                '6. Strategy #3 (Advanced)\n' +
+                '   - Professional insights\n' +
+                '   - Scaling considerations\n' +
+                '7. Billy\'s Deep Contrarian Analysis\n' +
+                '8. Critical Warnings & Risk Management\n' +
+                '9. My Personal Evolution (Story/Journey)\n' +
+                '10. FAQ Section (10+ questions)\n' +
+                '11. Resources & Next Steps';
             
             alert(outline);
         }
@@ -1522,147 +1518,186 @@ E-E-A-T Optimized Outline for: ${topic}
             }
             
             const lsiSuggestions = [
-                `${keyword} for beginners`,
-                `best ${keyword}`,
-                `${keyword} strategies`,
-                `how to ${keyword}`,
-                `${keyword} tips`,
-                `${keyword} guide 2025`,
-                `${keyword} tutorial`,
-                `${keyword} examples`,
-                `${keyword} calculator`,
-                `${keyword} risks`,
-                `is ${keyword} worth it`,
-                `${keyword} vs alternatives`
+                keyword + ' for beginners',
+                'best ' + keyword,
+                keyword + ' strategies',
+                'how to ' + keyword,
+                keyword + ' tips',
+                keyword + ' guide 2025',
+                keyword + ' tutorial',
+                keyword + ' examples',
+                keyword + ' calculator',
+                keyword + ' risks',
+                'is ' + keyword + ' worth it',
+                keyword + ' vs alternatives'
             ];
             
             alert('E-E-A-T LSI Keyword Suggestions:\n\n' + lsiSuggestions.join('\n'));
         }
 
-        // UPDATED Generate Phase 1 Prompt with E-E-A-T optimization
+        // WORKING Generate Phase 1 Prompt function
         function generatePhase1Prompt() {
-            const topic = document.getElementById('topic').value.trim();
-            const keyword = document.getElementById('keyword').value.trim();
-            const secondaryKeywords = document.getElementById('secondaryKeywords').value.trim();
-            const longtailQuestions = document.getElementById('longtailQuestions').value.trim();
-            const searchIntent = document.getElementById('searchIntent').value.trim();
-            const competitorUrls = document.getElementById('competitorUrls').value.trim();
-            const contentStyle = document.getElementById('contentStyle').value;
-            const targetLength = document.getElementById('targetLength').value;
-            
-            // Get advanced options
-            const includeExamples = document.getElementById('includeExamples').checked;
-            const includeRules = document.getElementById('includeRules').checked;
-            const includeWarnings = document.getElementById('includeWarnings').checked;
-            const includeData = document.getElementById('includeData').checked;
-            const includeVisuals = document.getElementById('includeVisuals').checked;
-            const includeScaling = document.getElementById('includeScaling').checked;
-            
-            if (!topic || !keyword) {
-                showStatus('phase1Status', 'error', 'Please enter both topic and keyword');
-                return;
+            try {
+                const topic = document.getElementById('topic').value.trim();
+                const keyword = document.getElementById('keyword').value.trim();
+                const secondaryKeywords = document.getElementById('secondaryKeywords').value.trim();
+                const longtailQuestions = document.getElementById('longtailQuestions').value.trim();
+                const searchIntent = document.getElementById('searchIntent').value.trim();
+                const competitorUrls = document.getElementById('competitorUrls').value.trim();
+                const contentStyle = document.getElementById('contentStyle').value;
+                const targetLength = document.getElementById('targetLength').value;
+                
+                // Get advanced options
+                const includeExamples = document.getElementById('includeExamples').checked;
+                const includeRules = document.getElementById('includeRules').checked;
+                const includeWarnings = document.getElementById('includeWarnings').checked;
+                const includeData = document.getElementById('includeData').checked;
+                const includeVisuals = document.getElementById('includeVisuals').checked;
+                const includeScaling = document.getElementById('includeScaling').checked;
+                
+                if (!topic || !keyword) {
+                    showStatus('phase1Status', 'error', 'Please enter both topic and keyword');
+                    return;
+                }
+                
+                // Build the prompt
+                let prompt = '# ATHENA Pro E-E-A-T Content Generation - ' + targetLength + ' Words - 2025 SEO Optimized\n\n';
+                prompt += '## TOPIC: ' + topic + '\n';
+                prompt += '## PRIMARY KEYWORD PHRASE: ' + keyword + '\n';
+                
+                if (secondaryKeywords) {
+                    prompt += '## SECONDARY KEYWORDS/ENTITIES: ' + secondaryKeywords + '\n';
+                }
+                
+                if (longtailQuestions) {
+                    prompt += '## LONG-TAIL QUESTIONS TO ANSWER:\n' + longtailQuestions + '\n';
+                }
+                
+                prompt += '## SEARCH INTENT: ' + (searchIntent || 'User wants actionable, practical strategies with proven results from a trustworthy expert') + '\n';
+                prompt += '## CONTENT STYLE: ' + contentStyle + '\n';
+                
+                if (competitorUrls) {
+                    prompt += '## COMPETITOR REFERENCES TO OUTRANK:\n' + competitorUrls + '\n';
+                }
+                
+                prompt += '\nCreate comprehensive, E-E-A-T optimized content with ALL of these tags (NEVER use em dashes —):\n\n';
+                prompt += '=== PART 1: SEO & METADATA ===\n';
+                prompt += '{{TITLE}}: [SEO-optimized title with power words and year 2025]\n';
+                prompt += '{{META_DESCRIPTION}}: [150-160 chars compelling meta description with keyword]\n';
+                prompt += '{{HERO_IMAGE_DESC}}: [Detailed description for professional hero image that builds trust]\n\n';
+                prompt += '{{KEYWORD_CLUSTER}}:\n';
+                prompt += '- Primary: ' + keyword + '\n';
+                prompt += '- Secondary: ' + (secondaryKeywords || '[Add 5-7 related entities]') + '\n';
+                prompt += '- Long-tail: ' + (longtailQuestions ? longtailQuestions.replace(/\n/g, ', ') : '[Add 5-7 user questions]') + '\n\n';
+                
+                prompt += '=== PART 2: TRUST BUILDERS (Above the Fold) ===\n';
+                prompt += '{{AUTHOR_BIO}}: [Custom author bio emphasizing 15+ years experience, institutional background with Mark McGoldrick, specific achievements, social proof]\n\n';
+                prompt += '{{DISCLAIMER}}: [Professional disclaimer for YMYL content - "Not Financial Advice" etc.]\n\n';
+                prompt += '{{EXECUTIVE_SUMMARY_TLDR}}: [3-4 sentence summary addressing the main promise, key strategies, and realistic expectations - "No time to read? Here\'s the bottom line..."]\n\n';
+                prompt += '{{TAKEAWAY_1}} through {{TAKEAWAY_6}}: [Bold claim] | [Supporting explanation]\n\n';
+                
+                prompt += '=== PART 3: MAIN CONTENT ===\n';
+                prompt += '{{SECTION_1_H2}}: [Myth-busting or problem-defining title]\n';
+                prompt += '{{SECTION_1_CONTENT}}: [Set realistic expectations, address common misconceptions, build trust by being honest about challenges]\n';
+                
+                if (includeWarnings) {
+                    prompt += '{{SECTION_1_WHO_FOR}}: [Explicitly state who this is for and NOT for]\n';
+                }
+                
+                prompt += '\n{{SECTION_2_H2}}: [Strategy/Solution #1]\n';
+                prompt += '{{SECTION_2_CONTENT}}: [Detailed explanation with mechanics]\n';
+                
+                if (includeRules) {
+                    prompt += '{{BILLY_RULE_2}}: [Specific rule for this strategy - "Only do X if Y"]\n';
+                }
+                
+                if (includeExamples) {
+                    prompt += '{{TRADE_EXAMPLE_2}}: [Specific example with ticker, strikes, dates, premium, ROI calculation]\n';
+                }
+                
+                prompt += '{{SECTION_2_RISK}}: [Risk management specific to this strategy]\n\n';
+                prompt += '{{SECTION_3_H2}}: [Strategy/Solution #2]\n';
+                prompt += '{{SECTION_3_CONTENT}}: [Detailed explanation]\n';
+                
+                if (includeRules) {
+                    prompt += '{{BILLY_RULE_3}}: [Specific rule for this strategy]\n';
+                }
+                
+                if (includeExamples) {
+                    prompt += '{{TRADE_EXAMPLE_3}}: [Specific example with math and percentages]\n';
+                }
+                
+                prompt += '{{SECTION_3_MISTAKES}}: [Common mistakes to avoid]\n\n';
+                prompt += '{{SECTION_4_H2}}: [Strategy/Solution #3 - More Advanced]\n';
+                prompt += '{{SECTION_4_CONTENT}}: [For experienced practitioners]\n';
+                
+                if (includeRules) {
+                    prompt += '{{BILLY_RULE_4}}: [Advanced rule]\n';
+                }
+                
+                if (includeData) {
+                    prompt += '{{DATA_POINT_4}}: [Include specific statistics, win rates, averages]\n';
+                }
+                
+                prompt += '\n{{SECTION_5_H2}}: [Implementation/Scaling/Tools]\n';
+                prompt += '{{SECTION_5_CONTENT}}: [Practical implementation guide]\n';
+                
+                if (includeScaling) {
+                    prompt += '{{SCALING_ROADMAP}}: [Progression from beginner to advanced with milestones]\n';
+                }
+                
+                if (includeVisuals) {
+                    prompt += '\n{{VISUAL_ELEMENT_1}} through {{VISUAL_ELEMENT_3}}: [Descriptions of charts, tables, or graphics to include]\n';
+                }
+                
+                prompt += '\n=== PART 4: BILLY\'S UNIQUE INSIGHTS ===\n';
+                prompt += '{{BILLY_TAKE_1}}: [Contrarian insight from 15+ years experience - challenge conventional wisdom]\n';
+                prompt += '{{BILLY_TAKE_2}}: [Advanced technique that separates pros from amateurs]\n';
+                prompt += '{{BILLY_TAKE_3}}: [Specific system or rule like "The 45 DTE Sweet Spot"]\n\n';
+                prompt += '{{BILLY_DEEP_DIVE}}: [2-3 paragraph extended analysis on a controversial or complex aspect - show true expertise]\n\n';
+                prompt += '{{CRITICAL_WARNING}}: [Warning title] | [Clear message about risks, capital requirements, or common pitfalls]\n\n';
+                prompt += '{{PERSONAL_EVOLUTION}}: [Billy\'s journey with this topic - include specific losses, breakthroughs, lessons from Mark McGoldrick. Make it vulnerable and real. Include specific dollar amounts if relevant.]\n\n';
+                
+                prompt += '=== PART 5: FAQ & RESOURCES ===\n';
+                prompt += '{{FAQ_Q1}} through {{FAQ_Q10}}: [Answer the actual questions users have, including tough ones about losses, taxes, realistic returns]\n\n';
+                prompt += '{{RESOURCES_TABLE}}: [3-5 authoritative external resources with descriptions]\n\n';
+                prompt += '{{SCHEMA_MARKUP_NOTES}}: [Notes for FAQ schema, Article schema, Author schema]\n\n';
+                
+                prompt += 'Requirements:\n';
+                prompt += '- Write as Billy Ribeiro in first person - confident but not arrogant\n';
+                prompt += '- Include specific examples: tickers (AAPL, SPX, etc.), percentages (aim for 1.5-2% monthly), dollar amounts\n';
+                prompt += '- Reference "The Move Prior to The Move" system where relevant\n';
+                prompt += '- Target exactly ' + targetLength + ' words\n';
+                prompt += '- Make it actionable with clear next steps\n';
+                prompt += '- Be transparent about risks and requirements\n';
+                prompt += '- Use only hyphens (-) never em dashes (—)\n';
+                
+                if (includeData) {
+                    prompt += '- Include specific data points, statistics, and percentages throughout\n';
+                }
+                
+                if (includeExamples) {
+                    prompt += '- Every strategy must have a detailed example with math/calculations\n';
+                }
+                
+                prompt += '- Focus on building E-E-A-T: Experience (personal stories), Expertise (specific knowledge), Authority (credentials), Trust (transparency)';
+                
+                document.getElementById('promptOutput').value = prompt;
+                document.getElementById('phase1Output').classList.add('show');
+                document.getElementById('phase1Output').scrollIntoView({ behavior: 'smooth' });
+                
+                showStatus('phase1Status', 'success', 'E-E-A-T optimized prompt generated! Copy and paste into Claude.');
+                document.getElementById('phase1Badge').style.display = 'inline';
+                
+                autoSave();
+                
+            } catch (error) {
+                console.error('Error in generatePhase1Prompt:', error);
+                showStatus('phase1Status', 'error', 'An error occurred. Please try again.');
             }
-            
-            const prompt = `# ATHENA Pro E-E-A-T Content Generation - ${targetLength} Words - 2025 SEO Optimized
-
-## TOPIC: ${topic}
-## PRIMARY KEYWORD PHRASE: ${keyword}
-${secondaryKeywords ? `## SECONDARY KEYWORDS/ENTITIES: ${secondaryKeywords}` : ''}
-${longtailQuestions ? `## LONG-TAIL QUESTIONS TO ANSWER:\n${longtailQuestions}` : ''}
-## SEARCH INTENT: ${searchIntent || 'User wants actionable, practical strategies with proven results from a trustworthy expert'}
-## CONTENT STYLE: ${contentStyle}
-${competitorUrls ? `## COMPETITOR REFERENCES TO OUTRANK:\n${competitorUrls}` : ''}
-
-Create comprehensive, E-E-A-T optimized content with ALL of these tags (NEVER use em dashes —):
-
-=== PART 1: SEO & METADATA ===
-{{TITLE}}: [SEO-optimized title with power words and year 2025]
-{{META_DESCRIPTION}}: [150-160 chars compelling meta description with keyword]
-{{HERO_IMAGE_DESC}}: [Detailed description for professional hero image that builds trust]
-
-{{KEYWORD_CLUSTER}}:
-- Primary: ${keyword}
-- Secondary: ${secondaryKeywords || '[Add 5-7 related entities]'}
-- Long-tail: ${longtailQuestions ? longtailQuestions.replace(/\n/g, ', ') : '[Add 5-7 user questions]'}
-
-=== PART 2: TRUST BUILDERS (Above the Fold) ===
-{{AUTHOR_BIO}}: [Custom author bio emphasizing 15+ years experience, institutional background with Mark McGoldrick, specific achievements, social proof]
-
-{{DISCLAIMER}}: [Professional disclaimer for YMYL content - "Not Financial Advice" etc.]
-
-{{EXECUTIVE_SUMMARY_TLDR}}: [3-4 sentence summary addressing the main promise, key strategies, and realistic expectations - "No time to read? Here's the bottom line..."]
-
-{{TAKEAWAY_1}} through {{TAKEAWAY_6}}: [Bold claim] | [Supporting explanation]
-
-=== PART 3: MAIN CONTENT ===
-{{SECTION_1_H2}}: [Myth-busting or problem-defining title]
-{{SECTION_1_CONTENT}}: [Set realistic expectations, address common misconceptions, build trust by being honest about challenges]
-${includeWarnings ? '{{SECTION_1_WHO_FOR}}: [Explicitly state who this is for and NOT for]' : ''}
-
-{{SECTION_2_H2}}: [Strategy/Solution #1]
-{{SECTION_2_CONTENT}}: [Detailed explanation with mechanics]
-${includeRules ? '{{BILLY_RULE_2}}: [Specific rule for this strategy - "Only do X if Y"]' : ''}
-${includeExamples ? '{{TRADE_EXAMPLE_2}}: [Specific example with ticker, strikes, dates, premium, ROI calculation]' : ''}
-{{SECTION_2_RISK}}: [Risk management specific to this strategy]
-
-{{SECTION_3_H2}}: [Strategy/Solution #2]
-{{SECTION_3_CONTENT}}: [Detailed explanation]
-${includeRules ? '{{BILLY_RULE_3}}: [Specific rule for this strategy]' : ''}
-${includeExamples ? '{{TRADE_EXAMPLE_3}}: [Specific example with math and percentages]' : ''}
-{{SECTION_3_MISTAKES}}: [Common mistakes to avoid]
-
-{{SECTION_4_H2}}: [Strategy/Solution #3 - More Advanced]
-{{SECTION_4_CONTENT}}: [For experienced practitioners]
-${includeRules ? '{{BILLY_RULE_4}}: [Advanced rule]' : ''}
-${includeData ? '{{DATA_POINT_4}}: [Include specific statistics, win rates, averages]' : ''}
-
-{{SECTION_5_H2}}: [Implementation/Scaling/Tools]
-{{SECTION_5_CONTENT}}: [Practical implementation guide]
-${includeScaling ? '{{SCALING_ROADMAP}}: [Progression from beginner to advanced with milestones]' : ''}
-
-${includeVisuals ? '{{VISUAL_ELEMENT_1}} through {{VISUAL_ELEMENT_3}}: [Descriptions of charts, tables, or graphics to include]' : ''}
-
-=== PART 4: BILLY'S UNIQUE INSIGHTS ===
-{{BILLY_TAKE_1}}: [Contrarian insight from 15+ years experience - challenge conventional wisdom]
-{{BILLY_TAKE_2}}: [Advanced technique that separates pros from amateurs]
-{{BILLY_TAKE_3}}: [Specific system or rule like "The 45 DTE Sweet Spot"]
-
-{{BILLY_DEEP_DIVE}}: [2-3 paragraph extended analysis on a controversial or complex aspect - show true expertise]
-
-{{CRITICAL_WARNING}}: [Warning title] | [Clear message about risks, capital requirements, or common pitfalls]
-
-{{PERSONAL_EVOLUTION}}: [Billy's journey with this topic - include specific losses, breakthroughs, lessons from Mark McGoldrick. Make it vulnerable and real. Include specific dollar amounts if relevant.]
-
-=== PART 5: FAQ & RESOURCES ===
-{{FAQ_Q1}} through {{FAQ_Q10}}: [Answer the actual questions users have, including tough ones about losses, taxes, realistic returns]
-
-{{RESOURCES_TABLE}}: [3-5 authoritative external resources with descriptions]
-
-{{SCHEMA_MARKUP_NOTES}}: [Notes for FAQ schema, Article schema, Author schema]
-
-Requirements:
-- Write as Billy Ribeiro in first person - confident but not arrogant
-- Include specific examples: tickers (AAPL, SPX, etc.), percentages (aim for 1.5-2% monthly), dollar amounts
-- Reference "The Move Prior to The Move" system where relevant
-- Target exactly ${targetLength} words
-- Make it actionable with clear next steps
-- Be transparent about risks and requirements
-- Use only hyphens (-) never em dashes (—)
-- ${includeData ? 'Include specific data points, statistics, and percentages throughout' : ''}
-- ${includeExamples ? 'Every strategy must have a detailed example with math/calculations' : ''}
-- Focus on building E-E-A-T: Experience (personal stories), Expertise (specific knowledge), Authority (credentials), Trust (transparency)`;
-            
-            document.getElementById('promptOutput').value = prompt;
-            document.getElementById('phase1Output').classList.add('show');
-            document.getElementById('phase1Output').scrollIntoView({ behavior: 'smooth' });
-            
-            showStatus('phase1Status', 'success', 'E-E-A-T optimized prompt generated! Copy and paste into Claude.');
-            document.getElementById('phase1Badge').style.display = 'inline';
-            
-            autoSave();
         }
 
-        // Parse tagged content - UPDATED for new tags
+        // Parse tagged content
         function parseTaggedContent(content) {
             const tags = {};
             const regex = /\{\{([^}]+)\}\}:\s*([^{]*(?:\{[^}]*\}[^{]*)*?)(?=\{\{|$)/gs;
@@ -1684,10 +1719,12 @@ Requirements:
             // Replace em dashes with regular hyphens
             content = content.replace(/—/g, '-');
             
-            let processed = content
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\n\n+/g, '</span></p>\n<p><span style="color: #333333; font-family: Montserrat;">')
-                .replace(/\n/g, '<br>');
+            // Convert markdown bold to HTML
+            let processed = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            // Convert line breaks to HTML
+            processed = processed.replace(/\n\n+/g, '</span></p>\n<p><span style="color: #333333; font-family: Montserrat;">');
+            processed = processed.replace(/\n/g, '<br>');
             
             return '<p><span style="color: #333333; font-family: Montserrat;">' + processed + '</span></p>';
         }
@@ -1702,430 +1739,403 @@ Requirements:
                 .trim();
         }
         
-        // UPDATED Generate HTML function with new E-E-A-T elements
+        // Generate HTML - This is a massive function, keeping core structure
         function generateHTML() {
-            const taggedContent = document.getElementById('taggedContent').value.trim();
-            
-            if (!taggedContent) {
-                showStatus('phase2Status', 'error', 'Please paste the tagged content from Claude');
-                return;
-            }
-            
-            // Remove em dashes
-            const cleanContent = taggedContent.replace(/—/g, '-');
-            const tags = parseTaggedContent(cleanContent);
-            
-            if (!tags.TITLE) {
-                showStatus('phase2Status', 'error', 'Missing {{TITLE}} tag. Make sure you pasted complete content.');
-                return;
-            }
-            
-            // Extract meta description from tagged content or generate
-            let metaDescription = tags.META_DESCRIPTION || tags.TITLE.substring(0, 160);
-            
-            let slug = document.getElementById('slug').value.trim() || generateSlug(tags.TITLE);
-            
-            const audioUrl = document.getElementById('audioUrl').value.trim();
-            const audioHTML = audioUrl ? `\n[billy_audio mp3="${audioUrl}"]` : '';
-            
-            // Build complete HTML with NEW E-E-A-T elements
-            let html = `<div style="font-family: Montserrat, sans-serif; color: #333333;">
-`;
-
-            // Add DISCLAIMER if present (top of page for YMYL)
-            if (tags.DISCLAIMER) {
-                html += `<!-- TOP DISCLAIMER FOR YMYL CONTENT -->
-<div style="background-color: #fff3cd; border: 2px solid #ffc107; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
-    <p style="font-weight: bold; color: #856404; margin: 0; font-size: 16px;">
-        ⚠️ ${tags.DISCLAIMER}
-    </p>
-</div>
-`;
-            }
-
-            html += `<h1 style="text-align: center; font-family: 'Montserrat', sans-serif; color: #333333;"><span style="color: #333333;">${tags.TITLE || 'Your Title Here'}</span></h1>
-
-<!-- HERO/FEATURED IMAGE PLACEHOLDER -->
-<div style="background: #f0f0f0; border: 2px dashed #666; padding: 30px; margin: 30px 0; text-align: center; border-radius: 8px;">
-    <p style="font-weight: bold; color: #333; font-size: 1.2em;">🖼️ FEATURED/HERO IMAGE</p>
-    <p style="color: #666;">Description: ${tags.HERO_IMAGE_DESC || 'Professional trading setup showing calm, focused analysis'}</p>
-    <p style="color: #666;">Recommended Size: 1388 x 926 pixels</p>
-    <p style="color: #666;">Alt Text: ${slug}-hero-image</p>
-    <p style="color: #666;">Filename: ${slug}-hero.jpg</p>
-</div>
-`;
-
-            // Add CUSTOM AUTHOR BIO if present, otherwise use default
-            if (tags.AUTHOR_BIO) {
-                html += `<div style="display: flex; align-items: center; margin-top: 25px; margin-bottom: 25px;">
-    <span style="color: #333333;"><img style="width: 80px; height: 80px; border-radius: 50%; margin-right: 15px;" src="https://revolutiontradingpros.com/wp-content/uploads/2025/05/Billy-no-grey-768x768.png.webp" alt="Photo of Billy Ribeiro" /></span>
-    <div>
-        <span style="font-style: italic; color: #333333;"><strong>By Billy Ribeiro | Globally Recognized Trader &amp; Market Strategist</strong></span>
-        <p style="margin: 8px 0 0 0; color: #333333; font-size: 14px;">${tags.AUTHOR_BIO}</p>
-    </div>
-</div>
-`;
-            } else {
-                // Use default bio
-                html += `<div style="display: flex; align-items: center; margin-top: 25px; margin-bottom: 25px;">
-    <span style="color: #333333;"><img style="width: 80px; height: 80px; border-radius: 50%; margin-right: 15px;" src="https://revolutiontradingpros.com/wp-content/uploads/2025/05/Billy-no-grey-768x768.png.webp" alt="Photo of Billy Ribeiro" /></span>
-    <span style="font-style: italic; color: #333333;"><strong>By Billy Ribeiro | Globally Recognized Trader &amp; Market Strategist</strong></span>
-</div>
-<span style="color: #333333;"><strong>Billy Ribeiro</strong> is a globally recognized trader renowned for his mastery of price action analysis and innovative trading strategies. He was personally mentored by Mark McGoldrick, famously known as "Goldfinger," Goldman Sachs's most successful investor in history. McGoldrick described Billy Ribeiro as "The Future of Trading," a testament to his extraordinary talent. His groundbreaking system, "The Move Prior to The Move," enables him to anticipate market trends with unmatched accuracy, establishing him as a true pioneer in the trading world.</span>
-`;
-            }
-
-            // Social links
-            html += `<div style="display: flex; align-items: center; gap: 15px; margin-top: 0px; margin-bottom: 0px;">
-
-<span style="display: inline-flex; align-items: center; font-weight: bold;">
-Connect with Billy:
-</span>
-
-<!-- LinkedIn -->
-<a style="display: inline-flex; align-items: center; text-decoration: none; color: #0077b5; font-size: 24px;" href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-<i class="fab fa-linkedin"></i>
-</a>
-
-<!-- X (Twitter) -->
-<a style="display: inline-flex; align-items: center; text-decoration: none; color: #000000; font-size: 24px;" href="https://x.com/RevTradingPros" target="_blank" rel="noopener noreferrer" aria-label="X">
-<i class="fab fa-x-twitter"></i>
-</a>
-
-<!-- YouTube -->
-<a style="display: inline-flex; align-items: center; text-decoration: none; color: #ff0000; font-size: 24px;" href="https://bit.ly/3YmfilF" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-<i class="fab fa-youtube"></i>
-</a>
-
-<!-- Facebook -->
-<a style="display: inline-flex; align-items: center; text-decoration: none; color: #1877f2; font-size: 24px;" href="https://bit.ly/3OJ9z6g" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-<i class="fab fa-facebook"></i>
-</a>
-
-<!-- Instagram -->
-<a style="display: inline-flex; align-items: center; text-decoration: none; color: #e4405f; font-size: 24px;" href="https://bit.ly/3KW0zsb" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-<i class="fab fa-instagram"></i>
-</a>
-</div>${audioHTML}
-`;
-
-            // Add EXECUTIVE SUMMARY/TLDR if present
-            if (tags.EXECUTIVE_SUMMARY_TLDR) {
-                html += `<!-- EXECUTIVE SUMMARY / TLDR -->
-<div style="background: linear-gradient(135deg, #e8f4fd 0%, #f0f8ff 100%); border-left: 4px solid #2196f3; padding: 24px; margin: 30px 0; border-radius: 12px;">
-    <h3 style="margin-top: 0; color: #1976d2;">📌 The Bottom Line (TLDR)</h3>
-    <p style="font-size: 16px; color: #333333; margin: 0;">${tags.EXECUTIVE_SUMMARY_TLDR}</p>
-</div>
-`;
-            }
-
-            // Key Takeaways
-            html += `<div style="background-color: #f7faff; border: 1px solid #cce0ff; padding: 20px 25px; margin: 30px 0; border-radius: 12px;">
-<h3 style="margin-top: 0;"><span style="color: #333333; font-family: Montserrat;">Billy's Key Takeaways</span></h3>
-<p style="font-style: italic; margin-bottom: 15px;"><span style="color: #333333; font-family: Montserrat;">"After 15+ years of trading and mentoring thousands of traders, here's what I wish every trader understood from day one:"</span></p>
-
-<ul>
-`;
-
-            // Add takeaways
-            for (let i = 1; i <= 6; i++) {
-                const takeaway = tags[`TAKEAWAY_${i}`];
-                if (takeaway) {
-                    const parts = takeaway.split(' | ');
-                    html += ` 	<li><span style="color: #333333; font-family: Montserrat;"><strong>${parts[0]}</strong> ${parts[1] || ''}</span></li>\n`;
+            try {
+                const taggedContent = document.getElementById('taggedContent').value.trim();
+                
+                if (!taggedContent) {
+                    showStatus('phase2Status', 'error', 'Please paste the tagged content from Claude');
+                    return;
                 }
-            }
-            
-            html += `</ul>
-</div>
-`;
-
-            // Add main content sections with NEW elements
-            for (let i = 1; i <= 5; i++) {
-                const h2 = tags[`SECTION_${i}_H2`];
-                const content = tags[`SECTION_${i}_CONTENT`];
-                if (h2 && content) {
-                    html += `<h2 style="margin-top: 40px;"><span style="color: #333333; font-family: Montserrat;">${h2}</span></h2>
-${processSection(content)}
-`;
-                    
-                    // Add "Who this is for" if present
-                    if (tags[`SECTION_${i}_WHO_FOR`]) {
-                        html += `<div style="background-color: #e8f9ff; border-left: 4px solid #17a2b8; padding: 15px; margin: 20px 0; border-radius: 8px;">
-    <p style="margin: 0; color: #0c5460;"><strong>📌 Who This Is For (And NOT For):</strong><br>
-    ${tags[`SECTION_${i}_WHO_FOR`]}</p>
-</div>
-`;
+                
+                // Remove em dashes
+                const cleanContent = taggedContent.replace(/—/g, '-');
+                const tags = parseTaggedContent(cleanContent);
+                
+                if (!tags.TITLE) {
+                    showStatus('phase2Status', 'error', 'Missing {{TITLE}} tag. Make sure you pasted complete content.');
+                    return;
+                }
+                
+                // Extract meta description from tagged content or generate
+                let metaDescription = tags.META_DESCRIPTION || tags.TITLE.substring(0, 160);
+                
+                let slug = document.getElementById('slug').value.trim() || generateSlug(tags.TITLE);
+                
+                const audioUrl = document.getElementById('audioUrl').value.trim();
+                const audioHTML = audioUrl ? '\n[billy_audio mp3="' + audioUrl + '"]' : '';
+                
+                // Start building HTML
+                let html = '<div style="font-family: Montserrat, sans-serif; color: #333333;">\n';
+                
+                // Add DISCLAIMER if present (top of page for YMYL)
+                if (tags.DISCLAIMER) {
+                    html += '<!-- TOP DISCLAIMER FOR YMYL CONTENT -->\n';
+                    html += '<div style="background-color: #fff3cd; border: 2px solid #ffc107; padding: 20px; margin-bottom: 30px; border-radius: 10px;">\n';
+                    html += '    <p style="font-weight: bold; color: #856404; margin: 0; font-size: 16px;">\n';
+                    html += '        ⚠️ ' + tags.DISCLAIMER + '\n';
+                    html += '    </p>\n';
+                    html += '</div>\n';
+                }
+                
+                // Add title
+                html += '<h1 style="text-align: center; font-family: \'Montserrat\', sans-serif; color: #333333;"><span style="color: #333333;">' + (tags.TITLE || 'Your Title Here') + '</span></h1>\n\n';
+                
+                // Add hero image placeholder
+                html += '<!-- HERO/FEATURED IMAGE PLACEHOLDER -->\n';
+                html += '<div style="background: #f0f0f0; border: 2px dashed #666; padding: 30px; margin: 30px 0; text-align: center; border-radius: 8px;">\n';
+                html += '    <p style="font-weight: bold; color: #333; font-size: 1.2em;">🖼️ FEATURED/HERO IMAGE</p>\n';
+                html += '    <p style="color: #666;">Description: ' + (tags.HERO_IMAGE_DESC || 'Professional trading setup showing calm, focused analysis') + '</p>\n';
+                html += '    <p style="color: #666;">Recommended Size: 1388 x 926 pixels</p>\n';
+                html += '    <p style="color: #666;">Alt Text: ' + slug + '-hero-image</p>\n';
+                html += '    <p style="color: #666;">Filename: ' + slug + '-hero.jpg</p>\n';
+                html += '</div>\n';
+                
+                // Add author bio - custom or default
+                if (tags.AUTHOR_BIO) {
+                    html += '<div style="display: flex; align-items: center; margin-top: 25px; margin-bottom: 25px;">\n';
+                    html += '    <span style="color: #333333;"><img style="width: 80px; height: 80px; border-radius: 50%; margin-right: 15px;" src="https://revolutiontradingpros.com/wp-content/uploads/2025/05/Billy-no-grey-768x768.png.webp" alt="Photo of Billy Ribeiro" /></span>\n';
+                    html += '    <div>\n';
+                    html += '        <span style="font-style: italic; color: #333333;"><strong>By Billy Ribeiro | Globally Recognized Trader &amp; Market Strategist</strong></span>\n';
+                    html += '        <p style="margin: 8px 0 0 0; color: #333333; font-size: 14px;">' + tags.AUTHOR_BIO + '</p>\n';
+                    html += '    </div>\n';
+                    html += '</div>\n';
+                } else {
+                    // Use default bio
+                    html += '<div style="display: flex; align-items: center; margin-top: 25px; margin-bottom: 25px;">\n';
+                    html += '    <span style="color: #333333;"><img style="width: 80px; height: 80px; border-radius: 50%; margin-right: 15px;" src="https://revolutiontradingpros.com/wp-content/uploads/2025/05/Billy-no-grey-768x768.png.webp" alt="Photo of Billy Ribeiro" /></span>\n';
+                    html += '    <span style="font-style: italic; color: #333333;"><strong>By Billy Ribeiro | Globally Recognized Trader &amp; Market Strategist</strong></span>\n';
+                    html += '</div>\n';
+                    html += '<span style="color: #333333;"><strong>Billy Ribeiro</strong> is a globally recognized trader renowned for his mastery of price action analysis and innovative trading strategies. He was personally mentored by Mark McGoldrick, famously known as "Goldfinger," Goldman Sachs\'s most successful investor in history. McGoldrick described Billy Ribeiro as "The Future of Trading," a testament to his extraordinary talent. His groundbreaking system, "The Move Prior to The Move," enables him to anticipate market trends with unmatched accuracy, establishing him as a true pioneer in the trading world.</span>\n';
+                }
+                
+                // Add social links
+                html += '<div style="display: flex; align-items: center; gap: 15px; margin-top: 0px; margin-bottom: 0px;">\n\n';
+                html += '<span style="display: inline-flex; align-items: center; font-weight: bold;">\n';
+                html += 'Connect with Billy:\n';
+                html += '</span>\n\n';
+                html += '<!-- LinkedIn -->\n';
+                html += '<a style="display: inline-flex; align-items: center; text-decoration: none; color: #0077b5; font-size: 24px;" href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">\n';
+                html += '<i class="fab fa-linkedin"></i>\n';
+                html += '</a>\n\n';
+                html += '<!-- X (Twitter) -->\n';
+                html += '<a style="display: inline-flex; align-items: center; text-decoration: none; color: #000000; font-size: 24px;" href="https://x.com/RevTradingPros" target="_blank" rel="noopener noreferrer" aria-label="X">\n';
+                html += '<i class="fab fa-x-twitter"></i>\n';
+                html += '</a>\n\n';
+                html += '<!-- YouTube -->\n';
+                html += '<a style="display: inline-flex; align-items: center; text-decoration: none; color: #ff0000; font-size: 24px;" href="https://bit.ly/3YmfilF" target="_blank" rel="noopener noreferrer" aria-label="YouTube">\n';
+                html += '<i class="fab fa-youtube"></i>\n';
+                html += '</a>\n\n';
+                html += '<!-- Facebook -->\n';
+                html += '<a style="display: inline-flex; align-items: center; text-decoration: none; color: #1877f2; font-size: 24px;" href="https://bit.ly/3OJ9z6g" target="_blank" rel="noopener noreferrer" aria-label="Facebook">\n';
+                html += '<i class="fab fa-facebook"></i>\n';
+                html += '</a>\n\n';
+                html += '<!-- Instagram -->\n';
+                html += '<a style="display: inline-flex; align-items: center; text-decoration: none; color: #e4405f; font-size: 24px;" href="https://bit.ly/3KW0zsb" target="_blank" rel="noopener noreferrer" aria-label="Instagram">\n';
+                html += '<i class="fab fa-instagram"></i>\n';
+                html += '</a>\n';
+                html += '</div>' + audioHTML + '\n';
+                
+                // Add EXECUTIVE SUMMARY/TLDR if present
+                if (tags.EXECUTIVE_SUMMARY_TLDR) {
+                    html += '<!-- EXECUTIVE SUMMARY / TLDR -->\n';
+                    html += '<div style="background: linear-gradient(135deg, #e8f4fd 0%, #f0f8ff 100%); border-left: 4px solid #2196f3; padding: 24px; margin: 30px 0; border-radius: 12px;">\n';
+                    html += '    <h3 style="margin-top: 0; color: #1976d2;">📌 The Bottom Line (TLDR)</h3>\n';
+                    html += '    <p style="font-size: 16px; color: #333333; margin: 0;">' + tags.EXECUTIVE_SUMMARY_TLDR + '</p>\n';
+                    html += '</div>\n';
+                }
+                
+                // Add Key Takeaways
+                html += '<div style="background-color: #f7faff; border: 1px solid #cce0ff; padding: 20px 25px; margin: 30px 0; border-radius: 12px;">\n';
+                html += '<h3 style="margin-top: 0;"><span style="color: #333333; font-family: Montserrat;">Billy\'s Key Takeaways</span></h3>\n';
+                html += '<p style="font-style: italic; margin-bottom: 15px;"><span style="color: #333333; font-family: Montserrat;">"After 15+ years of trading and mentoring thousands of traders, here\'s what I wish every trader understood from day one:"</span></p>\n\n';
+                html += '<ul>\n';
+                
+                // Add takeaways
+                for (let i = 1; i <= 6; i++) {
+                    const takeaway = tags['TAKEAWAY_' + i];
+                    if (takeaway) {
+                        const parts = takeaway.split(' | ');
+                        html += ' 	<li><span style="color: #333333; font-family: Montserrat;"><strong>' + parts[0] + '</strong> ' + (parts[1] || '') + '</span></li>\n';
                     }
+                }
+                
+                html += '</ul>\n';
+                html += '</div>\n';
+                
+                // Add main content sections with NEW E-E-A-T elements
+                for (let i = 1; i <= 5; i++) {
+                    const h2 = tags['SECTION_' + i + '_H2'];
+                    const content = tags['SECTION_' + i + '_CONTENT'];
                     
-                    // Add Billy's Rule if present
-                    if (tags[`BILLY_RULE_${i}`]) {
-                        html += `<div style="background-color: #fff4e5; border-left: 4px solid #ff6b35; padding: 15px; margin: 20px 0; border-radius: 8px;">
-    <p style="margin: 0; color: #8b3a00;"><strong>🎯 Billy's Rule #${i}:</strong> ${tags[`BILLY_RULE_${i}`]}</p>
-</div>
-`;
-                    }
-                    
-                    // Add Trade Example if present
-                    if (tags[`TRADE_EXAMPLE_${i}`]) {
-                        html += `<div style="background-color: #f0f4f8; border: 1px solid #d6d6d6; padding: 20px; margin: 20px 0; border-radius: 10px;">
-    <h4 style="margin-top: 0; color: #333;">📊 Real Trade Example:</h4>
-    <p style="color: #333; font-family: 'Monaco', 'Courier New', monospace; font-size: 14px;">${tags[`TRADE_EXAMPLE_${i}`]}</p>
-</div>
-`;
-                    }
-                    
-                    // Add Risk Management if present
-                    if (tags[`SECTION_${i}_RISK`]) {
-                        html += `<div style="background-color: #ffe6e6; border-left: 4px solid #dc3545; padding: 15px; margin: 20px 0; border-radius: 8px;">
-    <p style="margin: 0; color: #721c24;"><strong>⚠️ Risk Management:</strong> ${tags[`SECTION_${i}_RISK`]}</p>
-</div>
-`;
-                    }
-                    
-                    // Add Common Mistakes if present
-                    if (tags[`SECTION_${i}_MISTAKES`]) {
-                        html += `<div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 8px;">
-    <p style="margin: 0; color: #856404;"><strong>❌ Common Mistakes to Avoid:</strong><br>
-    ${tags[`SECTION_${i}_MISTAKES`]}</p>
-</div>
-`;
-                    }
-                    
-                    // Add Data Points if present
-                    if (tags[`DATA_POINT_${i}`]) {
-                        html += `<div style="background-color: #e7f3ff; border-left: 4px solid #007bff; padding: 15px; margin: 20px 0; border-radius: 8px;">
-    <p style="margin: 0; color: #004085;"><strong>📈 Key Data:</strong> ${tags[`DATA_POINT_${i}`]}</p>
-</div>
-`;
-                    }
-
-                    // Add recommended image
-                    html += `<!-- RECOMMENDED IMAGE ${i} -->
-<div style="background: #f0f0f0; border: 2px dashed #666; padding: 20px; margin: 30px 0; text-align: center; border-radius: 8px;">
-    <p style="font-weight: bold; color: #333;">📷 RECOMMENDED IMAGE ${i}</p>
-    <p style="color: #666;">Title: ${h2 || 'Section ' + i + ' Image'}</p>
-    <p style="color: #666;">Alt Text: ${slug}-section-${i}</p>
-    <p style="color: #666; font-style: italic;">Description: ${tags[`VISUAL_ELEMENT_${i}`] || 'Create a chart, screenshot, or infographic that illustrates the concepts discussed in this section'}</p>
-</div>
-`;
-                    
-                    // Add Billy's Take for sections 2-4
-                    if (i >= 2 && i <= 4) {
-                        const takeIndex = i - 1;
-                        const take = tags[`BILLY_TAKE_${takeIndex}`];
-                        if (take) {
-                            html += `<div style="background-color: #f7f7f7; border-left: 4px solid #3366ff; padding: 15px; margin: 20px 0; font-style: italic; border-radius: 8px;">
-    <span style="color: #333333; font-family: Montserrat;"><strong>Billy's Take:</strong></span>
-    <span style="color: #333333; font-family: Montserrat;">"${take}"</span>
-</div>
-`;
+                    if (h2 && content) {
+                        html += '<h2 style="margin-top: 40px;"><span style="color: #333333; font-family: Montserrat;">' + h2 + '</span></h2>\n';
+                        html += processSection(content) + '\n';
+                        
+                        // Add optional E-E-A-T elements for each section
+                        // Who this is for
+                        if (tags['SECTION_' + i + '_WHO_FOR']) {
+                            html += '<div style="background-color: #e8f9ff; border-left: 4px solid #17a2b8; padding: 15px; margin: 20px 0; border-radius: 8px;">\n';
+                            html += '    <p style="margin: 0; color: #0c5460;"><strong>📌 Who This Is For (And NOT For):</strong><br>\n';
+                            html += '    ' + tags['SECTION_' + i + '_WHO_FOR'] + '</p>\n';
+                            html += '</div>\n';
+                        }
+                        
+                        // Billy's Rule
+                        if (tags['BILLY_RULE_' + i]) {
+                            html += '<div style="background-color: #fff4e5; border-left: 4px solid #ff6b35; padding: 15px; margin: 20px 0; border-radius: 8px;">\n';
+                            html += '    <p style="margin: 0; color: #8b3a00;"><strong>🎯 Billy\'s Rule #' + i + ':</strong> ' + tags['BILLY_RULE_' + i] + '</p>\n';
+                            html += '</div>\n';
+                        }
+                        
+                        // Trade Example
+                        if (tags['TRADE_EXAMPLE_' + i]) {
+                            html += '<div style="background-color: #f0f4f8; border: 1px solid #d6d6d6; padding: 20px; margin: 20px 0; border-radius: 10px;">\n';
+                            html += '    <h4 style="margin-top: 0; color: #333;">📊 Real Trade Example:</h4>\n';
+                            html += '    <p style="color: #333; font-family: \'Monaco\', \'Courier New\', monospace; font-size: 14px;">' + tags['TRADE_EXAMPLE_' + i] + '</p>\n';
+                            html += '</div>\n';
+                        }
+                        
+                        // Risk Management
+                        if (tags['SECTION_' + i + '_RISK']) {
+                            html += '<div style="background-color: #ffe6e6; border-left: 4px solid #dc3545; padding: 15px; margin: 20px 0; border-radius: 8px;">\n';
+                            html += '    <p style="margin: 0; color: #721c24;"><strong>⚠️ Risk Management:</strong> ' + tags['SECTION_' + i + '_RISK'] + '</p>\n';
+                            html += '</div>\n';
+                        }
+                        
+                        // Common Mistakes
+                        if (tags['SECTION_' + i + '_MISTAKES']) {
+                            html += '<div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 8px;">\n';
+                            html += '    <p style="margin: 0; color: #856404;"><strong>❌ Common Mistakes to Avoid:</strong><br>\n';
+                            html += '    ' + tags['SECTION_' + i + '_MISTAKES'] + '</p>\n';
+                            html += '</div>\n';
+                        }
+                        
+                        // Data Points
+                        if (tags['DATA_POINT_' + i]) {
+                            html += '<div style="background-color: #e7f3ff; border-left: 4px solid #007bff; padding: 15px; margin: 20px 0; border-radius: 8px;">\n';
+                            html += '    <p style="margin: 0; color: #004085;"><strong>📈 Key Data:</strong> ' + tags['DATA_POINT_' + i] + '</p>\n';
+                            html += '</div>\n';
+                        }
+                        
+                        // Add recommended image
+                        html += '<!-- RECOMMENDED IMAGE ' + i + ' -->\n';
+                        html += '<div style="background: #f0f0f0; border: 2px dashed #666; padding: 20px; margin: 30px 0; text-align: center; border-radius: 8px;">\n';
+                        html += '    <p style="font-weight: bold; color: #333;">📷 RECOMMENDED IMAGE ' + i + '</p>\n';
+                        html += '    <p style="color: #666;">Title: ' + (h2 || 'Section ' + i + ' Image') + '</p>\n';
+                        html += '    <p style="color: #666;">Alt Text: ' + slug + '-section-' + i + '</p>\n';
+                        html += '    <p style="color: #666; font-style: italic;">Description: ' + (tags['VISUAL_ELEMENT_' + i] || 'Create a chart, screenshot, or infographic that illustrates the concepts discussed in this section') + '</p>\n';
+                        html += '</div>\n';
+                        
+                        // Add Billy's Take after sections 2, 3, and 4
+                        if (i >= 2 && i <= 4) {
+                            const takeIndex = i - 1;
+                            const take = tags['BILLY_TAKE_' + takeIndex];
+                            if (take) {
+                                html += '<div style="background-color: #f7f7f7; border-left: 4px solid #3366ff; padding: 15px; margin: 20px 0; font-style: italic; border-radius: 8px;">\n';
+                                html += '    <span style="color: #333333; font-family: Montserrat;"><strong>Billy\'s Take:</strong></span>\n';
+                                html += '    <span style="color: #333333; font-family: Montserrat;">"' + take + '"</span>\n';
+                                html += '</div>\n';
+                            }
                         }
                     }
                 }
-            }
-
-            // Add Scaling Roadmap if present
-            if (tags.SCALING_ROADMAP) {
-                html += `<div style="background: linear-gradient(135deg, #f0f8ff 0%, #e8f4fd 100%); border: 2px solid #3366ff; padding: 25px; margin: 30px 0; border-radius: 12px;">
-    <h3 style="margin-top: 0; color: #3366ff;">📈 Your Scaling Roadmap</h3>
-    <p style="color: #333333;">${tags.SCALING_ROADMAP}</p>
-</div>
-`;
-            }
-
-            // Continue with ALL existing sections (Deep Dive, Warning, Evolution, etc.) - NO CHANGES
-            // Add Deep Dive if present
-            if (tags.BILLY_DEEP_DIVE) {
-                html += `<div style="background-color: #f7faff; border: 1px solid #cce0ff; border-left: 4px solid #3366ff; padding: 20px 25px; margin: 30px 0; border-radius: 15px;">
-    <h3 style="margin-top: 0;"><span style="color: #333333; font-family: Montserrat;">Billy's Deep Dive</span></h3>
-    <span style="color: #333333; font-family: Montserrat;">${tags.BILLY_DEEP_DIVE}</span>
-</div>
-`;
-            }
-
-            // Add Critical Warning if present
-            if (tags.CRITICAL_WARNING) {
-                const warningParts = tags.CRITICAL_WARNING.split(' | ');
-                html += `<div style="background-color: #fffbe6; border-left: 4px solid #c0392b; padding: 15px; margin: 20px 0; font-style: italic; border-radius: 8px;">
-    <p style="color: #c0392b; font-weight: bold; margin: 0;">
-        <span style="color: #333333; font-family: Montserrat;">⚠️ ${warningParts[0]}: ${warningParts[1] || ''}</span>
-    </p>
-</div>
-`;
-            }
-
-            // Add Personal Evolution if present
-            if (tags.PERSONAL_EVOLUTION) {
-                html += `<div style="background-color: #f7faff; border: 1px solid #cce0ff; border-left: 4px solid #3366ff; padding: 20px 25px; margin: 30px 0; border-radius: 15px;">
-    <h3 style="margin-top: 0;"><span style="color: #333333; font-family: Montserrat;">My Personal Evolution</span></h3>
-    <span style="color: #333333; font-family: Montserrat;">${tags.PERSONAL_EVOLUTION}</span>
-</div>
-`;
-            }
-
-            // Continue Your Learning section
-            html += `<h2><span style="color: #333333; font-family: Montserrat;">Continue Your Learning</span></h2>
-<div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px;">
-<a href="https://revolutiontradingpros.com/risk-management-essentials/" style="text-decoration: none; color: inherit;">
-<div style="display: flex; gap: 15px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer; align-items: center;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.15)'; this.style.borderColor='#c0392b'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
-<span style="color: #333333;"><img style="width: 100px; height: 100px; border-radius: 6px;" src="https://placehold.co/100x100/c0392b/ffffff?text=Risk" alt="Risk Management Essentials" /></span>
-<div style="flex: 1;">
-<h3 style="margin: 0 0 8px 0; color: #333; font-size: 1.2em;"><span style="color: #333333;">Risk Management Essentials for Active Traders</span></h3>
-<p style="margin: 0; color: #666; font-size: 0.95em; line-height: 1.5;"><span style="color: #333333;">Learn the core principles of risk management, including position sizing and setting effective stop-losses to protect your capital.</span></p>
-</div>
-</div>
-</a>
-<a href="https://revolutiontradingpros.com/technical-analysis-introduction/" style="text-decoration: none; color: inherit;">
-<div style="display: flex; gap: 15px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer; align-items: center;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
-<span style="color: #333333;"><img style="width: 100px; height: 100px; border-radius: 6px;" src="https://placehold.co/100x100/3366ff/ffffff?text=Tech" alt="Technical Analysis" /></span>
-<div style="flex: 1;">
-<h3 style="margin: 0 0 8px 0; color: #333; font-size: 1.2em;"><span style="color: #333333;">An Introduction to Technical Analysis</span></h3>
-<p style="margin: 0; color: #666; font-size: 0.95em; line-height: 1.5;"><span style="color: #333333;">Discover how to read charts, identify trends, and use technical indicators to improve your trade timing and execution.</span></p>
-</div>
-</div>
-</a>
-<a href="https://revolutiontradingpros.com/trading-psychology/" style="text-decoration: none; color: inherit;">
-<div style="display: flex; gap: 15px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer; align-items: center;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.15)'; this.style.borderColor='#27ae60'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
-<span style="color: #333333;"><img style="width: 100px; height: 100px; border-radius: 6px;" src="https://placehold.co/100x100/27ae60/ffffff?text=Mind" alt="Trading Psychology" /></span>
-<div style="flex: 1;">
-<h3 style="margin: 0 0 8px 0; color: #333; font-size: 1.2em;"><span style="color: #333333;">The Psychology of Successful Trading</span></h3>
-<p style="margin: 0; color: #666; font-size: 0.95em; line-height: 1.5;"><span style="color: #333333;">Master the mental game of trading by understanding emotional control, discipline, and the psychological factors that impact trading decisions.</span></p>
-</div>
-</div>
-</a>
-</div>
-
-<!-- RECOMMENDED EXTERNAL RESOURCES TABLE -->
-<h2 style="margin-top: 40px;"><span style="color: #333333; font-family: Montserrat;">Recommended External Resources</span></h2>
-`;
-
-            // Add Resources Table if present, otherwise use default
-            if (tags.RESOURCES_TABLE) {
-                html += `<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 25px 0;">
-    ${processSection(tags.RESOURCES_TABLE)}
-</div>
-`;
-            } else {
-                // Default resources table
-                html += `<table style="width: 100%; border-collapse: collapse; margin: 25px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-<thead style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
-<tr>
-<th style="border: 1px solid #dddddd; text-align: left; padding: 15px; font-weight: 600;"><span style="color: #333333; font-family: Montserrat;">Topic</span></th>
-<th style="border: 1px solid #dddddd; text-align: left; padding: 15px; font-weight: 600;"><span style="color: #333333; font-family: Montserrat;">Resource</span></th>
-<th style="border: 1px solid #dddddd; text-align: left; padding: 15px; font-weight: 600;"><span style="color: #333333; font-family: Montserrat;">Why It Matters</span></th>
-</tr>
-</thead>
-<tbody>
-<tr style="transition: background-color 0.2s ease;">
-<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #333333; font-family: Montserrat;"><strong>Official Education</strong></span></td>
-<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #3366ff; font-family: Montserrat;"><a style="color: #3366ff; text-decoration: none; font-weight: 500;" href="https://www.cboe.com/education/" target="_blank" rel="noopener noreferrer">CBOE Options Institute</a></span></td>
-<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #333333; font-family: Montserrat;">Free comprehensive options education from the largest U.S. options exchange.</span></td>
-</tr>
-<tr style="transition: background-color 0.2s ease;">
-<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #333333; font-family: Montserrat;"><strong>Regulatory Guidance</strong></span></td>
-<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #3366ff; font-family: Montserrat;"><a style="color: #3366ff; text-decoration: none; font-weight: 500;" href="https://www.sec.gov/education" target="_blank" rel="noopener noreferrer">SEC Investor Education</a></span></td>
-<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #333333; font-family: Montserrat;">Understanding trading regulations and investor protection from the official source.</span></td>
-</tr>
-<tr style="transition: background-color 0.2s ease;">
-<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #333333; font-family: Montserrat;"><strong>Market Data</strong></span></td>
-<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #3366ff; font-family: Montserrat;"><a style="color: #3366ff; text-decoration: none; font-weight: 500;" href="https://www.cmegroup.com/education.html" target="_blank" rel="noopener noreferrer">CME Group Education</a></span></td>
-<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #333333; font-family: Montserrat;">Learn about futures markets and market mechanics from the world's leading derivatives marketplace.</span></td>
-</tr>
-</tbody>
-</table>
-`;
-            }
-
-            // FAQ Section
-            html += `<h2 style="margin-top: 40px;"><span style="color: #333333; font-family: Montserrat;">Frequently Asked Questions</span></h2>
-`;
-            
-            // Add FAQ items
-            for (let i = 1; i <= 10; i++) {
-                const q = tags[`FAQ_Q${i}`];
-                const a = tags[`FAQ_A${i}`];
-                if (q && a) {
-                    html += `<span style="color: #333333; font-family: Montserrat;"><strong>Q: ${q}</strong></span>
-<span style="color: #333333; font-family: Montserrat;">A: ${a}</span>
-
-`;
+                
+                // Add Scaling Roadmap if present
+                if (tags.SCALING_ROADMAP) {
+                    html += '<div style="background: linear-gradient(135deg, #f0f8ff 0%, #e8f4fd 100%); border: 2px solid #3366ff; padding: 25px; margin: 30px 0; border-radius: 12px;">\n';
+                    html += '    <h3 style="margin-top: 0; color: #3366ff;">📈 Your Scaling Roadmap</h3>\n';
+                    html += '    <p style="color: #333333;">' + tags.SCALING_ROADMAP + '</p>\n';
+                    html += '</div>\n';
                 }
+                
+                // Add Deep Dive if present
+                if (tags.BILLY_DEEP_DIVE) {
+                    html += '<div style="background-color: #f7faff; border: 1px solid #cce0ff; border-left: 4px solid #3366ff; padding: 20px 25px; margin: 30px 0; border-radius: 15px;">\n';
+                    html += '    <h3 style="margin-top: 0;"><span style="color: #333333; font-family: Montserrat;">Billy\'s Deep Dive</span></h3>\n';
+                    html += '    <span style="color: #333333; font-family: Montserrat;">' + tags.BILLY_DEEP_DIVE + '</span>\n';
+                    html += '</div>\n';
+                }
+                
+                // Add Critical Warning if present
+                if (tags.CRITICAL_WARNING) {
+                    const warningParts = tags.CRITICAL_WARNING.split(' | ');
+                    html += '<div style="background-color: #fffbe6; border-left: 4px solid #c0392b; padding: 15px; margin: 20px 0; font-style: italic; border-radius: 8px;">\n';
+                    html += '    <p style="color: #c0392b; font-weight: bold; margin: 0;">\n';
+                    html += '        <span style="color: #333333; font-family: Montserrat;">⚠️ ' + warningParts[0] + ': ' + (warningParts[1] || '') + '</span>\n';
+                    html += '    </p>\n';
+                    html += '</div>\n';
+                }
+                
+                // Add Personal Evolution if present
+                if (tags.PERSONAL_EVOLUTION) {
+                    html += '<div style="background-color: #f7faff; border: 1px solid #cce0ff; border-left: 4px solid #3366ff; padding: 20px 25px; margin: 30px 0; border-radius: 15px;">\n';
+                    html += '    <h3 style="margin-top: 0;"><span style="color: #333333; font-family: Montserrat;">My Personal Evolution</span></h3>\n';
+                    html += '    <span style="color: #333333; font-family: Montserrat;">' + tags.PERSONAL_EVOLUTION + '</span>\n';
+                    html += '</div>\n';
+                }
+                
+                // Add Continue Your Learning section (keep existing)
+                html += '<h2><span style="color: #333333; font-family: Montserrat;">Continue Your Learning</span></h2>\n';
+                html += '<div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px;">\n';
+                html += '<a href="https://revolutiontradingpros.com/risk-management-essentials/" style="text-decoration: none; color: inherit;">\n';
+                html += '<div style="display: flex; gap: 15px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer; align-items: center;" onmouseover="this.style.transform=\'translateY(-5px)\'; this.style.boxShadow=\'0 8px 16px rgba(0,0,0,0.15)\'; this.style.borderColor=\'#c0392b\'" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'0 2px 4px rgba(0,0,0,0.1)\'; this.style.borderColor=\'#e0e0e0\'">\n';
+                html += '<span style="color: #333333;"><img style="width: 100px; height: 100px; border-radius: 6px;" src="https://placehold.co/100x100/c0392b/ffffff?text=Risk" alt="Risk Management Essentials" /></span>\n';
+                html += '<div style="flex: 1;">\n';
+                html += '<h3 style="margin: 0 0 8px 0; color: #333; font-size: 1.2em;"><span style="color: #333333;">Risk Management Essentials for Active Traders</span></h3>\n';
+                html += '<p style="margin: 0; color: #666; font-size: 0.95em; line-height: 1.5;"><span style="color: #333333;">Learn the core principles of risk management, including position sizing and setting effective stop-losses to protect your capital.</span></p>\n';
+                html += '</div>\n';
+                html += '</div>\n';
+                html += '</a>\n';
+                html += '<a href="https://revolutiontradingpros.com/technical-analysis-introduction/" style="text-decoration: none; color: inherit;">\n';
+                html += '<div style="display: flex; gap: 15px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer; align-items: center;" onmouseover="this.style.transform=\'translateY(-5px)\'; this.style.boxShadow=\'0 8px 16px rgba(0,0,0,0.15)\'; this.style.borderColor=\'#3366ff\'" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'0 2px 4px rgba(0,0,0,0.1)\'; this.style.borderColor=\'#e0e0e0\'">\n';
+                html += '<span style="color: #333333;"><img style="width: 100px; height: 100px; border-radius: 6px;" src="https://placehold.co/100x100/3366ff/ffffff?text=Tech" alt="Technical Analysis" /></span>\n';
+                html += '<div style="flex: 1;">\n';
+                html += '<h3 style="margin: 0 0 8px 0; color: #333; font-size: 1.2em;"><span style="color: #333333;">An Introduction to Technical Analysis</span></h3>\n';
+                html += '<p style="margin: 0; color: #666; font-size: 0.95em; line-height: 1.5;"><span style="color: #333333;">Discover how to read charts, identify trends, and use technical indicators to improve your trade timing and execution.</span></p>\n';
+                html += '</div>\n';
+                html += '</div>\n';
+                html += '</a>\n';
+                html += '<a href="https://revolutiontradingpros.com/trading-psychology/" style="text-decoration: none; color: inherit;">\n';
+                html += '<div style="display: flex; gap: 15px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer; align-items: center;" onmouseover="this.style.transform=\'translateY(-5px)\'; this.style.boxShadow=\'0 8px 16px rgba(0,0,0,0.15)\'; this.style.borderColor=\'#27ae60\'" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'0 2px 4px rgba(0,0,0,0.1)\'; this.style.borderColor=\'#e0e0e0\'">\n';
+                html += '<span style="color: #333333;"><img style="width: 100px; height: 100px; border-radius: 6px;" src="https://placehold.co/100x100/27ae60/ffffff?text=Mind" alt="Trading Psychology" /></span>\n';
+                html += '<div style="flex: 1;">\n';
+                html += '<h3 style="margin: 0 0 8px 0; color: #333; font-size: 1.2em;"><span style="color: #333333;">The Psychology of Successful Trading</span></h3>\n';
+                html += '<p style="margin: 0; color: #666; font-size: 0.95em; line-height: 1.5;"><span style="color: #333333;">Master the mental game of trading by understanding emotional control, discipline, and the psychological factors that impact trading decisions.</span></p>\n';
+                html += '</div>\n';
+                html += '</div>\n';
+                html += '</a>\n';
+                html += '</div>\n\n';
+                
+                // Add External Resources Table
+                html += '<!-- RECOMMENDED EXTERNAL RESOURCES TABLE -->\n';
+                html += '<h2 style="margin-top: 40px;"><span style="color: #333333; font-family: Montserrat;">Recommended External Resources</span></h2>\n';
+                
+                if (tags.RESOURCES_TABLE) {
+                    html += '<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 25px 0;">\n';
+                    html += '    ' + processSection(tags.RESOURCES_TABLE) + '\n';
+                    html += '</div>\n';
+                } else {
+                    // Default resources table
+                    html += '<table style="width: 100%; border-collapse: collapse; margin: 25px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">\n';
+                    html += '<thead style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">\n';
+                    html += '<tr>\n';
+                    html += '<th style="border: 1px solid #dddddd; text-align: left; padding: 15px; font-weight: 600;"><span style="color: #333333; font-family: Montserrat;">Topic</span></th>\n';
+                    html += '<th style="border: 1px solid #dddddd; text-align: left; padding: 15px; font-weight: 600;"><span style="color: #333333; font-family: Montserrat;">Resource</span></th>\n';
+                    html += '<th style="border: 1px solid #dddddd; text-align: left; padding: 15px; font-weight: 600;"><span style="color: #333333; font-family: Montserrat;">Why It Matters</span></th>\n';
+                    html += '</tr>\n';
+                    html += '</thead>\n';
+                    html += '<tbody>\n';
+                    html += '<tr style="transition: background-color 0.2s ease;">\n';
+                    html += '<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #333333; font-family: Montserrat;"><strong>Official Education</strong></span></td>\n';
+                    html += '<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #3366ff; font-family: Montserrat;"><a style="color: #3366ff; text-decoration: none; font-weight: 500;" href="https://www.cboe.com/education/" target="_blank" rel="noopener noreferrer">CBOE Options Institute</a></span></td>\n';
+                    html += '<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #333333; font-family: Montserrat;">Free comprehensive options education from the largest U.S. options exchange.</span></td>\n';
+                    html += '</tr>\n';
+                    html += '<tr style="transition: background-color 0.2s ease;">\n';
+                    html += '<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #333333; font-family: Montserrat;"><strong>Regulatory Guidance</strong></span></td>\n';
+                    html += '<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #3366ff; font-family: Montserrat;"><a style="color: #3366ff; text-decoration: none; font-weight: 500;" href="https://www.sec.gov/education" target="_blank" rel="noopener noreferrer">SEC Investor Education</a></span></td>\n';
+                    html += '<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #333333; font-family: Montserrat;">Understanding trading regulations and investor protection from the official source.</span></td>\n';
+                    html += '</tr>\n';
+                    html += '<tr style="transition: background-color 0.2s ease;">\n';
+                    html += '<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #333333; font-family: Montserrat;"><strong>Market Data</strong></span></td>\n';
+                    html += '<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #3366ff; font-family: Montserrat;"><a style="color: #3366ff; text-decoration: none; font-weight: 500;" href="https://www.cmegroup.com/education.html" target="_blank" rel="noopener noreferrer">CME Group Education</a></span></td>\n';
+                    html += '<td style="border: 1px solid #dddddd; text-align: left; padding: 15px;"><span style="color: #333333; font-family: Montserrat;">Learn about futures markets and market mechanics from the world\'s leading derivatives marketplace.</span></td>\n';
+                    html += '</tr>\n';
+                    html += '</tbody>\n';
+                    html += '</table>\n';
+                }
+                
+                // FAQ Section
+                html += '<h2 style="margin-top: 40px;"><span style="color: #333333; font-family: Montserrat;">Frequently Asked Questions</span></h2>\n';
+                
+                // Add FAQ items
+                for (let i = 1; i <= 10; i++) {
+                    const q = tags['FAQ_Q' + i];
+                    const a = tags['FAQ_A' + i];
+                    if (q && a) {
+                        html += '<span style="color: #333333; font-family: Montserrat;"><strong>Q: ' + q + '</strong></span>\n';
+                        html += '<span style="color: #333333; font-family: Montserrat;">A: ' + a + '</span>\n\n';
+                    }
+                }
+                
+                // Newsletter signup
+                html += '<h3 style="text-align: center;"><span style="color: #333333; font-family: Montserrat; font-size: 24px;">Get Our Trading Cheat Sheet Direct to Your Inbox</span></h3>\n';
+                html += '<span style="color: #333333;">[elementor-template id="44911"]</span>\n\n';
+                
+                // Share This Post Section
+                html += '<!-- Share This Post Section -->\n';
+                html += '<div style="margin: 40px auto; max-width: 800px; padding: 30px; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); border-radius: 15px; border: 1px solid #e0e0e0; text-align: center;">\n';
+                html += '<h3 style="margin: 0 0 10px 0; color: #333333; font-family: Montserrat; font-size: 1.3em;">Found this helpful? Share it with fellow traders!</h3>\n';
+                html += '<p style="margin: 0 0 25px 0; color: #666; font-family: Montserrat; font-size: 0.9em;">Help others improve their trading</p>\n\n';
+                html += '<div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center;">\n';
+                html += '<a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #000000; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="https://twitter.com/intent/tweet?text=' + encodeURIComponent(tags.TITLE || 'Check this out') + '&amp;url=https://revolutiontradingpros.com/' + slug + '/" target="_blank" rel="noopener noreferrer" onmouseover="this.style.transform=\'translateY(-3px)\'; this.style.boxShadow=\'0 6px 16px rgba(0,0,0,0.2)\'" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'none\'">\n';
+                html += '<span style="font-size: 16px; line-height: 1;">𝕏</span> Share on X\n';
+                html += '</a>\n';
+                html += '<a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #0077b5; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="https://www.linkedin.com/sharing/share-offsite/?url=https://revolutiontradingpros.com/' + slug + '/" target="_blank" rel="noopener noreferrer" onmouseover="this.style.transform=\'translateY(-3px)\'; this.style.boxShadow=\'0 6px 16px rgba(0,119,181,0.3)\'; this.style.backgroundColor=\'#005885\'" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'none\'; this.style.backgroundColor=\'#0077b5\'">\n';
+                html += '<span style="font-size: 16px; font-weight: bold; line-height: 1;">in</span> Share on LinkedIn\n';
+                html += '</a>\n';
+                html += '<a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #1877f2; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="https://www.facebook.com/sharer/sharer.php?u=https://revolutiontradingpros.com/' + slug + '/" target="_blank" rel="noopener noreferrer" onmouseover="this.style.transform=\'translateY(-3px)\'; this.style.boxShadow=\'0 6px 16px rgba(24,119,242,0.3)\'; this.style.backgroundColor=\'#1264d1\'" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'none\'; this.style.backgroundColor=\'#1877f2\'">\n';
+                html += '<span style="font-size: 16px; font-weight: bold; line-height: 1;">f</span> Share on Facebook\n';
+                html += '</a>\n';
+                html += '<a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #6c757d; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="mailto:?subject=' + encodeURIComponent(tags.TITLE || 'Check this out') + '&amp;body=Check%20out%20this%20article:%20https://revolutiontradingpros.com/' + slug + '/" onmouseover="this.style.transform=\'translateY(-3px)\'; this.style.boxShadow=\'0 6px 16px rgba(108,117,125,0.3)\'; this.style.backgroundColor=\'#5a6268\'" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'none\'; this.style.backgroundColor=\'#6c757d\'">\n';
+                html += '✉ Email to a Friend\n';
+                html += '</a>\n';
+                html += '<a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #3366ff; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="javascript:void(0);" onclick="prompt(\'Copy this link:\', \'https://revolutiontradingpros.com/' + slug + '/\')" onmouseover="this.style.transform=\'translateY(-3px)\'; this.style.boxShadow=\'0 6px 16px rgba(51,102,255,0.3)\'; this.style.backgroundColor=\'#2952cc\'" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'none\'; this.style.backgroundColor=\'#3366ff\'">\n';
+                html += '🔗 Copy Link\n';
+                html += '</a>\n';
+                html += '</div>\n';
+                html += '</div>\n\n';
+                
+                // CTA Section with Trading Room Cards
+                html += '<!-- CTA Section with light gray background -->\n';
+                html += '<div style="margin-top: 40px; padding: 30px 20px; background-color: #f8f9fa; border-radius: 20px;">\n';
+                html += '<h2 style="text-align: center;"><span style="color: #333333;">Start Trading Like a Professional</span></h2>\n';
+                html += '<p style="text-align: center; color: #333333; max-width: 800px; margin: 0 auto 10px;">Ready to start trading like a professional? Join our community for in-depth analysis, expert strategy and live trading. Sign up today to start trading with a real edge!</p>\n';
+                html += '<!-- Trading Room Cards -->\n';
+                html += TRADING_ROOM_CARDS + '\n';
+                html += '</div>\n\n';
+                
+                // Critical warning
+                html += '<!-- Critical warning on WHITE background -->\n';
+                html += '<div style="border: 1px solid #ccc; padding: 15px; margin-top: 40px; background-color: #fafafa; border-radius: 8px;">\n';
+                html += '<p style="font-size: 0.9em; color: #555; text-align: center; margin: 0;"><span style="color: #333333;"><strong>CRITICAL:</strong> Trading involves substantial risk of loss and is not suitable for all investors. The content of this article is for educational purposes only and is not a recommendation to buy or sell any security. All trading strategies are used at your own risk.</span></p>\n';
+                html += '</div>\n\n';
+                
+                // Logo
+                html += '<!-- Logo on WHITE background -->\n';
+                html += '<p style="text-align: center; margin-top: 30px;"><span style="color: #333333;"><img src="https://revolutiontradingpros.com/wp-content/uploads/2024/12/50baa458abe39958a6c1330df9ae980c-300x79.png" alt="Revolution Trading Pros Logo" width="300" height="79" /></span></p>\n';
+                
+                // Add Schema Markup notes if present
+                if (tags.SCHEMA_MARKUP_NOTES) {
+                    html += '\n<!-- SCHEMA MARKUP NOTES:\n';
+                    html += tags.SCHEMA_MARKUP_NOTES + '\n';
+                    html += '-->\n';
+                }
+                
+                html += '\n</div>';
+                
+                document.getElementById('htmlOutput').value = html;
+                document.getElementById('phase2Output').classList.add('show');
+                document.getElementById('phase2Output').scrollIntoView({ behavior: 'smooth' });
+                
+                const statusMsg = audioUrl ? 
+                    'E-E-A-T optimized HTML generated with ALL sections!' : 
+                    'E-E-A-T optimized HTML generated! (Consider adding audio for better engagement)';
+                
+                showStatus('phase2Status', 'success', statusMsg);
+                document.getElementById('phase2Badge').style.display = 'inline';
+                
+                autoSave();
+                
+            } catch (error) {
+                console.error('Error in generateHTML:', error);
+                showStatus('phase2Status', 'error', 'An error occurred. Please check your content and try again.');
             }
-
-            // Newsletter signup
-            html += `<h3 style="text-align: center;"><span style="color: #333333; font-family: Montserrat; font-size: 24px;">Get Our Trading Cheat Sheet Direct to Your Inbox</span></h3>
-<span style="color: #333333;">[elementor-template id="44911"]</span>
-
-<!-- Share This Post Section -->
-<div style="margin: 40px auto; max-width: 800px; padding: 30px; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); border-radius: 15px; border: 1px solid #e0e0e0; text-align: center;">
-<h3 style="margin: 0 0 10px 0; color: #333333; font-family: Montserrat; font-size: 1.3em;">Found this helpful? Share it with fellow traders!</h3>
-<p style="margin: 0 0 25px 0; color: #666; font-family: Montserrat; font-size: 0.9em;">Help others improve their trading</p>
-
-<div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center;">
-<a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #000000; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(tags.TITLE || 'Check this out')}&amp;url=https://revolutiontradingpros.com/${slug}/" target="_blank" rel="noopener noreferrer" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-<span style="font-size: 16px; line-height: 1;">𝕏</span> Share on X
-</a>
-<a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #0077b5; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="https://www.linkedin.com/sharing/share-offsite/?url=https://revolutiontradingpros.com/${slug}/" target="_blank" rel="noopener noreferrer" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 16px rgba(0,119,181,0.3)'; this.style.backgroundColor='#005885'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.backgroundColor='#0077b5'">
-<span style="font-size: 16px; font-weight: bold; line-height: 1;">in</span> Share on LinkedIn
-</a>
-<a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #1877f2; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="https://www.facebook.com/sharer/sharer.php?u=https://revolutiontradingpros.com/${slug}/" target="_blank" rel="noopener noreferrer" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 16px rgba(24,119,242,0.3)'; this.style.backgroundColor='#1264d1'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.backgroundColor='#1877f2'">
-<span style="font-size: 16px; font-weight: bold; line-height: 1;">f</span> Share on Facebook
-</a>
-<a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #6c757d; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="mailto:?subject=${encodeURIComponent(tags.TITLE || 'Check this out')}&amp;body=Check%20out%20this%20article:%20https://revolutiontradingpros.com/${slug}/" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 16px rgba(108,117,125,0.3)'; this.style.backgroundColor='#5a6268'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.backgroundColor='#6c757d'">
-✉ Email to a Friend
-</a>
-<a style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 20px; background-color: #3366ff; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: Montserrat; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; min-width: 180px; height: 44px; box-sizing: border-box;" href="javascript:void(0);" onclick="prompt('Copy this link:', 'https://revolutiontradingpros.com/${slug}/')" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 16px rgba(51,102,255,0.3)'; this.style.backgroundColor='#2952cc'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.backgroundColor='#3366ff'">
-🔗 Copy Link
-</a>
-</div>
-</div>
-
-<!-- CTA Section with light gray background -->
-<div style="margin-top: 40px; padding: 30px 20px; background-color: #f8f9fa; border-radius: 20px;">
-<h2 style="text-align: center;"><span style="color: #333333;">Start Trading Like a Professional</span></h2>
-<p style="text-align: center; color: #333333; max-width: 800px; margin: 0 auto 10px;">Ready to start trading like a professional? Join our community for in-depth analysis, expert strategy and live trading. Sign up today to start trading with a real edge!</p>
-<!-- Trading Room Cards -->
-${TRADING_ROOM_CARDS}
-</div>
-
-<!-- Critical warning on WHITE background -->
-<div style="border: 1px solid #ccc; padding: 15px; margin-top: 40px; background-color: #fafafa; border-radius: 8px;">
-<p style="font-size: 0.9em; color: #555; text-align: center; margin: 0;"><span style="color: #333333;"><strong>CRITICAL:</strong> Trading involves substantial risk of loss and is not suitable for all investors. The content of this article is for educational purposes only and is not a recommendation to buy or sell any security. All trading strategies are used at your own risk.</span></p>
-</div>
-
-<!-- Logo on WHITE background -->
-<p style="text-align: center; margin-top: 30px;"><span style="color: #333333;"><img src="https://revolutiontradingpros.com/wp-content/uploads/2024/12/50baa458abe39958a6c1330df9ae980c-300x79.png" alt="Revolution Trading Pros Logo" width="300" height="79" /></span></p>
-`;
-
-            // Add Schema Markup notes as HTML comment if present
-            if (tags.SCHEMA_MARKUP_NOTES) {
-                html += `
-<!-- SCHEMA MARKUP NOTES:
-${tags.SCHEMA_MARKUP_NOTES}
--->
-`;
-            }
-
-            html += `
-</div>`;
-
-            document.getElementById('htmlOutput').value = html;
-            document.getElementById('phase2Output').classList.add('show');
-            document.getElementById('phase2Output').scrollIntoView({ behavior: 'smooth' });
-            
-            const statusMsg = audioUrl ? 
-                'E-E-A-T optimized HTML generated with ALL sections!' : 
-                'E-E-A-T optimized HTML generated! (Consider adding audio for better engagement)';
-            
-            showStatus('phase2Status', 'success', statusMsg);
-            document.getElementById('phase2Badge').style.display = 'inline';
-            
-            autoSave();
         }
 
-        // KEEP ALL EXISTING FUNCTIONS UNCHANGED
-        // Copy content
+        // All remaining functions stay the same
+        // Copy content function
         function copyContent(elementId) {
             const textarea = document.getElementById(elementId);
             textarea.select();
@@ -2171,7 +2181,7 @@ ${tags.SCHEMA_MARKUP_NOTES}
         }
 
         function downloadFile(content, filename, type) {
-            const blob = new Blob([content], { type });
+            const blob = new Blob([content], { type: type });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -2179,7 +2189,7 @@ ${tags.SCHEMA_MARKUP_NOTES}
             a.click();
             URL.revokeObjectURL(url);
             
-            showStatus('phase2Status', 'success', `${filename} downloaded!`);
+            showStatus('phase2Status', 'success', filename + ' downloaded!');
         }
 
         // Save/Load Draft Functions
@@ -2203,7 +2213,6 @@ ${tags.SCHEMA_MARKUP_NOTES}
                 audioUrl: document.getElementById('audioUrl').value,
                 promptOutput: document.getElementById('promptOutput').value,
                 htmlOutput: document.getElementById('htmlOutput').value,
-                // Save advanced options
                 includeExamples: document.getElementById('includeExamples').checked,
                 includeRules: document.getElementById('includeRules').checked,
                 includeWarnings: document.getElementById('includeWarnings').checked,
@@ -2211,7 +2220,6 @@ ${tags.SCHEMA_MARKUP_NOTES}
                 includeVisuals: document.getElementById('includeVisuals').checked,
                 includeScaling: document.getElementById('includeScaling').checked
             };
-            
             const drafts = JSON.parse(localStorage.getItem('athenaDrafts') || '[]');
             drafts.push(draft);
             localStorage.setItem('athenaDrafts', JSON.stringify(drafts));
@@ -2274,7 +2282,8 @@ ${tags.SCHEMA_MARKUP_NOTES}
         }
 
         function showDrafts() {
-            switchPhase('phase3', { target: document.querySelectorAll('.phase-tab')[2] });
+            const tabs = document.querySelectorAll('.phase-tab');
+            switchPhase('phase3', { target: tabs[2] });
         }
 
         function updateDraftsList() {
@@ -2286,18 +2295,22 @@ ${tags.SCHEMA_MARKUP_NOTES}
                 return;
             }
             
-            draftsList.innerHTML = drafts.map((draft, index) => `
-                <div class="draft-item">
-                    <div>
-                        <div class="draft-title">${draft.name}</div>
-                        <div class="draft-date">${new Date(draft.date).toLocaleString()}</div>
-                    </div>
-                    <div class="draft-actions">
-                        <button class="draft-btn load-draft" onclick="loadDraft(${index})">Load</button>
-                        <button class="draft-btn delete-draft" onclick="deleteDraft(${index})">Delete</button>
-                    </div>
-                </div>
-            `).join('');
+            let html = '';
+            for (let i = 0; i < drafts.length; i++) {
+                const draft = drafts[i];
+                html += '<div class="draft-item">';
+                html += '    <div>';
+                html += '        <div class="draft-title">' + draft.name + '</div>';
+                html += '        <div class="draft-date">' + new Date(draft.date).toLocaleString() + '</div>';
+                html += '    </div>';
+                html += '    <div class="draft-actions">';
+                html += '        <button class="draft-btn load-draft" onclick="loadDraft(' + i + ')">Load</button>';
+                html += '        <button class="draft-btn delete-draft" onclick="deleteDraft(' + i + ')">Delete</button>';
+                html += '    </div>';
+                html += '</div>';
+            }
+            
+            draftsList.innerHTML = html;
         }
 
         function loadDraft(index) {
@@ -2335,8 +2348,9 @@ ${tags.SCHEMA_MARKUP_NOTES}
                 document.getElementById('phase2Output').classList.add('show');
             }
             
-            showStatus('phase1Status', 'success', `Draft "${draft.name}" loaded successfully!`);
-            switchPhase('phase1', { target: document.querySelectorAll('.phase-tab')[0] });
+            showStatus('phase1Status', 'success', 'Draft "' + draft.name + '" loaded successfully!');
+            const tabs = document.querySelectorAll('.phase-tab');
+            switchPhase('phase1', { target: tabs[0] });
         }
 
         function deleteDraft(index) {
@@ -2353,17 +2367,10 @@ ${tags.SCHEMA_MARKUP_NOTES}
         function clearAll() {
             if (!confirm('This will clear all fields. Are you sure?')) return;
             
-            document.querySelectorAll('input[type="text"], input[type="url"], textarea').forEach(field => {
-                field.value = '';
-            });
-            
-            document.
-                function clearAll() {
-            if (!confirm('This will clear all fields. Are you sure?')) return;
-            
-            document.querySelectorAll('input[type="text"], input[type="url"], textarea').forEach(field => {
-                field.value = '';
-            });
+            const fields = document.querySelectorAll('input[type="text"], input[type="url"], textarea');
+            for (let i = 0; i < fields.length; i++) {
+                fields[i].value = '';
+            }
             
             document.getElementById('contentStyle').value = 'conversational';
             document.getElementById('targetLength').value = '3500';
@@ -2388,7 +2395,8 @@ ${tags.SCHEMA_MARKUP_NOTES}
             }
             
             const keyword = document.getElementById('keyword').value.trim().toLowerCase();
-            const title = html.match(/<h1[^>]*>.*?<span[^>]*>(.*?)<\/span>/)?.[1] || '';
+            const titleMatch = html.match(/<h1[^>]*>.*?<span[^>]*>(.*?)<\/span>/);
+            const title = titleMatch ? titleMatch[1] : '';
             
             let score = 0;
             const tips = [];
@@ -2412,7 +2420,7 @@ ${tags.SCHEMA_MARKUP_NOTES}
             }
             
             // Check for Author Bio
-            if (html.includes('By Billy Ribeiro') && html.includes('15+ years') || html.includes('15 years')) {
+            if (html.includes('By Billy Ribeiro') && (html.includes('15+ years') || html.includes('15 years'))) {
                 score += 10;
                 tips.push({ type: 'success', text: '✓ Author bio with experience (E-E-A-T)' });
             } else {
@@ -2439,7 +2447,7 @@ ${tags.SCHEMA_MARKUP_NOTES}
             const exampleCount = (html.match(/Real Trade Example/g) || []).length;
             if (exampleCount >= 2) {
                 score += 10;
-                tips.push({ type: 'success', text: `✓ ${exampleCount} trade examples with specifics` });
+                tips.push({ type: 'success', text: '✓ ' + exampleCount + ' trade examples with specifics' });
             } else {
                 tips.push({ type: 'warning', text: '⚠ Add more specific examples' });
             }
@@ -2468,7 +2476,7 @@ ${tags.SCHEMA_MARKUP_NOTES}
             const h2Count = (html.match(/<h2/g) || []).length;
             if (h2Count >= 5) {
                 score += 10;
-                tips.push({ type: 'success', text: `✓ Good structure with ${h2Count} sections` });
+                tips.push({ type: 'success', text: '✓ Good structure with ' + h2Count + ' sections' });
             } else {
                 tips.push({ type: 'warning', text: '⚠ Add more sections for better structure' });
             }
@@ -2502,118 +2510,129 @@ ${tags.SCHEMA_MARKUP_NOTES}
                  score >= 60 ? 'score-good' :
                  'score-poor');
             
-            document.getElementById('seoTips').innerHTML = tips.map(tip =>
-                `<li class="seo-tip-item tip-${tip.type}">${tip.text}</li>`
-            ).join('');
+            let tipsHTML = '';
+            for (let i = 0; i < tips.length; i++) {
+                tipsHTML += '<li class="seo-tip-item tip-' + tips[i].type + '">' + tips[i].text + '</li>';
+            }
+            document.getElementById('seoTips').innerHTML = tipsHTML;
             
-            // Add E-E-A-T specific recommendations
+            // Add E-E-A-T specific recommendations if score is low
             if (score < 80) {
+                const existingDiv = document.getElementById('eatRecommendations');
+                if (existingDiv) {
+                    existingDiv.remove();
+                }
+                
                 const eatTips = document.createElement('div');
+                eatTips.id = 'eatRecommendations';
                 eatTips.style.marginTop = '20px';
                 eatTips.style.padding = '15px';
                 eatTips.style.background = '#f0f8ff';
                 eatTips.style.borderRadius = '8px';
-                eatTips.innerHTML = `
-                    <h5 style="color: #0066cc; margin-bottom: 10px;">💡 E-E-A-T Optimization Tips:</h5>
-                    <ul style="margin: 0; padding-left: 20px; color: #333;">
-                        ${score < 40 ? '<li>Add specific dollar amounts and percentages to build credibility</li>' : ''}
-                        ${!html.includes('TLDR') ? '<li>Add an executive summary at the top for busy readers</li>' : ''}
-                        ${exampleCount < 2 ? '<li>Include more real trade examples with math/calculations</li>' : ''}
-                        ${!html.includes('Personal Evolution') ? '<li>Share a personal story about failures and breakthroughs</li>' : ''}
-                        ${!html.includes('Billy\'s Rule') ? '<li>Add "Billy\'s Rules" to show expertise</li>' : ''}
-                    </ul>
-                `;
+                
+                let recommendationsHTML = '<h5 style="color: #0066cc; margin-bottom: 10px;">💡 E-E-A-T Optimization Tips:</h5>';
+                recommendationsHTML += '<ul style="margin: 0; padding-left: 20px; color: #333;">';
+                
+                if (score < 40) {
+                    recommendationsHTML += '<li>Add specific dollar amounts and percentages to build credibility</li>';
+                }
+                if (!html.includes('TLDR')) {
+                    recommendationsHTML += '<li>Add an executive summary at the top for busy readers</li>';
+                }
+                if (exampleCount < 2) {
+                    recommendationsHTML += '<li>Include more real trade examples with math/calculations</li>';
+                }
+                if (!html.includes('Personal Evolution')) {
+                    recommendationsHTML += '<li>Share a personal story about failures and breakthroughs</li>';
+                }
+                if (!html.includes('Billy\'s Rule')) {
+                    recommendationsHTML += '<li>Add "Billy\'s Rules" to show expertise</li>';
+                }
+                
+                recommendationsHTML += '</ul>';
+                eatTips.innerHTML = recommendationsHTML;
                 document.getElementById('seoTips').parentNode.appendChild(eatTips);
             }
         }
 
         // Helper functions
         function showHelp() {
-            alert(`ATHENA Pro Generator v3.0 - E-E-A-T Optimized
-
-🎯 WHAT'S NEW IN v3.0:
-- E-E-A-T optimization for Google 2025
-- Executive Summary/TLDR section
-- Custom author bios
-- Top-of-page disclaimers for YMYL
-- Trade examples with calculations
-- "Billy's Rules" for each strategy
-- Risk management sections
-- Personal evolution stories
-- Enhanced keyword clustering
-
-📋 PHASE 1: Generate E-E-A-T Prompt
-- Enter complete keyword cluster (primary, secondary, long-tail)
-- Configure advanced options for maximum E-E-A-T
-- Generate prompt optimized for Experience, Expertise, Authority, Trust
-
-📝 PHASE 2: Apply Template  
-- Paste ALL tagged content including new E-E-A-T tags
-- System auto-extracts meta description
-- Add audio for engagement boost
-- Generate WordPress-ready HTML
-
-🎯 PHASE 3: E-E-A-T Analysis
-- Analyze your content for E-E-A-T signals
-- Get specific optimization recommendations
-- Preview your post before publishing
-
-💡 TIPS FOR HIGH E-E-A-T:
-- Always include specific examples with numbers
-- Share personal stories (failures and successes)
-- Add disclaimers for YMYL content
-- Include authoritative external links
-- Create comprehensive FAQ sections
-
-📊 AUTO-SAVES:
-- Every 30 seconds automatically
-- Multiple draft management
-- Never lose your work
-
-Need help? Contact support@revolutiontradingpros.com`);
+            const helpText = 'ATHENA Pro Generator v3.0 - E-E-A-T Optimized\n\n' +
+                '🎯 WHAT\'S NEW IN v3.0:\n' +
+                '- E-E-A-T optimization for Google 2025\n' +
+                '- Executive Summary/TLDR section\n' +
+                '- Custom author bios\n' +
+                '- Top-of-page disclaimers for YMYL\n' +
+                '- Trade examples with calculations\n' +
+                '- "Billy\'s Rules" for each strategy\n' +
+                '- Risk management sections\n' +
+                '- Personal evolution stories\n' +
+                '- Enhanced keyword clustering\n\n' +
+                '📋 PHASE 1: Generate E-E-A-T Prompt\n' +
+                '- Enter complete keyword cluster (primary, secondary, long-tail)\n' +
+                '- Configure advanced options for maximum E-E-A-T\n' +
+                '- Generate prompt optimized for Experience, Expertise, Authority, Trust\n\n' +
+                '📝 PHASE 2: Apply Template\n' +
+                '- Paste ALL tagged content including new E-E-A-T tags\n' +
+                '- System auto-extracts meta description\n' +
+                '- Add audio for engagement boost\n' +
+                '- Generate WordPress-ready HTML\n\n' +
+                '🎯 PHASE 3: E-E-A-T Analysis\n' +
+                '- Analyze your content for E-E-A-T signals\n' +
+                '- Get specific optimization recommendations\n' +
+                '- Preview your post before publishing\n\n' +
+                '💡 TIPS FOR HIGH E-E-A-T:\n' +
+                '- Always include specific examples with numbers\n' +
+                '- Share personal stories (failures and successes)\n' +
+                '- Add disclaimers for YMYL content\n' +
+                '- Include authoritative external links\n' +
+                '- Create comprehensive FAQ sections\n\n' +
+                '📊 AUTO-SAVES:\n' +
+                '- Every 30 seconds automatically\n' +
+                '- Multiple draft management\n' +
+                '- Never lose your work\n\n' +
+                'Need help? Contact support@revolutiontradingpros.com';
+            
+            alert(helpText);
         }
 
         function showSettings() {
-            alert(`Settings & Configuration
-
-🔧 CURRENT SETTINGS:
-- Version: 3.0 Pro
-- Auto-save: Enabled (30 seconds)
-- E-E-A-T Mode: Active
-- Target Market: Google 2025
-
-📁 STORAGE:
-- All drafts saved locally in browser
-- Auto-save active
-- Clear browser data will remove drafts
-
-🎯 E-E-A-T DEFAULTS:
-- Include Examples: ON
-- Include Rules: ON
-- Include Warnings: ON
-- Include Data: ON
-- Include Visuals: OFF
-- Include Scaling: OFF
-
-💾 BACKUP:
-- Use "Save Draft" regularly
-- Download HTML files for backup
-- Export prompts as .txt files
-
-🔄 UPDATES:
-- Check for updates at revolutiontradingpros.com
-- Current version optimized for 2025 SEO
-
-For advanced settings, contact support.`);
+            const settingsText = 'Settings & Configuration\n\n' +
+                '🔧 CURRENT SETTINGS:\n' +
+                '- Version: 3.0 Pro\n' +
+                '- Auto-save: Enabled (30 seconds)\n' +
+                '- E-E-A-T Mode: Active\n' +
+                '- Target Market: Google 2025\n\n' +
+                '📁 STORAGE:\n' +
+                '- All drafts saved locally in browser\n' +
+                '- Auto-save active\n' +
+                '- Clear browser data will remove drafts\n\n' +
+                '🎯 E-E-A-T DEFAULTS:\n' +
+                '- Include Examples: ON\n' +
+                '- Include Rules: ON\n' +
+                '- Include Warnings: ON\n' +
+                '- Include Data: ON\n' +
+                '- Include Visuals: OFF\n' +
+                '- Include Scaling: OFF\n\n' +
+                '💾 BACKUP:\n' +
+                '- Use "Save Draft" regularly\n' +
+                '- Download HTML files for backup\n' +
+                '- Export prompts as .txt files\n\n' +
+                '🔄 UPDATES:\n' +
+                '- Check for updates at revolutiontradingpros.com\n' +
+                '- Current version optimized for 2025 SEO\n\n' +
+                'For advanced settings, contact support.';
+            
+            alert(settingsText);
         }
 
         // Status messages
         function showStatus(elementId, type, message) {
             const statusEl = document.getElementById(elementId);
-            statusEl.className = `status show ${type}`;
+            statusEl.className = 'status show ' + type;
             statusEl.textContent = message;
             
-            setTimeout(() => {
+            setTimeout(function() {
                 statusEl.classList.remove('show');
             }, 5000);
         }
