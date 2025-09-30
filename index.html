@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATHENA Pro Generator v2.0 - Revolution Trading Pros</title>
+    <title>ATHENA Pro Generator v3.0 - Revolution Trading Pros</title>
     <style>
+        /* KEEP ALL EXISTING STYLES - NO CHANGES */
         * { 
             box-sizing: border-box; 
             margin: 0; 
@@ -788,6 +789,40 @@
             color: #666;
         }
         
+        /* New styles for v3.0 */
+        .advanced-options {
+            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+            border: 2px solid var(--border);
+            padding: 24px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+        
+        .advanced-options h4 {
+            color: var(--dark);
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: normal;
+        }
+        
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 32px;
@@ -878,8 +913,8 @@
     <div class="container">
         <div class="header">
             <h1>⚡ ATHENA Pro Generator</h1>
-            <p>Billy Ribeiro Content System - Google 2025 Optimized</p>
-            <span class="version-badge">Version 2.0 Pro</span>
+            <p>Billy Ribeiro Content System - Google 2025 E-E-A-T Optimized</p>
+            <span class="version-badge">Version 3.0 Pro</span>
         </div>
         
         <div class="main-content">
@@ -919,58 +954,84 @@
                 </button>
             </div>
             
-            <!-- PHASE 1 CONTENT -->
+            <!-- PHASE 1 CONTENT - UPDATED -->
             <div id="phase1" class="phase-content active">
                 <div class="instructions">
-                    <h3>📋 Phase 1: Generate Content Prompt</h3>
+                    <h3>📋 Phase 1: Generate E-E-A-T Optimized Content Prompt</h3>
                     <ol>
-                        <li>Enter your blog topic and primary keyword</li>
-                        <li>Add optional search intent and competitor URLs</li>
+                        <li>Enter your blog topic and complete keyword cluster</li>
+                        <li>Add search intent and competition analysis</li>
+                        <li>Configure advanced options for E-E-A-T optimization</li>
                         <li>Click "Generate Phase 1 Prompt"</li>
                         <li>Copy the prompt and paste into Claude.ai</li>
-                        <li>Claude will generate {{TAGGED}} content</li>
-                        <li>Come back and switch to Phase 2</li>
+                        <li>Claude will generate professionally {{TAGGED}} content</li>
+                        <li>Return and switch to Phase 2</li>
                     </ol>
                 </div>
                 
                 <div class="warning-box">
-                    <strong>⚠️ IMPORTANT:</strong> Do NOT use em dashes (—) in your content. Use regular hyphens (-) or commas instead.
+                    <strong>⚠️ E-E-A-T CRITICAL:</strong> This version focuses on Experience, Expertise, Authority, and Trust. Be specific with examples, data, and personal insights.
                 </div>
                 
                 <div class="form-group required">
                     <label for="topic">
                         📝 Blog Topic
-                        <span class="label-hint">(What you want to write about)</span>
+                        <span class="label-hint">(Be specific - include angle and year)</span>
                     </label>
                     <input 
                         type="text" 
                         id="topic" 
-                        placeholder="e.g., 3 Best Scalping Strategies for Beginners 2025"
+                        placeholder="e.g., 3 Best Options Strategies for Passive Income: My 2025 Blueprint"
                         onkeyup="validatePhase1()"
                     >
                 </div>
                 
+                <!-- Enhanced Keyword Section -->
                 <div class="form-group required">
                     <label for="keyword">
-                        🎯 Primary Keyword
-                        <span class="label-hint">(Main SEO keyword to target)</span>
+                        🎯 Primary Keyword Phrase
+                        <span class="label-hint">(Your main SEO target)</span>
                     </label>
                     <input 
                         type="text" 
                         id="keyword" 
-                        placeholder="e.g., scalping strategies beginners"
+                        placeholder="e.g., best options strategies for passive income"
                         onkeyup="validatePhase1()"
                     >
                 </div>
                 
                 <div class="form-group">
+                    <label for="secondaryKeywords">
+                        🔗 Secondary Keywords/Entities
+                        <span class="label-hint">(Related concepts, comma-separated)</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="secondaryKeywords" 
+                        placeholder="e.g., covered calls, cash-secured puts, The Wheel Strategy, iron condors, selling premium"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="longtailQuestions">
+                        ❓ Long-Tail Questions
+                        <span class="label-hint">(User questions to answer, one per line)</span>
+                    </label>
+                    <textarea 
+                        id="longtailQuestions" 
+                        placeholder="how to generate monthly income from options&#10;is selling options a good way to make money&#10;safest options strategy for beginners&#10;how much capital to start selling options"
+                        rows="4"
+                    ></textarea>
+                </div>
+                
+                <div class="form-group">
                     <label for="searchIntent">
-                        🔍 Search Intent
-                        <span class="label-hint">(What the reader wants to achieve)</span>
+                        🔍 Search Intent Analysis
+                        <span class="label-hint">(What the reader really wants)</span>
                     </label>
                     <textarea 
                         id="searchIntent" 
-                        placeholder="e.g., User wants actionable strategies to grow a small trading account with limited capital and time"
+                        placeholder="e.g., User wants actionable, reliable options strategies for income, understands the risks, and seeks a trustworthy expert to guide them"
                     ></textarea>
                 </div>
                 
@@ -987,6 +1048,18 @@
                 </div>
                 
                 <div class="form-group">
+                    <label for="contentStyle">
+                        ✍️ Content Style
+                    </label>
+                    <select id="contentStyle">
+                        <option value="professional">Professional & Authoritative</option>
+                        <option value="conversational" selected>Conversational Expert</option>
+                        <option value="technical">Technical & Data-Driven</option>
+                        <option value="beginner">Beginner-Friendly</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
                     <label for="targetLength">
                         📏 Target Word Count
                     </label>
@@ -996,6 +1069,41 @@
                         <option value="5000">5,000 words (Ultimate Guide)</option>
                         <option value="7500">7,500 words (Pillar Content)</option>
                     </select>
+                </div>
+                
+                <!-- Advanced Options Section -->
+                <div class="advanced-options">
+                    <h4>🚀 Advanced E-E-A-T Options</h4>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="includeExamples" checked>
+                        <label for="includeExamples">Include specific trade examples with math/calculations</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="includeRules" checked>
+                        <label for="includeRules">Add "Billy's Rules" for each strategy</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="includeWarnings" checked>
+                        <label for="includeWarnings">Include risk warnings and "Who this is NOT for" sections</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="includeData" checked>
+                        <label for="includeData">Request specific data, percentages, and statistics</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="includeVisuals">
+                        <label for="includeVisuals">Include visual element descriptions (charts, tables)</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="includeScaling">
+                        <label for="includeScaling">Add scaling/progression roadmap</label>
+                    </div>
                 </div>
                 
                 <div class="helper-tools">
@@ -1026,14 +1134,14 @@
                 </div>
                 
                 <button class="generate-btn" onclick="generatePhase1Prompt()" id="phase1GenerateBtn">
-                    🚀 Generate Phase 1 Prompt
+                    🚀 Generate E-E-A-T Optimized Prompt
                 </button>
                 
                 <div id="phase1Status" class="status"></div>
                 
                 <div id="phase1Output" class="output-section">
-                    <h3>📄 Your Phase 1 Prompt</h3>
-                    <p style="margin: 10px 0; color: #666;">Copy this and paste into Claude.ai:</p>
+                    <h3>📄 Your E-E-A-T Optimized Phase 1 Prompt</h3>
+                    <p style="margin: 10px 0; color: #666;">Copy this enhanced prompt and paste into Claude.ai:</p>
                     <textarea id="promptOutput" class="output-textarea" readonly></textarea>
                     
                     <div class="button-group">
@@ -1055,64 +1163,60 @@
                 </div>
             </div>
             
-            <!-- PHASE 2 CONTENT -->
+            <!-- PHASE 2 CONTENT - Keep existing but update for new tags -->
             <div id="phase2" class="phase-content">
                 <div class="instructions">
                     <h3>📋 Phase 2: Convert to WordPress HTML</h3>
                     <ol>
-                        <li>Paste the {{TAGGED}} content from Claude</li>
-                        <li>Add meta description and slug (auto-generated if blank)</li>
-                        <li>Add audio URL from ElevenLabs (recommended)</li>
+                        <li>Paste the complete {{TAGGED}} content from Claude</li>
+                        <li>System will auto-extract meta description and keywords</li>
+                        <li>Add audio URL from ElevenLabs (highly recommended)</li>
                         <li>Click "Generate Complete HTML"</li>
                         <li>Preview, then copy HTML and paste into WordPress</li>
                     </ol>
                 </div>
                 
                 <div class="warning-box">
-                    <strong>⚠️ REMINDER:</strong> Ensure there are NO em dashes (—) in your content. The generator will automatically convert them.
+                    <strong>⚠️ IMPORTANT:</strong> Make sure you paste ALL tagged content including new tags like {{EXECUTIVE_SUMMARY_TLDR}}, {{DISCLAIMER}}, {{AUTHOR_BIO}}, etc.
                 </div>
                 
                 <div class="form-group required">
                     <label for="taggedContent">
-                        📝 Paste Tagged Content from Claude
-                        <span class="label-hint">(The complete {{TAGGED}} output)</span>
+                        📝 Paste Complete Tagged Content from Claude
+                        <span class="label-hint">(All {{TAGGED}} output including new E-E-A-T tags)</span>
                     </label>
                     <textarea 
                         id="taggedContent" 
                         class="large-textarea"
-                        placeholder="{{TITLE}}: Your title here&#10;{{TAKEAWAY_1}}: Your takeaway here&#10;{{SECTION_1_H2}}: Your section title&#10;{{SECTION_1_CONTENT}}: Your content here&#10;..."
+                        placeholder="{{TITLE}}: Your title here&#10;{{META_DESCRIPTION}}: Your meta description&#10;{{EXECUTIVE_SUMMARY_TLDR}}: Your TLDR summary&#10;{{DISCLAIMER}}: Your disclaimer&#10;{{AUTHOR_BIO}}: Your custom bio&#10;..."
                         onkeyup="validatePhase2()"
                     ></textarea>
                 </div>
                 
                 <div class="meta-grid">
                     <div class="form-group">
-                        <div class="input-with-counter">
-                            <label for="metaDescription">
-                                🔍 Meta Description
-                                <span class="label-hint">(150-160 chars)</span>
-                            </label>
-                            <input 
-                                type="text" 
-                                id="metaDescription" 
-                                placeholder="Auto-generated if left blank"
-                                maxlength="160"
-                                onkeyup="updateCharCount('metaDescription')"
-                            >
-                            <span class="char-counter" id="metaDescriptionCounter">0/160</span>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
                         <label for="slug">
                             🔗 URL Slug
-                            <span class="label-hint">(SEO-friendly URL)</span>
+                            <span class="label-hint">(Auto-generated from title)</span>
                         </label>
                         <input 
                             type="text" 
                             id="slug" 
                             placeholder="auto-generated-from-title"
                             onkeyup="sanitizeSlug()"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="publishDate">
+                            📅 Publish Date
+                            <span class="label-hint">(For schema markup)</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="publishDate" 
+                            value=""
+                            placeholder="Auto-fills with today's date"
                         >
                     </div>
                 </div>
@@ -1143,13 +1247,13 @@
                 </div>
                 
                 <button class="generate-btn" onclick="generateHTML()" id="phase2GenerateBtn">
-                    🚀 Generate Complete HTML
+                    🚀 Generate Complete E-E-A-T Optimized HTML
                 </button>
                 
                 <div id="phase2Status" class="status"></div>
                 
                 <div id="phase2Output" class="output-section">
-                    <h3>✅ Your Complete HTML Blog Post</h3>
+                    <h3>✅ Your Complete E-E-A-T Optimized HTML Blog Post</h3>
                     <p style="margin: 10px 0; color: #666;">Ready to paste into WordPress (Text/HTML editor):</p>
                     <textarea id="htmlOutput" class="output-textarea" readonly></textarea>
                     
@@ -1172,15 +1276,15 @@
                 </div>
             </div>
             
-            <!-- PHASE 3 CONTENT -->
+            <!-- PHASE 3 CONTENT - Keep existing -->
             <div id="phase3" class="phase-content">
                 <div class="instructions">
                     <h3>🎯 Phase 3: SEO Optimization & Final Preview</h3>
-                    <p>Analyze and optimize your content before publishing</p>
+                    <p>Analyze your E-E-A-T optimized content before publishing</p>
                 </div>
                 
                 <div class="seo-analyzer">
-                    <h4>SEO Analysis</h4>
+                    <h4>E-E-A-T & SEO Analysis</h4>
                     <div class="seo-score">
                         <div class="score-circle score-excellent" id="seoScoreCircle">
                             <span id="seoScoreValue">0</span>
@@ -1194,7 +1298,7 @@
                         <!-- SEO tips will be populated here -->
                     </ul>
                     <button class="action-btn copy-btn" onclick="analyzeSEO()" style="margin-top: 16px;">
-                        🔍 Analyze SEO
+                        🔍 Analyze E-E-A-T & SEO
                     </button>
                 </div>
                 
@@ -1223,7 +1327,7 @@
     </div>
     
     <script>
-        // Constants - TRADING ROOM CARDS HTML
+        // Constants - KEEP EXISTING TRADING ROOM CARDS
         const TRADING_ROOM_CARDS = `<div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 20px; font-family: 'Montserrat', sans-serif;">
 <div style="border: 1px solid #e0e0e0; background-color: #ffffff; border-radius: 10px; padding: 18px; text-align: center; width: 38%; min-width: 240px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.borderColor='#3366ff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.1)'; this.style.borderColor='#e0e0e0'">
 <div style="font-size: 34px; color: #3366ff; margin-bottom: 8px;">📈</div>
@@ -1261,7 +1365,14 @@
         window.addEventListener('load', () => {
             loadAutoSave();
             updateDraftsList();
+            setTodayDate();
         });
+        
+        // Set today's date
+        function setTodayDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('publishDate').value = today;
+        }
 
         // Auto-save every 30 seconds
         setInterval(() => {
@@ -1328,26 +1439,6 @@
             document.getElementById('phase2Badge').style.display = phase2Done ? 'inline' : 'none';
         }
 
-        // Character counter
-        function updateCharCount(fieldId) {
-            const field = document.getElementById(fieldId);
-            const counter = document.getElementById(fieldId + 'Counter');
-            const length = field.value.length;
-            const max = field.maxLength;
-            
-            counter.textContent = `${length}/${max}`;
-            
-            if (length > max * 0.9) {
-                counter.classList.add('danger');
-                counter.classList.remove('warning');
-            } else if (length > max * 0.7) {
-                counter.classList.add('warning');
-                counter.classList.remove('danger');
-            } else {
-                counter.classList.remove('warning', 'danger');
-            }
-        }
-
         // Slug sanitization
         function sanitizeSlug() {
             const slugField = document.getElementById('slug');
@@ -1369,14 +1460,15 @@
             
             const ideas = [
                 `${topic}: Complete Guide for 2025`,
-                `How to Master ${topic} (Step-by-Step)`,
+                `How to Master ${topic} (My Blueprint After 15+ Years)`,
                 `${topic}: What Actually Works in 2025`,
                 `The Truth About ${topic} Nobody Tells You`,
-                `${topic}: Professional Strategies Revealed`
+                `${topic}: Professional Strategies Revealed`,
+                `My ${topic} System (How I Scaled to $X Monthly)`
             ];
             
             const ideasText = ideas.join('\n');
-            alert('Title Ideas:\n\n' + ideasText);
+            alert('E-E-A-T Optimized Title Ideas:\n\n' + ideasText);
         }
 
         function analyzeKeyword() {
@@ -1386,7 +1478,7 @@
                 return;
             }
             
-            showStatus('phase1Status', 'info', `Analyzing "${keyword}"... Consider using tools like Google Keyword Planner, Ahrefs, or SEMrush for detailed data.`);
+            showStatus('phase1Status', 'info', `Analyzing "${keyword}"... For E-E-A-T optimization, consider adding personal experience modifiers like "my system", "how I", "blueprint", etc.`);
         }
 
         function generateOutline() {
@@ -1397,17 +1489,26 @@
             }
             
             const outline = `
-Quick Outline for: ${topic}
+E-E-A-T Optimized Outline for: ${topic}
 
-1. Introduction - Hook & Promise
-2. Key Concept #1 - Foundation
-3. Key Concept #2 - Advanced Strategy
-4. Key Concept #3 - Common Mistakes
-5. Case Studies / Examples
-6. Step-by-Step Implementation
-7. Tools & Resources
-8. FAQ Section
-9. Conclusion & Next Steps
+1. Executive Summary/TLDR (Above the fold)
+2. Disclaimer & Author Bio (Build trust immediately)
+3. Myth-Busting Introduction (Challenge assumptions)
+4. Strategy #1 with Billy's Rules
+   - Who this is for/not for
+   - Specific example with math
+   - Risk management protocol
+5. Strategy #2 with Billy's Rules
+   - Trade example with calculations
+   - Common mistakes to avoid
+6. Strategy #3 (Advanced)
+   - Professional insights
+   - Scaling considerations
+7. Billy's Deep Contrarian Analysis
+8. Critical Warnings & Risk Management
+9. My Personal Evolution (Story/Journey)
+10. FAQ Section (10+ questions)
+11. Resources & Next Steps
             `;
             
             alert(outline);
@@ -1426,92 +1527,142 @@ Quick Outline for: ${topic}
                 `${keyword} strategies`,
                 `how to ${keyword}`,
                 `${keyword} tips`,
-                `${keyword} guide`,
+                `${keyword} guide 2025`,
                 `${keyword} tutorial`,
-                `${keyword} examples`
+                `${keyword} examples`,
+                `${keyword} calculator`,
+                `${keyword} risks`,
+                `is ${keyword} worth it`,
+                `${keyword} vs alternatives`
             ];
             
-            alert('LSI Keyword Suggestions:\n\n' + lsiSuggestions.join('\n'));
+            alert('E-E-A-T LSI Keyword Suggestions:\n\n' + lsiSuggestions.join('\n'));
         }
 
-        // Generate Phase 1 Prompt
+        // UPDATED Generate Phase 1 Prompt with E-E-A-T optimization
         function generatePhase1Prompt() {
             const topic = document.getElementById('topic').value.trim();
             const keyword = document.getElementById('keyword').value.trim();
+            const secondaryKeywords = document.getElementById('secondaryKeywords').value.trim();
+            const longtailQuestions = document.getElementById('longtailQuestions').value.trim();
             const searchIntent = document.getElementById('searchIntent').value.trim();
             const competitorUrls = document.getElementById('competitorUrls').value.trim();
+            const contentStyle = document.getElementById('contentStyle').value;
             const targetLength = document.getElementById('targetLength').value;
+            
+            // Get advanced options
+            const includeExamples = document.getElementById('includeExamples').checked;
+            const includeRules = document.getElementById('includeRules').checked;
+            const includeWarnings = document.getElementById('includeWarnings').checked;
+            const includeData = document.getElementById('includeData').checked;
+            const includeVisuals = document.getElementById('includeVisuals').checked;
+            const includeScaling = document.getElementById('includeScaling').checked;
             
             if (!topic || !keyword) {
                 showStatus('phase1Status', 'error', 'Please enter both topic and keyword');
                 return;
             }
             
-            const prompt = `# ATHENA Pro Content Generation - ${targetLength} Words
+            const prompt = `# ATHENA Pro E-E-A-T Content Generation - ${targetLength} Words - 2025 SEO Optimized
 
 ## TOPIC: ${topic}
-## PRIMARY KEYWORD: ${keyword}
-## SEARCH INTENT: ${searchIntent || 'User wants actionable, practical strategies they can implement immediately'}
-${competitorUrls ? `## COMPETITOR REFERENCES:\n${competitorUrls}` : ''}
+## PRIMARY KEYWORD PHRASE: ${keyword}
+${secondaryKeywords ? `## SECONDARY KEYWORDS/ENTITIES: ${secondaryKeywords}` : ''}
+${longtailQuestions ? `## LONG-TAIL QUESTIONS TO ANSWER:\n${longtailQuestions}` : ''}
+## SEARCH INTENT: ${searchIntent || 'User wants actionable, practical strategies with proven results from a trustworthy expert'}
+## CONTENT STYLE: ${contentStyle}
+${competitorUrls ? `## COMPETITOR REFERENCES TO OUTRANK:\n${competitorUrls}` : ''}
 
 Create comprehensive, E-E-A-T optimized content with ALL of these tags (NEVER use em dashes —):
 
-{{TITLE}}: [SEO-optimized title including year 2025]
-{{HERO_IMAGE_DESC}}: [Detailed description for hero image]
-{{KEYWORDS}}: [Primary keyword, 5-7 secondary keywords, 5 long-tail variations]
+=== PART 1: SEO & METADATA ===
+{{TITLE}}: [SEO-optimized title with power words and year 2025]
+{{META_DESCRIPTION}}: [150-160 chars compelling meta description with keyword]
+{{HERO_IMAGE_DESC}}: [Detailed description for professional hero image that builds trust]
 
-{{TAKEAWAY_1}}: [Bold statement] | [Explanation]
-{{TAKEAWAY_2}}: [Bold statement] | [Explanation]
-{{TAKEAWAY_3}}: [Bold statement] | [Explanation]
-{{TAKEAWAY_4}}: [Bold statement] | [Explanation]
-{{TAKEAWAY_5}}: [Bold statement] | [Explanation]
-{{TAKEAWAY_6}}: [Bold statement] | [Explanation]
+{{KEYWORD_CLUSTER}}:
+- Primary: ${keyword}
+- Secondary: ${secondaryKeywords || '[Add 5-7 related entities]'}
+- Long-tail: ${longtailQuestions ? longtailQuestions.replace(/\n/g, ', ') : '[Add 5-7 user questions]'}
 
-{{SECTION_1_H2}}: [Section 1 title]
-{{SECTION_1_CONTENT}}: [Comprehensive content - multiple paragraphs, examples, data]
+=== PART 2: TRUST BUILDERS (Above the Fold) ===
+{{AUTHOR_BIO}}: [Custom author bio emphasizing 15+ years experience, institutional background with Mark McGoldrick, specific achievements, social proof]
 
-{{SECTION_2_H2}}: [Section 2 title]
-{{SECTION_2_CONTENT}}: [Comprehensive content]
+{{DISCLAIMER}}: [Professional disclaimer for YMYL content - "Not Financial Advice" etc.]
 
-{{SECTION_3_H2}}: [Section 3 title]
-{{SECTION_3_CONTENT}}: [Comprehensive content]
+{{EXECUTIVE_SUMMARY_TLDR}}: [3-4 sentence summary addressing the main promise, key strategies, and realistic expectations - "No time to read? Here's the bottom line..."]
 
-{{SECTION_4_H2}}: [Section 4 title]
-{{SECTION_4_CONTENT}}: [Comprehensive content]
+{{TAKEAWAY_1}} through {{TAKEAWAY_6}}: [Bold claim] | [Supporting explanation]
 
-{{SECTION_5_H2}}: [Section 5 title]
-{{SECTION_5_CONTENT}}: [Comprehensive content]
+=== PART 3: MAIN CONTENT ===
+{{SECTION_1_H2}}: [Myth-busting or problem-defining title]
+{{SECTION_1_CONTENT}}: [Set realistic expectations, address common misconceptions, build trust by being honest about challenges]
+${includeWarnings ? '{{SECTION_1_WHO_FOR}}: [Explicitly state who this is for and NOT for]' : ''}
 
-{{BILLY_TAKE_1}}: [Personal insight from 15+ years trading experience]
-{{BILLY_TAKE_2}}: [Contrarian perspective that challenges common beliefs]
-{{BILLY_TAKE_3}}: [Advanced strategy only pros know]
+{{SECTION_2_H2}}: [Strategy/Solution #1]
+{{SECTION_2_CONTENT}}: [Detailed explanation with mechanics]
+${includeRules ? '{{BILLY_RULE_2}}: [Specific rule for this strategy - "Only do X if Y"]' : ''}
+${includeExamples ? '{{TRADE_EXAMPLE_2}}: [Specific example with ticker, strikes, dates, premium, ROI calculation]' : ''}
+{{SECTION_2_RISK}}: [Risk management specific to this strategy]
 
-{{BILLY_DEEP_DIVE}}: [Extended contrarian analysis - 2-3 paragraphs]
-{{CRITICAL_WARNING}}: [Warning title] | [Clear warning message about risks]
-{{PERSONAL_EVOLUTION}}: [Billy's journey with this topic - failures, breakthroughs, lessons from Mark McGoldrick]
+{{SECTION_3_H2}}: [Strategy/Solution #2]
+{{SECTION_3_CONTENT}}: [Detailed explanation]
+${includeRules ? '{{BILLY_RULE_3}}: [Specific rule for this strategy]' : ''}
+${includeExamples ? '{{TRADE_EXAMPLE_3}}: [Specific example with math and percentages]' : ''}
+{{SECTION_3_MISTAKES}}: [Common mistakes to avoid]
 
-{{FAQ_Q1}} through {{FAQ_Q10}}: [10 detailed Q&A pairs]
+{{SECTION_4_H2}}: [Strategy/Solution #3 - More Advanced]
+{{SECTION_4_CONTENT}}: [For experienced practitioners]
+${includeRules ? '{{BILLY_RULE_4}}: [Advanced rule]' : ''}
+${includeData ? '{{DATA_POINT_4}}: [Include specific statistics, win rates, averages]' : ''}
+
+{{SECTION_5_H2}}: [Implementation/Scaling/Tools]
+{{SECTION_5_CONTENT}}: [Practical implementation guide]
+${includeScaling ? '{{SCALING_ROADMAP}}: [Progression from beginner to advanced with milestones]' : ''}
+
+${includeVisuals ? '{{VISUAL_ELEMENT_1}} through {{VISUAL_ELEMENT_3}}: [Descriptions of charts, tables, or graphics to include]' : ''}
+
+=== PART 4: BILLY'S UNIQUE INSIGHTS ===
+{{BILLY_TAKE_1}}: [Contrarian insight from 15+ years experience - challenge conventional wisdom]
+{{BILLY_TAKE_2}}: [Advanced technique that separates pros from amateurs]
+{{BILLY_TAKE_3}}: [Specific system or rule like "The 45 DTE Sweet Spot"]
+
+{{BILLY_DEEP_DIVE}}: [2-3 paragraph extended analysis on a controversial or complex aspect - show true expertise]
+
+{{CRITICAL_WARNING}}: [Warning title] | [Clear message about risks, capital requirements, or common pitfalls]
+
+{{PERSONAL_EVOLUTION}}: [Billy's journey with this topic - include specific losses, breakthroughs, lessons from Mark McGoldrick. Make it vulnerable and real. Include specific dollar amounts if relevant.]
+
+=== PART 5: FAQ & RESOURCES ===
+{{FAQ_Q1}} through {{FAQ_Q10}}: [Answer the actual questions users have, including tough ones about losses, taxes, realistic returns]
+
+{{RESOURCES_TABLE}}: [3-5 authoritative external resources with descriptions]
+
+{{SCHEMA_MARKUP_NOTES}}: [Notes for FAQ schema, Article schema, Author schema]
 
 Requirements:
-- Write as Billy Ribeiro in first person
-- Include specific percentages, trade examples, tickers
-- Reference "The Move Prior to The Move" system
-- Target ${targetLength} words total
-- Make it actionable and contrarian
-- Bold key statements
-- Use only hyphens (-) never em dashes (—)`;
+- Write as Billy Ribeiro in first person - confident but not arrogant
+- Include specific examples: tickers (AAPL, SPX, etc.), percentages (aim for 1.5-2% monthly), dollar amounts
+- Reference "The Move Prior to The Move" system where relevant
+- Target exactly ${targetLength} words
+- Make it actionable with clear next steps
+- Be transparent about risks and requirements
+- Use only hyphens (-) never em dashes (—)
+- ${includeData ? 'Include specific data points, statistics, and percentages throughout' : ''}
+- ${includeExamples ? 'Every strategy must have a detailed example with math/calculations' : ''}
+- Focus on building E-E-A-T: Experience (personal stories), Expertise (specific knowledge), Authority (credentials), Trust (transparency)`;
             
             document.getElementById('promptOutput').value = prompt;
             document.getElementById('phase1Output').classList.add('show');
             document.getElementById('phase1Output').scrollIntoView({ behavior: 'smooth' });
             
-            showStatus('phase1Status', 'success', 'Phase 1 prompt generated! Copy and paste into Claude.');
+            showStatus('phase1Status', 'success', 'E-E-A-T optimized prompt generated! Copy and paste into Claude.');
             document.getElementById('phase1Badge').style.display = 'inline';
             
             autoSave();
         }
 
-        // Parse tagged content
+        // Parse tagged content - UPDATED for new tags
         function parseTaggedContent(content) {
             const tags = {};
             const regex = /\{\{([^}]+)\}\}:\s*([^{]*(?:\{[^}]*\}[^{]*)*?)(?=\{\{|$)/gs;
@@ -1551,7 +1702,7 @@ Requirements:
                 .trim();
         }
         
-        // COMPLETE Generate HTML function with ALL sections
+        // UPDATED Generate HTML function with new E-E-A-T elements
         function generateHTML() {
             const taggedContent = document.getElementById('taggedContent').value.trim();
             
@@ -1569,32 +1720,63 @@ Requirements:
                 return;
             }
             
-            let metaDescription = document.getElementById('metaDescription').value.trim() || 
-                                  tags.TITLE.substring(0, 160);
+            // Extract meta description from tagged content or generate
+            let metaDescription = tags.META_DESCRIPTION || tags.TITLE.substring(0, 160);
             
-            let slug = document.getElementById('slug').value.trim() || 
-                       generateSlug(tags.TITLE);
+            let slug = document.getElementById('slug').value.trim() || generateSlug(tags.TITLE);
             
             const audioUrl = document.getElementById('audioUrl').value.trim();
             const audioHTML = audioUrl ? `\n[billy_audio mp3="${audioUrl}"]` : '';
             
-            // Build COMPLETE HTML with ALL sections
+            // Build complete HTML with NEW E-E-A-T elements
             let html = `<div style="font-family: Montserrat, sans-serif; color: #333333;">
-<h1 style="text-align: center; font-family: 'Montserrat', sans-serif; color: #333333;"><span style="color: #333333;">${tags.TITLE || 'Your Title Here'}</span></h1>
+`;
+
+            // Add DISCLAIMER if present (top of page for YMYL)
+            if (tags.DISCLAIMER) {
+                html += `<!-- TOP DISCLAIMER FOR YMYL CONTENT -->
+<div style="background-color: #fff3cd; border: 2px solid #ffc107; padding: 20px; margin-bottom: 30px; border-radius: 10px;">
+    <p style="font-weight: bold; color: #856404; margin: 0; font-size: 16px;">
+        ⚠️ ${tags.DISCLAIMER}
+    </p>
+</div>
+`;
+            }
+
+            html += `<h1 style="text-align: center; font-family: 'Montserrat', sans-serif; color: #333333;"><span style="color: #333333;">${tags.TITLE || 'Your Title Here'}</span></h1>
 
 <!-- HERO/FEATURED IMAGE PLACEHOLDER -->
 <div style="background: #f0f0f0; border: 2px dashed #666; padding: 30px; margin: 30px 0; text-align: center; border-radius: 8px;">
     <p style="font-weight: bold; color: #333; font-size: 1.2em;">🖼️ FEATURED/HERO IMAGE</p>
-    <p style="color: #666;">Description: ${tags.HERO_IMAGE_DESC || 'Professional trading setup with multiple monitors showing charts'}</p>
+    <p style="color: #666;">Description: ${tags.HERO_IMAGE_DESC || 'Professional trading setup showing calm, focused analysis'}</p>
     <p style="color: #666;">Recommended Size: 1388 x 926 pixels</p>
     <p style="color: #666;">Alt Text: ${slug}-hero-image</p>
     <p style="color: #666;">Filename: ${slug}-hero.jpg</p>
 </div>
+`;
 
-<div style="display: flex; align-items: center; margin-top: 25px; margin-bottom: 25px;"><span style="color: #333333;"><img style="width: 80px; height: 80px; border-radius: 50%; margin-right: 15px;" src="https://revolutiontradingpros.com/wp-content/uploads/2025/05/Billy-no-grey-768x768.png.webp" alt="Photo of Billy Ribeiro" /></span>
-<span style="font-style: italic; color: #333333;"><strong>By Billy Ribeiro | Globally Recognized Trader &amp; Market Strategist</strong></span></div>
+            // Add CUSTOM AUTHOR BIO if present, otherwise use default
+            if (tags.AUTHOR_BIO) {
+                html += `<div style="display: flex; align-items: center; margin-top: 25px; margin-bottom: 25px;">
+    <span style="color: #333333;"><img style="width: 80px; height: 80px; border-radius: 50%; margin-right: 15px;" src="https://revolutiontradingpros.com/wp-content/uploads/2025/05/Billy-no-grey-768x768.png.webp" alt="Photo of Billy Ribeiro" /></span>
+    <div>
+        <span style="font-style: italic; color: #333333;"><strong>By Billy Ribeiro | Globally Recognized Trader &amp; Market Strategist</strong></span>
+        <p style="margin: 8px 0 0 0; color: #333333; font-size: 14px;">${tags.AUTHOR_BIO}</p>
+    </div>
+</div>
+`;
+            } else {
+                // Use default bio
+                html += `<div style="display: flex; align-items: center; margin-top: 25px; margin-bottom: 25px;">
+    <span style="color: #333333;"><img style="width: 80px; height: 80px; border-radius: 50%; margin-right: 15px;" src="https://revolutiontradingpros.com/wp-content/uploads/2025/05/Billy-no-grey-768x768.png.webp" alt="Photo of Billy Ribeiro" /></span>
+    <span style="font-style: italic; color: #333333;"><strong>By Billy Ribeiro | Globally Recognized Trader &amp; Market Strategist</strong></span>
+</div>
 <span style="color: #333333;"><strong>Billy Ribeiro</strong> is a globally recognized trader renowned for his mastery of price action analysis and innovative trading strategies. He was personally mentored by Mark McGoldrick, famously known as "Goldfinger," Goldman Sachs's most successful investor in history. McGoldrick described Billy Ribeiro as "The Future of Trading," a testament to his extraordinary talent. His groundbreaking system, "The Move Prior to The Move," enables him to anticipate market trends with unmatched accuracy, establishing him as a true pioneer in the trading world.</span>
-<div style="display: flex; align-items: center; gap: 15px; margin-top: 0px; margin-bottom: 0px;">
+`;
+            }
+
+            // Social links
+            html += `<div style="display: flex; align-items: center; gap: 15px; margin-top: 0px; margin-bottom: 0px;">
 
 <span style="display: inline-flex; align-items: center; font-weight: bold;">
 Connect with Billy:
@@ -1625,7 +1807,20 @@ Connect with Billy:
 <i class="fab fa-instagram"></i>
 </a>
 </div>${audioHTML}
-<div style="background-color: #f7faff; border: 1px solid #cce0ff; padding: 20px 25px; margin: 30px 0; border-radius: 12px;">
+`;
+
+            // Add EXECUTIVE SUMMARY/TLDR if present
+            if (tags.EXECUTIVE_SUMMARY_TLDR) {
+                html += `<!-- EXECUTIVE SUMMARY / TLDR -->
+<div style="background: linear-gradient(135deg, #e8f4fd 0%, #f0f8ff 100%); border-left: 4px solid #2196f3; padding: 24px; margin: 30px 0; border-radius: 12px;">
+    <h3 style="margin-top: 0; color: #1976d2;">📌 The Bottom Line (TLDR)</h3>
+    <p style="font-size: 16px; color: #333333; margin: 0;">${tags.EXECUTIVE_SUMMARY_TLDR}</p>
+</div>
+`;
+            }
+
+            // Key Takeaways
+            html += `<div style="background-color: #f7faff; border: 1px solid #cce0ff; padding: 20px 25px; margin: 30px 0; border-radius: 12px;">
 <h3 style="margin-top: 0;"><span style="color: #333333; font-family: Montserrat;">Billy's Key Takeaways</span></h3>
 <p style="font-style: italic; margin-bottom: 15px;"><span style="color: #333333; font-family: Montserrat;">"After 15+ years of trading and mentoring thousands of traders, here's what I wish every trader understood from day one:"</span></p>
 
@@ -1645,24 +1840,77 @@ Connect with Billy:
 </div>
 `;
 
-            // Add main content sections with image placeholders and Billy's Takes
+            // Add main content sections with NEW elements
             for (let i = 1; i <= 5; i++) {
                 const h2 = tags[`SECTION_${i}_H2`];
                 const content = tags[`SECTION_${i}_CONTENT`];
                 if (h2 && content) {
                     html += `<h2 style="margin-top: 40px;"><span style="color: #333333; font-family: Montserrat;">${h2}</span></h2>
 ${processSection(content)}
+`;
+                    
+                    // Add "Who this is for" if present
+                    if (tags[`SECTION_${i}_WHO_FOR`]) {
+                        html += `<div style="background-color: #e8f9ff; border-left: 4px solid #17a2b8; padding: 15px; margin: 20px 0; border-radius: 8px;">
+    <p style="margin: 0; color: #0c5460;"><strong>📌 Who This Is For (And NOT For):</strong><br>
+    ${tags[`SECTION_${i}_WHO_FOR`]}</p>
+</div>
+`;
+                    }
+                    
+                    // Add Billy's Rule if present
+                    if (tags[`BILLY_RULE_${i}`]) {
+                        html += `<div style="background-color: #fff4e5; border-left: 4px solid #ff6b35; padding: 15px; margin: 20px 0; border-radius: 8px;">
+    <p style="margin: 0; color: #8b3a00;"><strong>🎯 Billy's Rule #${i}:</strong> ${tags[`BILLY_RULE_${i}`]}</p>
+</div>
+`;
+                    }
+                    
+                    // Add Trade Example if present
+                    if (tags[`TRADE_EXAMPLE_${i}`]) {
+                        html += `<div style="background-color: #f0f4f8; border: 1px solid #d6d6d6; padding: 20px; margin: 20px 0; border-radius: 10px;">
+    <h4 style="margin-top: 0; color: #333;">📊 Real Trade Example:</h4>
+    <p style="color: #333; font-family: 'Monaco', 'Courier New', monospace; font-size: 14px;">${tags[`TRADE_EXAMPLE_${i}`]}</p>
+</div>
+`;
+                    }
+                    
+                    // Add Risk Management if present
+                    if (tags[`SECTION_${i}_RISK`]) {
+                        html += `<div style="background-color: #ffe6e6; border-left: 4px solid #dc3545; padding: 15px; margin: 20px 0; border-radius: 8px;">
+    <p style="margin: 0; color: #721c24;"><strong>⚠️ Risk Management:</strong> ${tags[`SECTION_${i}_RISK`]}</p>
+</div>
+`;
+                    }
+                    
+                    // Add Common Mistakes if present
+                    if (tags[`SECTION_${i}_MISTAKES`]) {
+                        html += `<div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 8px;">
+    <p style="margin: 0; color: #856404;"><strong>❌ Common Mistakes to Avoid:</strong><br>
+    ${tags[`SECTION_${i}_MISTAKES`]}</p>
+</div>
+`;
+                    }
+                    
+                    // Add Data Points if present
+                    if (tags[`DATA_POINT_${i}`]) {
+                        html += `<div style="background-color: #e7f3ff; border-left: 4px solid #007bff; padding: 15px; margin: 20px 0; border-radius: 8px;">
+    <p style="margin: 0; color: #004085;"><strong>📈 Key Data:</strong> ${tags[`DATA_POINT_${i}`]}</p>
+</div>
+`;
+                    }
 
-<!-- RECOMMENDED IMAGE ${i} -->
+                    // Add recommended image
+                    html += `<!-- RECOMMENDED IMAGE ${i} -->
 <div style="background: #f0f0f0; border: 2px dashed #666; padding: 20px; margin: 30px 0; text-align: center; border-radius: 8px;">
     <p style="font-weight: bold; color: #333;">📷 RECOMMENDED IMAGE ${i}</p>
     <p style="color: #666;">Title: ${h2 || 'Section ' + i + ' Image'}</p>
     <p style="color: #666;">Alt Text: ${slug}-section-${i}</p>
-    <p style="color: #666; font-style: italic;">Description: Create a chart, screenshot, or infographic that illustrates the concepts discussed in this section</p>
+    <p style="color: #666; font-style: italic;">Description: ${tags[`VISUAL_ELEMENT_${i}`] || 'Create a chart, screenshot, or infographic that illustrates the concepts discussed in this section'}</p>
 </div>
 `;
                     
-                    // Add Billy's Take after sections 2, 3, and 4
+                    // Add Billy's Take for sections 2-4
                     if (i >= 2 && i <= 4) {
                         const takeIndex = i - 1;
                         const take = tags[`BILLY_TAKE_${takeIndex}`];
@@ -1677,6 +1925,16 @@ ${processSection(content)}
                 }
             }
 
+            // Add Scaling Roadmap if present
+            if (tags.SCALING_ROADMAP) {
+                html += `<div style="background: linear-gradient(135deg, #f0f8ff 0%, #e8f4fd 100%); border: 2px solid #3366ff; padding: 25px; margin: 30px 0; border-radius: 12px;">
+    <h3 style="margin-top: 0; color: #3366ff;">📈 Your Scaling Roadmap</h3>
+    <p style="color: #333333;">${tags.SCALING_ROADMAP}</p>
+</div>
+`;
+            }
+
+            // Continue with ALL existing sections (Deep Dive, Warning, Evolution, etc.) - NO CHANGES
             // Add Deep Dive if present
             if (tags.BILLY_DEEP_DIVE) {
                 html += `<div style="background-color: #f7faff; border: 1px solid #cce0ff; border-left: 4px solid #3366ff; padding: 20px 25px; margin: 30px 0; border-radius: 15px;">
@@ -1688,10 +1946,10 @@ ${processSection(content)}
 
             // Add Critical Warning if present
             if (tags.CRITICAL_WARNING) {
-                const [title, message] = tags.CRITICAL_WARNING.split(' | ');
+                const warningParts = tags.CRITICAL_WARNING.split(' | ');
                 html += `<div style="background-color: #fffbe6; border-left: 4px solid #c0392b; padding: 15px; margin: 20px 0; font-style: italic; border-radius: 8px;">
     <p style="color: #c0392b; font-weight: bold; margin: 0;">
-        <span style="color: #333333; font-family: Montserrat;">⚠️ ${title}: ${message}</span>
+        <span style="color: #333333; font-family: Montserrat;">⚠️ ${warningParts[0]}: ${warningParts[1] || ''}</span>
     </p>
 </div>
 `;
@@ -1706,7 +1964,7 @@ ${processSection(content)}
 `;
             }
 
-            // Add Continue Your Learning section
+            // Continue Your Learning section
             html += `<h2><span style="color: #333333; font-family: Montserrat;">Continue Your Learning</span></h2>
 <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px;">
 <a href="https://revolutiontradingpros.com/risk-management-essentials/" style="text-decoration: none; color: inherit;">
@@ -1740,7 +1998,17 @@ ${processSection(content)}
 
 <!-- RECOMMENDED EXTERNAL RESOURCES TABLE -->
 <h2 style="margin-top: 40px;"><span style="color: #333333; font-family: Montserrat;">Recommended External Resources</span></h2>
-<table style="width: 100%; border-collapse: collapse; margin: 25px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+`;
+
+            // Add Resources Table if present, otherwise use default
+            if (tags.RESOURCES_TABLE) {
+                html += `<div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 25px 0;">
+    ${processSection(tags.RESOURCES_TABLE)}
+</div>
+`;
+            } else {
+                // Default resources table
+                html += `<table style="width: 100%; border-collapse: collapse; margin: 25px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 <thead style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
 <tr>
 <th style="border: 1px solid #dddddd; text-align: left; padding: 15px; font-weight: 600;"><span style="color: #333333; font-family: Montserrat;">Topic</span></th>
@@ -1766,9 +2034,11 @@ ${processSection(content)}
 </tr>
 </tbody>
 </table>
+`;
+            }
 
-<!-- FAQ Section -->
-<h2 style="margin-top: 40px;"><span style="color: #333333; font-family: Montserrat;">Frequently Asked Questions</span></h2>
+            // FAQ Section
+            html += `<h2 style="margin-top: 40px;"><span style="color: #333333; font-family: Montserrat;">Frequently Asked Questions</span></h2>
 `;
             
             // Add FAQ items
@@ -1815,10 +2085,9 @@ ${processSection(content)}
 <div style="margin-top: 40px; padding: 30px 20px; background-color: #f8f9fa; border-radius: 20px;">
 <h2 style="text-align: center;"><span style="color: #333333;">Start Trading Like a Professional</span></h2>
 <p style="text-align: center; color: #333333; max-width: 800px; margin: 0 auto 10px;">Ready to start trading like a professional? Join our community for in-depth analysis, expert strategy and live trading. Sign up today to start trading with a real edge!</p>
-<!-- Trading Room Cards - EXACT COPY -->
+<!-- Trading Room Cards -->
 ${TRADING_ROOM_CARDS}
 </div>
-<!-- END of gray background section -->
 
 <!-- Critical warning on WHITE background -->
 <div style="border: 1px solid #ccc; padding: 15px; margin-top: 40px; background-color: #fafafa; border-radius: 8px;">
@@ -1827,7 +2096,18 @@ ${TRADING_ROOM_CARDS}
 
 <!-- Logo on WHITE background -->
 <p style="text-align: center; margin-top: 30px;"><span style="color: #333333;"><img src="https://revolutiontradingpros.com/wp-content/uploads/2024/12/50baa458abe39958a6c1330df9ae980c-300x79.png" alt="Revolution Trading Pros Logo" width="300" height="79" /></span></p>
+`;
 
+            // Add Schema Markup notes as HTML comment if present
+            if (tags.SCHEMA_MARKUP_NOTES) {
+                html += `
+<!-- SCHEMA MARKUP NOTES:
+${tags.SCHEMA_MARKUP_NOTES}
+-->
+`;
+            }
+
+            html += `
 </div>`;
 
             document.getElementById('htmlOutput').value = html;
@@ -1835,8 +2115,8 @@ ${TRADING_ROOM_CARDS}
             document.getElementById('phase2Output').scrollIntoView({ behavior: 'smooth' });
             
             const statusMsg = audioUrl ? 
-                'Complete HTML generated with ALL sections included!' : 
-                'Complete HTML generated with ALL sections! (Consider adding audio for better engagement)';
+                'E-E-A-T optimized HTML generated with ALL sections!' : 
+                'E-E-A-T optimized HTML generated! (Consider adding audio for better engagement)';
             
             showStatus('phase2Status', 'success', statusMsg);
             document.getElementById('phase2Badge').style.display = 'inline';
@@ -1844,6 +2124,7 @@ ${TRADING_ROOM_CARDS}
             autoSave();
         }
 
+        // KEEP ALL EXISTING FUNCTIONS UNCHANGED
         // Copy content
         function copyContent(elementId) {
             const textarea = document.getElementById(elementId);
@@ -1911,15 +2192,24 @@ ${TRADING_ROOM_CARDS}
                 date: new Date().toISOString(),
                 topic: document.getElementById('topic').value,
                 keyword: document.getElementById('keyword').value,
+                secondaryKeywords: document.getElementById('secondaryKeywords').value,
+                longtailQuestions: document.getElementById('longtailQuestions').value,
                 searchIntent: document.getElementById('searchIntent').value,
                 competitorUrls: document.getElementById('competitorUrls').value,
+                contentStyle: document.getElementById('contentStyle').value,
                 targetLength: document.getElementById('targetLength').value,
                 taggedContent: document.getElementById('taggedContent').value,
-                metaDescription: document.getElementById('metaDescription').value,
                 slug: document.getElementById('slug').value,
                 audioUrl: document.getElementById('audioUrl').value,
                 promptOutput: document.getElementById('promptOutput').value,
-                htmlOutput: document.getElementById('htmlOutput').value
+                htmlOutput: document.getElementById('htmlOutput').value,
+                // Save advanced options
+                includeExamples: document.getElementById('includeExamples').checked,
+                includeRules: document.getElementById('includeRules').checked,
+                includeWarnings: document.getElementById('includeWarnings').checked,
+                includeData: document.getElementById('includeData').checked,
+                includeVisuals: document.getElementById('includeVisuals').checked,
+                includeScaling: document.getElementById('includeScaling').checked
             };
             
             const drafts = JSON.parse(localStorage.getItem('athenaDrafts') || '[]');
@@ -1939,13 +2229,21 @@ ${TRADING_ROOM_CARDS}
             const autoSave = {
                 topic: document.getElementById('topic').value,
                 keyword: document.getElementById('keyword').value,
+                secondaryKeywords: document.getElementById('secondaryKeywords').value,
+                longtailQuestions: document.getElementById('longtailQuestions').value,
                 searchIntent: document.getElementById('searchIntent').value,
                 competitorUrls: document.getElementById('competitorUrls').value,
+                contentStyle: document.getElementById('contentStyle').value,
                 targetLength: document.getElementById('targetLength').value,
                 taggedContent: document.getElementById('taggedContent').value,
-                metaDescription: document.getElementById('metaDescription').value,
                 slug: document.getElementById('slug').value,
-                audioUrl: document.getElementById('audioUrl').value
+                audioUrl: document.getElementById('audioUrl').value,
+                includeExamples: document.getElementById('includeExamples').checked,
+                includeRules: document.getElementById('includeRules').checked,
+                includeWarnings: document.getElementById('includeWarnings').checked,
+                includeData: document.getElementById('includeData').checked,
+                includeVisuals: document.getElementById('includeVisuals').checked,
+                includeScaling: document.getElementById('includeScaling').checked
             };
             
             localStorage.setItem('athenaAutoSave', JSON.stringify(autoSave));
@@ -1956,13 +2254,23 @@ ${TRADING_ROOM_CARDS}
             
             if (autoSave.topic) document.getElementById('topic').value = autoSave.topic;
             if (autoSave.keyword) document.getElementById('keyword').value = autoSave.keyword;
+            if (autoSave.secondaryKeywords) document.getElementById('secondaryKeywords').value = autoSave.secondaryKeywords;
+            if (autoSave.longtailQuestions) document.getElementById('longtailQuestions').value = autoSave.longtailQuestions;
             if (autoSave.searchIntent) document.getElementById('searchIntent').value = autoSave.searchIntent;
             if (autoSave.competitorUrls) document.getElementById('competitorUrls').value = autoSave.competitorUrls;
+            if (autoSave.contentStyle) document.getElementById('contentStyle').value = autoSave.contentStyle;
             if (autoSave.targetLength) document.getElementById('targetLength').value = autoSave.targetLength;
             if (autoSave.taggedContent) document.getElementById('taggedContent').value = autoSave.taggedContent;
-            if (autoSave.metaDescription) document.getElementById('metaDescription').value = autoSave.metaDescription;
             if (autoSave.slug) document.getElementById('slug').value = autoSave.slug;
             if (autoSave.audioUrl) document.getElementById('audioUrl').value = autoSave.audioUrl;
+            
+            // Load checkboxes
+            if (autoSave.includeExamples !== undefined) document.getElementById('includeExamples').checked = autoSave.includeExamples;
+            if (autoSave.includeRules !== undefined) document.getElementById('includeRules').checked = autoSave.includeRules;
+            if (autoSave.includeWarnings !== undefined) document.getElementById('includeWarnings').checked = autoSave.includeWarnings;
+            if (autoSave.includeData !== undefined) document.getElementById('includeData').checked = autoSave.includeData;
+            if (autoSave.includeVisuals !== undefined) document.getElementById('includeVisuals').checked = autoSave.includeVisuals;
+            if (autoSave.includeScaling !== undefined) document.getElementById('includeScaling').checked = autoSave.includeScaling;
         }
 
         function showDrafts() {
@@ -2000,15 +2308,25 @@ ${TRADING_ROOM_CARDS}
             
             document.getElementById('topic').value = draft.topic || '';
             document.getElementById('keyword').value = draft.keyword || '';
+            document.getElementById('secondaryKeywords').value = draft.secondaryKeywords || '';
+            document.getElementById('longtailQuestions').value = draft.longtailQuestions || '';
             document.getElementById('searchIntent').value = draft.searchIntent || '';
             document.getElementById('competitorUrls').value = draft.competitorUrls || '';
+            document.getElementById('contentStyle').value = draft.contentStyle || 'conversational';
             document.getElementById('targetLength').value = draft.targetLength || '3500';
             document.getElementById('taggedContent').value = draft.taggedContent || '';
-            document.getElementById('metaDescription').value = draft.metaDescription || '';
             document.getElementById('slug').value = draft.slug || '';
             document.getElementById('audioUrl').value = draft.audioUrl || '';
             document.getElementById('promptOutput').value = draft.promptOutput || '';
             document.getElementById('htmlOutput').value = draft.htmlOutput || '';
+            
+            // Load checkboxes
+            if (draft.includeExamples !== undefined) document.getElementById('includeExamples').checked = draft.includeExamples;
+            if (draft.includeRules !== undefined) document.getElementById('includeRules').checked = draft.includeRules;
+            if (draft.includeWarnings !== undefined) document.getElementById('includeWarnings').checked = draft.includeWarnings;
+            if (draft.includeData !== undefined) document.getElementById('includeData').checked = draft.includeData;
+            if (draft.includeVisuals !== undefined) document.getElementById('includeVisuals').checked = draft.includeVisuals;
+            if (draft.includeScaling !== undefined) document.getElementById('includeScaling').checked = draft.includeScaling;
             
             if (draft.promptOutput) {
                 document.getElementById('phase1Output').classList.add('show');
@@ -2039,11 +2357,29 @@ ${TRADING_ROOM_CARDS}
                 field.value = '';
             });
             
+            document.
+                function clearAll() {
+            if (!confirm('This will clear all fields. Are you sure?')) return;
+            
+            document.querySelectorAll('input[type="text"], input[type="url"], textarea').forEach(field => {
+                field.value = '';
+            });
+            
+            document.getElementById('contentStyle').value = 'conversational';
             document.getElementById('targetLength').value = '3500';
+            
+            // Reset checkboxes to default
+            document.getElementById('includeExamples').checked = true;
+            document.getElementById('includeRules').checked = true;
+            document.getElementById('includeWarnings').checked = true;
+            document.getElementById('includeData').checked = true;
+            document.getElementById('includeVisuals').checked = false;
+            document.getElementById('includeScaling').checked = false;
+            
             showStatus('phase1Status', 'info', 'All fields cleared');
         }
 
-        // SEO Analysis
+        // UPDATED SEO Analysis for E-E-A-T
         function analyzeSEO() {
             const html = document.getElementById('htmlOutput').value;
             if (!html) {
@@ -2057,64 +2393,108 @@ ${TRADING_ROOM_CARDS}
             let score = 0;
             const tips = [];
             
-            // Check title
+            // E-E-A-T Checks
+            
+            // Check for TLDR/Executive Summary
+            if (html.includes('The Bottom Line (TLDR)') || html.includes('EXECUTIVE_SUMMARY')) {
+                score += 10;
+                tips.push({ type: 'success', text: '✓ Executive Summary/TLDR present (E-E-A-T)' });
+            } else {
+                tips.push({ type: 'error', text: '✗ Add TLDR for better user experience' });
+            }
+            
+            // Check for Disclaimer (YMYL)
+            if (html.includes('⚠️') && (html.includes('Not Financial Advice') || html.includes('DISCLAIMER'))) {
+                score += 10;
+                tips.push({ type: 'success', text: '✓ Disclaimer present (YMYL compliance)' });
+            } else {
+                tips.push({ type: 'error', text: '✗ Add disclaimer for YMYL content' });
+            }
+            
+            // Check for Author Bio
+            if (html.includes('By Billy Ribeiro') && html.includes('15+ years') || html.includes('15 years')) {
+                score += 10;
+                tips.push({ type: 'success', text: '✓ Author bio with experience (E-E-A-T)' });
+            } else {
+                tips.push({ type: 'warning', text: '⚠ Strengthen author credentials' });
+            }
+            
+            // Check for Personal Evolution/Story
+            if (html.includes('Personal Evolution') || html.includes('My journey')) {
+                score += 10;
+                tips.push({ type: 'success', text: '✓ Personal story/experience shared' });
+            } else {
+                tips.push({ type: 'warning', text: '⚠ Add personal experience for trust' });
+            }
+            
+            // Check title for keyword
             if (title.toLowerCase().includes(keyword)) {
-                score += 20;
+                score += 15;
                 tips.push({ type: 'success', text: '✓ Keyword in title' });
             } else {
                 tips.push({ type: 'error', text: '✗ Add keyword to title' });
             }
             
-            // Check meta description
-            const metaDesc = document.getElementById('metaDescription').value;
-            if (metaDesc && metaDesc.toLowerCase().includes(keyword)) {
-                score += 15;
-                tips.push({ type: 'success', text: '✓ Keyword in meta description' });
+            // Check for trade examples
+            const exampleCount = (html.match(/Real Trade Example/g) || []).length;
+            if (exampleCount >= 2) {
+                score += 10;
+                tips.push({ type: 'success', text: `✓ ${exampleCount} trade examples with specifics` });
             } else {
-                tips.push({ type: 'warning', text: '⚠ Add keyword to meta description' });
+                tips.push({ type: 'warning', text: '⚠ Add more specific examples' });
+            }
+            
+            // Check for risk warnings
+            if (html.includes('Risk Management') || html.includes('Who This Is For')) {
+                score += 10;
+                tips.push({ type: 'success', text: '✓ Risk warnings and qualifications' });
+            } else {
+                tips.push({ type: 'warning', text: '⚠ Add risk management sections' });
             }
             
             // Check content length
             const contentLength = html.length;
-            if (contentLength > 10000) {
-                score += 20;
+            if (contentLength > 15000) {
+                score += 10;
                 tips.push({ type: 'success', text: '✓ Comprehensive content length' });
+            } else if (contentLength > 10000) {
+                score += 5;
+                tips.push({ type: 'warning', text: '⚠ Good length, could be more comprehensive' });
             } else {
-                tips.push({ type: 'warning', text: '⚠ Consider adding more content' });
+                tips.push({ type: 'error', text: '✗ Content too short for E-E-A-T' });
             }
             
             // Check headings
             const h2Count = (html.match(/<h2/g) || []).length;
             if (h2Count >= 5) {
-                score += 15;
+                score += 10;
                 tips.push({ type: 'success', text: `✓ Good structure with ${h2Count} sections` });
             } else {
                 tips.push({ type: 'warning', text: '⚠ Add more sections for better structure' });
             }
             
-            // Check images
-            const imageCount = (html.match(/RECOMMENDED IMAGE/g) || []).length;
-            if (imageCount >= 3) {
-                score += 15;
-                tips.push({ type: 'success', text: `✓ ${imageCount} images planned` });
-            } else {
-                tips.push({ type: 'warning', text: '⚠ Consider adding more images' });
-            }
-            
             // Check FAQ section
             if (html.includes('Frequently Asked Questions')) {
-                score += 15;
+                score += 5;
                 tips.push({ type: 'success', text: '✓ FAQ section included' });
             } else {
                 tips.push({ type: 'error', text: '✗ Add FAQ section' });
             }
             
+            // Check for external resources
+            if (html.includes('CBOE') || html.includes('SEC') || html.includes('CME')) {
+                score += 10;
+                tips.push({ type: 'success', text: '✓ Authoritative external resources' });
+            } else {
+                tips.push({ type: 'warning', text: '⚠ Add authoritative external links' });
+            }
+            
             // Update UI
             document.getElementById('seoScoreValue').textContent = score;
             document.getElementById('seoScoreLabel').textContent = 
-                score >= 80 ? 'Excellent SEO' :
-                score >= 60 ? 'Good SEO' :
-                'Needs Improvement';
+                score >= 80 ? 'Excellent E-E-A-T & SEO' :
+                score >= 60 ? 'Good E-E-A-T & SEO' :
+                'Needs E-E-A-T Improvement';
             
             const scoreCircle = document.getElementById('seoScoreCircle');
             scoreCircle.className = 'score-circle ' + 
@@ -2125,36 +2505,106 @@ ${TRADING_ROOM_CARDS}
             document.getElementById('seoTips').innerHTML = tips.map(tip =>
                 `<li class="seo-tip-item tip-${tip.type}">${tip.text}</li>`
             ).join('');
+            
+            // Add E-E-A-T specific recommendations
+            if (score < 80) {
+                const eatTips = document.createElement('div');
+                eatTips.style.marginTop = '20px';
+                eatTips.style.padding = '15px';
+                eatTips.style.background = '#f0f8ff';
+                eatTips.style.borderRadius = '8px';
+                eatTips.innerHTML = `
+                    <h5 style="color: #0066cc; margin-bottom: 10px;">💡 E-E-A-T Optimization Tips:</h5>
+                    <ul style="margin: 0; padding-left: 20px; color: #333;">
+                        ${score < 40 ? '<li>Add specific dollar amounts and percentages to build credibility</li>' : ''}
+                        ${!html.includes('TLDR') ? '<li>Add an executive summary at the top for busy readers</li>' : ''}
+                        ${exampleCount < 2 ? '<li>Include more real trade examples with math/calculations</li>' : ''}
+                        ${!html.includes('Personal Evolution') ? '<li>Share a personal story about failures and breakthroughs</li>' : ''}
+                        ${!html.includes('Billy\'s Rule') ? '<li>Add "Billy\'s Rules" to show expertise</li>' : ''}
+                    </ul>
+                `;
+                document.getElementById('seoTips').parentNode.appendChild(eatTips);
+            }
         }
 
         // Helper functions
         function showHelp() {
-            alert(`ATHENA Pro Generator Help
+            alert(`ATHENA Pro Generator v3.0 - E-E-A-T Optimized
 
-Phase 1: Generate Prompt
-- Enter your topic and keyword
-- Add optional details for better content
-- Generate prompt for Claude.ai
+🎯 WHAT'S NEW IN v3.0:
+- E-E-A-T optimization for Google 2025
+- Executive Summary/TLDR section
+- Custom author bios
+- Top-of-page disclaimers for YMYL
+- Trade examples with calculations
+- "Billy's Rules" for each strategy
+- Risk management sections
+- Personal evolution stories
+- Enhanced keyword clustering
 
-Phase 2: Apply Template  
-- Paste tagged content from Claude
-- Add meta info and audio
+📋 PHASE 1: Generate E-E-A-T Prompt
+- Enter complete keyword cluster (primary, secondary, long-tail)
+- Configure advanced options for maximum E-E-A-T
+- Generate prompt optimized for Experience, Expertise, Authority, Trust
+
+📝 PHASE 2: Apply Template  
+- Paste ALL tagged content including new E-E-A-T tags
+- System auto-extracts meta description
+- Add audio for engagement boost
 - Generate WordPress-ready HTML
 
-Phase 3: SEO & Preview
-- Analyze SEO score
-- Preview your post
-- Manage saved drafts
+🎯 PHASE 3: E-E-A-T Analysis
+- Analyze your content for E-E-A-T signals
+- Get specific optimization recommendations
+- Preview your post before publishing
 
-Tips:
-- Auto-saves every 30 seconds
-- Use helper tools for ideas
-- Preview before publishing
-- All sections are included in output`);
+💡 TIPS FOR HIGH E-E-A-T:
+- Always include specific examples with numbers
+- Share personal stories (failures and successes)
+- Add disclaimers for YMYL content
+- Include authoritative external links
+- Create comprehensive FAQ sections
+
+📊 AUTO-SAVES:
+- Every 30 seconds automatically
+- Multiple draft management
+- Never lose your work
+
+Need help? Contact support@revolutiontradingpros.com`);
         }
 
         function showSettings() {
-            alert('Settings panel coming soon! For now, all drafts are saved locally in your browser.');
+            alert(`Settings & Configuration
+
+🔧 CURRENT SETTINGS:
+- Version: 3.0 Pro
+- Auto-save: Enabled (30 seconds)
+- E-E-A-T Mode: Active
+- Target Market: Google 2025
+
+📁 STORAGE:
+- All drafts saved locally in browser
+- Auto-save active
+- Clear browser data will remove drafts
+
+🎯 E-E-A-T DEFAULTS:
+- Include Examples: ON
+- Include Rules: ON
+- Include Warnings: ON
+- Include Data: ON
+- Include Visuals: OFF
+- Include Scaling: OFF
+
+💾 BACKUP:
+- Use "Save Draft" regularly
+- Download HTML files for backup
+- Export prompts as .txt files
+
+🔄 UPDATES:
+- Check for updates at revolutiontradingpros.com
+- Current version optimized for 2025 SEO
+
+For advanced settings, contact support.`);
         }
 
         // Status messages
